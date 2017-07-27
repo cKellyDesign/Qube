@@ -102,8 +102,8 @@ window.articles = [
 ];
 
 
-window.users = [
-	{
+window.users = {
+	"chief4000" : {
 		id : 100,
 		name : "Conor",
 		username : "chief4000",
@@ -188,4 +188,4 @@ window.users = [
 			history : []
 		}
 	}
-]
+}
