@@ -328,10 +328,10 @@ Cube.prototype.upsideDown = function(obj) {
 Cube.prototype.sideChange = function() {
 
   for(var i = 0; i < this.sides.length; ++i) {
-    this.sides[i].getElementsByClassName('cube-image')[0].className = 'cube-image';    
+    this.sides[i].className = 'side';    
   }
 
-  this.sides[this.viewport.currentSide - 1].getElementsByClassName('cube-image')[0].className = 'cube-image active';
+  this.sides[this.viewport.currentSide - 1].className = 'side active';
 
 }
 

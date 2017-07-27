@@ -191,13 +191,26 @@ body {
  #saveSkip {
   background-size: cover;
 }*/
-#base {
-  background-image: none;
+
+.side {
+  background-image: none !important;
   background-color: black;
+  outline: 1px solid white !important
+}
+.side > object,
+.side > iframe,
+.side > img,
+.side > svg {
+  opacity: .8;
+  transition: opacity .5s;
+  margin: 27.5px;
+}
+.side.active > svg {
+  opacity: 1;
 }
 
-.side > img {
-  width: 100%;
-  height: 100%;
+
+#svgTemplateWrap {
+  display: none;
 }
 

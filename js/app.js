@@ -1,9 +1,18 @@
 var QubeApp = function () {
 	var self = this;
+
+	this.$top = $('#top');
+	this.$left = $('#left');
+	this.$center = $('#center');
+	this.$right = $('#right');
+	this.$base = $('#base');
+	this.$saveSkip = $('#saveSkip');
+
 	// QUBE APP STATE
 	this.currentUser = window.users["chief4000"];
 
 	this.currentTopic = 'North Korea';
+
 	this.articles = [ 
 		{
 			article: window.articles[0],
@@ -57,6 +66,25 @@ var QubeApp = function () {
 		}
 	}
 
+	this.renderScreens = function () {
+
+		$('#top').append($('#SourceScreen'))
+		$('#left, #center, #right').each(function (i, el) {
+			// console.log('i', i, 'el', el);\
+			var thisScreen = self.screens[$(el).attr('id')]
+			var thisAritcle = self.articles[thisScreen.articleI]
+			var thisTemplate = $(el).append($('#ArticleTemplate').clone()).children('svg')
+			// console.log('thisAritcle', thisAritcle);
+			// todo - dynamically update article screens
+
+		})
+
+
+
+
+	}
+	this.renderScreens();
+
 	this.hasGuessedN = 0;
 	this.hasSavedCurrentArticles = false;
 	this.activeScreen = "center";
@@ -90,8 +118,8 @@ var QubeApp = function () {
 		// self.nodeFirebaseAPI.updateValue("sliderValue", self.value)
 	}
 
-	usersRef.on("value", getValueCallback);
-	articlesRef.on("value", getValueCallback);
+	// usersRef.on("value", getValueCallback);
+	// articlesRef.on("value", getValueCallback);
 
 	// var setUser = { };
 	// setUser[this.currentUser.username] = window.users[this.currentUser.username];
@@ -108,7 +136,7 @@ var QubeApp = function () {
 	}
 
 	// Prevents images from swallowing click and dragging of the cube! :D
-	$('.side > img').on('dragstart', function (e) { return false; })
+	$('#top, #center, #left, #right, #base, #saveSkip').on('dragstart', function (e) { return false; })
 
 }
 
