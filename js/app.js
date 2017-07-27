@@ -1,6 +1,5 @@
 var QubeApp = function () {
 	var self = this;
-
 	// QUBE APP STATE
 	this.currentUser = window.users["chief4000"];
 
@@ -107,6 +106,10 @@ var QubeApp = function () {
 	this.checkBiasGuesses = function (e) {
 
 	}
+
+	// Prevents images from swallowing click and dragging of the cube! :D
+	$('.side > img').on('dragstart', function (e) { return false; })
+
 }
 
 window.qubeApp = new QubeApp()

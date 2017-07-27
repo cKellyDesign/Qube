@@ -196,3 +196,8 @@ body {
   background-color: black;
 }
 
+.side > img {
+  width: 100%;
+  height: 100%;
+}
+
