@@ -52,7 +52,7 @@ var QubeApp = function () {
 		},
 		right_source : { 
 			isLocked : true
-		}
+		},
 		save_skip : {
 			hasSaved : false
 		}
