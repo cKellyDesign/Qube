@@ -1,0 +1,16 @@
+{
+  "name": "Qube",
+  "version": "0.1.0",
+  "description": "A simple Node / Express API layer to integrate prototypes with Firebase and to handle data manipulations.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "cKellyDesign",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3",
+    "firebase": "^4.1.3",
+    "firebase-admin": "^5.0.1"
+  }
+}
