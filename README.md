@@ -1,9 +1,9 @@
 ## Qübe 
 To serve locally first install:
-'$ npm install'
+`$ npm install`
 
 Then run server:
-'$ node server.js'
+`$ node server.js`
 
 and open http://localhost:9009.
 
