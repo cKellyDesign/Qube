@@ -1,4 +1,4 @@
-exports.articles = [
+window.articles = [
 	{
 		id : 0,
 		topic : "North Korea",
@@ -102,19 +102,19 @@ exports.articles = [
 ];
 
 
-exports.users = [
+window.users = [
 	{
 		id : 100,
 		name : "Conor",
 		username : "chief4000",
-		topic_preferences : [
+		topic_preferences : {
 			'Global Politics' : 25,
 			'US Politics' : 25,
 			'Science & Space' : 30,
 			'Tech' : 10,
 			'Design' : 10
 
-		],
+		},
 		article_history : [],
 		bias_balance : {
 			current : {
