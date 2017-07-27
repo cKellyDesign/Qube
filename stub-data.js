@@ -100,3 +100,92 @@ exports.articles = [
 
 
 ];
+
+
+exports.users = [
+	{
+		id : 100,
+		name : "Conor",
+		username : "chief4000",
+		topic_preferences : [
+			'Global Politics' : 25,
+			'US Politics' : 25,
+			'Science & Space' : 30,
+			'Tech' : 10,
+			'Design' : 10
+
+		],
+		article_history : [],
+		bias_balance : {
+			current : {
+				date : '08/16/2017',
+				L    : 15,
+				LC   : 30,
+				C    : 30,
+				RC   : 15,
+				R    : 10,
+				history : [
+					{
+						date : '08/16/2017',
+						L    : 15,
+						LC   : 25,
+						C    : 35,
+						RC   : 15,
+						R    : 10,
+					},
+					{
+						date : '08/16/2017',
+						L    : 15,
+						LC   : 30,
+						C    : 30,
+						RC   : 15,
+						R    : 10,
+					},
+					{
+						date : '08/9/2017',
+						L    : 20,
+						LC   : 40,
+						C    : 20,
+						RC   : 15,
+						R    : 5,
+					},
+					{
+						date : '08/2/2017',
+						L    : 15,
+						LC   : 45,
+						C    : 25,
+						RC   : 10,
+						R    : 5,
+					},
+					{
+						date : '07/26/2017',
+						L    : 20,
+						LC   : 50,
+						C    : 20,
+						RC   : 5,
+						R    : 5,
+					},
+					{
+						date : '07/19/2017',
+						L    : 33,
+						LC   : 50,
+						C    : 22,
+						RC   : 0,
+						R    : 0,
+					}
+				]
+			}
+		},
+		topic_breakdown : {
+			current : {
+				'North Korea' : 5,
+				'Health Care' : 20,
+				'Science & Space' :  50,
+				'US Politics' : 10,
+				'Tech' : 5,
+				'Design' : 10
+			}, 
+			history : []
+		}
+	}
+]
