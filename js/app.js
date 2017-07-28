@@ -66,9 +66,18 @@ var QubeApp = function () {
 		}
 	}
 
+	this.onBiasGuessClick = function (e) {
+		e.preventDefault();
+		e.stopPropagation();
+
+		console.log('#BiasGuessBtn click!!!', el.id);
+	}
+
 	this.renderScreens = function () {
 
 		$('#top').append($('#SourceScreen'))
+
+
 		$('#left, #center, #right').each(function (i, el) {
 			// console.log('i', i, 'el', el);\
 			var thisScreen = self.screens[$(el).attr('id')]
@@ -77,6 +86,23 @@ var QubeApp = function () {
 			// console.log('thisAritcle', thisAritcle);
 			// todo - dynamically update article screens
 
+			var $guessButton = $('#BiasGuessBtn', el).attr('id', 'BiasGuessBtn' + i);
+			$guessButton.on('click', this.onBiasGuessClick);
+
+			var $Rect = $('#ArticleTextArea > rect', el);
+			var $TitleTextArea = $('#textTitle', el);
+			var $BodyTextArea = $('#textBody', el);
+			// function (myRect, titleText, bodyText, titleStr, bodyStr)
+			// console.log(thisAritcle)
+			var articleText = thisAritcle.article.body;
+			var articleTitle = thisAritcle.article.title;
+			// console.log(articleText)
+			wrapTextRect($Rect, $TitleTextArea, articleTitle)
+
+			var bodyOffset = Number($($TitleTextArea).attr('font-size')) * 1.4 * $($TitleTextArea).children('tspan').length;
+			wrapTextRect($Rect, $BodyTextArea, articleText, bodyOffset + 12)
+
+			// console.log($($TitleTextArea).outerHeight())
 		})
 
 

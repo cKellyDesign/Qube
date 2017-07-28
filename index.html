@@ -13,6 +13,7 @@
 <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
 <script type="text/javascript" src="js/stub-data.js"></script>
+<script type="text/javascript" src="js/wrapSVGtext.js"></script>
 </head>
 <body>
 	
@@ -56,13 +57,16 @@
 <!-- Start SVG Templates -->
 <div id="svgTemplateWrap">
 	<svg id="ArticleTemplate" width="445px" height="445px" viewBox="0 0 445 445" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #FFFFFF;">
-	    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
-	    <title>__Cube Article HIFI</title>
-	    <desc>Created with Sketch.</desc>
-	    <defs></defs>
 	    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 	        <g id="__Cube-Article-HIFI">
-	            <rect id="ArticleTextArea" fill="#FFFFFF" x="30" y="98" width="397" height="236"></rect>
+
+		        <g id="ArticleTextArea">
+		            <rect fill="#FFFFFF" x="30" y="98" width="397" height="236"></rect>
+		            <text id="textTitle" fill="#548800" font-family="OpenSans-Regular, Open Sans" font-size="24" x="30" y="120" width="397">Hello</text>
+		            <text y="30" id="textBody" fill="black" font-size="16" font-family="Arial" font-size="OpenSans-Regular, Open Sans">World</text>
+	            </g>
+
+
 	            <g id="SourceIndicator" transform="translate(198.000000, 0.000000)" fill="#BBBBBB">
 	                <g id="'Screen-Indicator/Top/Inactive">
 	                    <text id="SOURCE" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal">
