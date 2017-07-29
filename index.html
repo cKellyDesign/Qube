@@ -147,12 +147,65 @@
 	    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
 	    <title>Cube Article HIFI</title>
 	    <desc>Created with Sketch.</desc>
-	    <defs></defs>
+	    <defs>
+	        <linearGradient x1="50%" y1="3.061617e-15%" x2="50%" y2="100%" id="linearGradient-1">
+	            <stop stop-color="#00748D" offset="0%"></stop>
+	            <stop stop-color="#009BBD" offset="100%"></stop>
+	        </linearGradient>
+	        <rect id="path-2" x="0" y="0" width="405" height="405" rx="20"></rect>
+	        <filter x="-1.7%" y="-1.2%" width="103.5%" height="103.5%" filterUnits="objectBoundingBox" id="filter-3">
+	            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+	            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+	            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+	        </filter>
+	        <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-4">
+	            <stop stop-color="#9100B8" offset="0%"></stop>
+	            <stop stop-color="#009BBD" offset="100%"></stop>
+	        </linearGradient>
+	        <rect id="path-5" x="0" y="0" width="405" height="405" rx="20"></rect>
+	        <filter x="-1.7%" y="-1.2%" width="103.5%" height="103.5%" filterUnits="objectBoundingBox" id="filter-6">
+	            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+	            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+	            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+	        </filter>
+	        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-7">
+	            <stop stop-color="#9100B8" offset="0%"></stop>
+	            <stop stop-color="#63007E" offset="100%"></stop>
+	        </linearGradient>
+	        <rect id="path-8" x="0" y="0" width="405" height="405" rx="20"></rect>
+	        <filter x="-1.7%" y="-1.2%" width="103.5%" height="103.5%" filterUnits="objectBoundingBox" id="filter-9">
+	            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+	            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+	            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+	        </filter>
+	        <linearGradient x1="0%" y1="0%" x2="100%" y2="96.5391413%" id="linearGradient-10">
+	            <stop stop-color="#9100B8" offset="0%"></stop>
+	            <stop stop-color="#ED006F" offset="100%"></stop>
+	        </linearGradient>
+	        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-11">
+	            <stop stop-color="#AA0050" offset="0%"></stop>
+	            <stop stop-color="#ED006F" offset="100%"></stop>
+	        </linearGradient>
+	    </defs>
 	    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 	        <g id="Cube-Article-HIFI">
 	            <rect id="Guess_Screen_Overlay" fill="#BBBBBB" x="0" y="0" width="445" height="445"></rect>
-	            <g id="Guess_BGs" transform="translate(20.000000, 20.000000)" fill="#FFFFFF">
-	                <rect id="Guess_BG" x="0" y="0" width="405" height="405" rx="20"></rect>
+	            <g id="Guess_BGs" transform="translate(20.000000, 20.000000)">
+	                <g id="Guess_L_BG">
+	                    <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+	                    <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+	                </g>
+	                <g id="Guess_LC_BG">
+	                    <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"></use>
+	                    <use fill="url(#linearGradient-4)" fill-rule="evenodd" xlink:href="#path-5"></use>
+	                </g>
+	                <g id="Guess_C_BG">
+	                    <use fill="black" fill-opacity="1" filter="url(#filter-9)" xlink:href="#path-8"></use>
+	                    <use fill="url(#linearGradient-7)" fill-rule="evenodd" xlink:href="#path-8"></use>
+	                </g>
+	                <rect id="Guess_RC_BG" fill="url(#linearGradient-10)" x="0" y="0" width="405" height="405" rx="20"></rect>
+	                <rect id="Guess_R_BG" fill="url(#linearGradient-11)" x="0" y="0" width="405" height="405" rx="20"></rect>
+	                <rect id="Guess_BG" fill="#FFFFFF" x="0" y="0" width="405" height="405" rx="20"></rect>
 	            </g>
 	            <text id="Take-a-guess" font-family="OpenSans-Bold, Open Sans" font-size="16" font-weight="bold" fill="#444444">
 	                <tspan x="197.4375" y="227">Take a</tspan>
@@ -182,7 +235,7 @@
 	                    </g>
 	                </g>
 	            </g>
-	            <g id="C" transform="translate(247.000000, 280.000000)">
+	            <g id="R" transform="translate(247.000000, 280.000000)">
 	                <text id="Center-Guess" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#444444">
 	                    <tspan x="35" y="123">Right</tspan>
 	                </text>
@@ -206,7 +259,7 @@
 	                    </g>
 	                </g>
 	            </g>
-	            <g id="R" transform="translate(173.000000, 43.000000)">
+	            <g id="C" transform="translate(173.000000, 43.000000)">
 	                <text id="Right-Guess" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#444444">
 	                    <tspan x="28" y="119">Center</tspan>
 	                </text>

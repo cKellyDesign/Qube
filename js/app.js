@@ -12,11 +12,12 @@ var QubeApp = function () {
 	this.currentUser = window.users["chief4000"];
 
 	this.currentTopic = 'North Korea';
-
+	this.biasGuessCount = 0;
 	this.articles = [ 
 		{
 			article: window.articles[0],
 			userGuess   : "",
+			isCorrect	: null,
 			hasOpened   : false,
 			hasSeenBias : false,
 			timeInArticle : 0
@@ -24,6 +25,7 @@ var QubeApp = function () {
 		{
 			article: window.articles[1],
 			userGuess   : "",
+			isCorrect	: null,
 			hasOpened   : false,
 			hasSeenBias : false,
 			timeInArticle : 0
@@ -31,6 +33,7 @@ var QubeApp = function () {
 		{
 			article: window.articles[2],
 			userGuess   : "",
+			isCorrect	: null,
 			hasOpened   : false,
 			hasSeenBias : false,
 			timeInArticle : 0
@@ -66,7 +69,8 @@ var QubeApp = function () {
 		}
 	}
 
-
+	// START CSS / JS / SVG Implementation
+	var IS_CSS_JS = true; // toggle this for side by side implementations
 	this.renderScreens = function () {
 
 		$('#top').append($('#SourceScreen'))
@@ -81,47 +85,117 @@ var QubeApp = function () {
 			var thisTemplate = $(el).append($('#ArticleTemplate').clone()).children('svg')
 			$(thisTemplate).attr('id', $(thisTemplate).attr('id') + '_' + i);
 			
-			// todo - dynamically update article screens
-
+			// Defining Guess Button el
 			var $guessButton = $('#BiasGuessBtn').attr('id', 'BiasGuessBtn_' + i);
-			console.log('thisTemplate', $guessButton);
 
+			// Adding event listener (for some reason it doesn't like .on('click', this.callbackFunc); )
 			$($guessButton).on('click', function (e) {
-				e.preventDefault();
-				e.stopPropagation();
-
-				console.log('#BiasGuessBtn click!!!', el.id);
+				self.onBiasButtonClick(e, el)
 			});
 
 
+			// Defining SVG els
+			var $Rect = $('#ArticleTextArea > rect', el); // The bounding box in which to contain the text
+			var $TitleTextArea = $('#textTitle', el); // svg text element for title
+			var $BodyTextArea = $('#textBody', el); // svg text element for body
 
-			// $().on('click', this.onBiasGuessClick);
-
-			var $Rect = $('#ArticleTextArea > rect', el);
-			var $TitleTextArea = $('#textTitle', el);
-			var $BodyTextArea = $('#textBody', el);
-			// function (myRect, titleText, bodyText, titleStr, bodyStr)
-			// console.log(thisAritcle)
+			// Defining two pieces of text which need to be thrown into the svg
 			var articleText = thisAritcle.article.body;
 			var articleTitle = thisAritcle.article.title;
-			// console.log(articleText)
+
+			// Runs a helper function to wrap text via svg tspan els
 			wrapTextRect($Rect, $TitleTextArea, articleTitle)
 
 			var bodyOffset = Number($($TitleTextArea).attr('font-size')) * 1.4 * $($TitleTextArea).children('tspan').length;
 			wrapTextRect($Rect, $BodyTextArea, articleText, bodyOffset + 12)
 
-			// console.log($($TitleTextArea).outerHeight())
 		})
-
-
-
-
 	}
 	this.renderScreens();
 
 	this.hasGuessedN = 0;
 	this.hasSavedCurrentArticles = false;
 	this.activeScreen = "center";
+
+	this.showBiasGuessOverlay = function (el) {
+		if (!$('#GuessOverlay', el).length) {
+			 $(el).append($('#GuessOverlay').clone())
+		} else {
+			$(el).append($('#GuessOverlay', el))
+			$('#GuessOverlay', el).removeClass('ghost')
+		}
+		
+		var ov = $('#GuessOverlay', el);
+		$('#L, #LC, #C, #RC, #R', el).on('click', function (e) {
+			// pass extra parameter "this.id" to check the bias
+			self.onBiasGuess(e, el, this.id)
+			var BGs = $('#Guess_BGs', ov);
+			$(BGs).append($('#Guess_' + this.id + '_BG'), BGs);
+			$('text', ov).attr('fill', 'white')
+		})
+
+		$('#Close_Btn', el).on('click', function (e) {
+			$('#L, #LC, #C, #RC, #R', el).off('click')
+			$('#GuessOverlay', el).addClass('ghost')
+		})
+		
+	}
+	// END CSS / JS / SVG Implementation
+
+
+	// START EVENT LISTENER CALLBACK FUNCTIONS
+	// These function should be used in either FE implementation
+
+	// When a user clicks on the bias button 
+	this.onBiasButtonClick = function (e, el) {
+		e.preventDefault();
+		e.stopPropagation();
+
+		if (IS_CSS_JS) this.showBiasGuessOverlay(el)
+	}
+
+	this.onBiasGuess = function (e, el, selection) {
+		// Define actual Bias
+		var thisAritcle = self.screens[el.id].article;
+		var correctBias = self.screens[el.id].article.bias;
+		var isCorrect = correctBias == selection
+		if ( !thisAritcle.userGuess.length ) {
+			thisAritcle.userGuess = selection;
+			thisAritcle.isCorrect = isCorrect;
+
+			// todo - trigger firebase update
+		}
+
+
+		self.screens[el.id + '_source'].isLocked = false; // do we unlock them all at once?
+		self.biasGuessCount++;
+		if (self.biasGuessCount === this.articles.length) {
+			//unlock next round of articles!
+			self.biasGuessCount = 0;
+		}
+
+		// Hiding Overlay after guessing
+		setTimeout(function () {
+			$('#L, #LC, #C, #RC, #R', el).off('click')
+			$('#Close_Btn').off('click')
+
+
+			$('#GuessOverlay', el).addClass('ghost');
+			setTimeout(function(){
+				$(el).prepend($('#GuessOverlay', el))
+			}, 500)
+		},1000)
+	}
+
+
+
+
+	// END EVENT LISTENERS
+
+	// START BIAS GUESSING HANDLING
+
+
+
 
 
 	// FIREBASE CONFIG / INIT
@@ -160,14 +234,6 @@ var QubeApp = function () {
 	// usersRef.set(setUser);
 	// articlesRef.set(window.articles)
 
-
-	this.onBiasGuess = function (e) {
-
-	}
-
-	this.checkBiasGuesses = function (e) {
-
-	}
 
 	// Prevents images from swallowing click and dragging of the cube! :D
 	$('#top, #center, #left, #right, #base, #saveSkip').on('dragstart', function (e) { return false; })

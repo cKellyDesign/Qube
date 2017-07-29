@@ -197,13 +197,15 @@ body {
   background-color: black;
   outline: 1px solid white !important
 }
+
 .side > object,
 .side > iframe,
 .side > img,
 .side > svg {
   opacity: .8;
   transition: opacity .5s;
-  margin: 27.5px;
+  top: 27.5px; left: 27.5px;;
+  position: absolute;
 }
 .side.active > svg {
   opacity: 1;
@@ -214,3 +216,7 @@ body {
   display: none;
 }
 
+.ghost {
+  transition: opacity .4s;
+  opacity: 0 !important;
+}
