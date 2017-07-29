@@ -66,12 +66,6 @@ var QubeApp = function () {
 		}
 	}
 
-	this.onBiasGuessClick = function (e) {
-		e.preventDefault();
-		e.stopPropagation();
-
-		console.log('#BiasGuessBtn click!!!', el.id);
-	}
 
 	this.renderScreens = function () {
 
@@ -82,12 +76,26 @@ var QubeApp = function () {
 			// console.log('i', i, 'el', el);\
 			var thisScreen = self.screens[$(el).attr('id')]
 			var thisAritcle = self.articles[thisScreen.articleI]
+
+
 			var thisTemplate = $(el).append($('#ArticleTemplate').clone()).children('svg')
-			// console.log('thisAritcle', thisAritcle);
+			$(thisTemplate).attr('id', $(thisTemplate).attr('id') + '_' + i);
+			
 			// todo - dynamically update article screens
 
-			var $guessButton = $('#BiasGuessBtn', el).attr('id', 'BiasGuessBtn' + i);
-			$guessButton.on('click', this.onBiasGuessClick);
+			var $guessButton = $('#BiasGuessBtn').attr('id', 'BiasGuessBtn_' + i);
+			console.log('thisTemplate', $guessButton);
+
+			$($guessButton).on('click', function (e) {
+				e.preventDefault();
+				e.stopPropagation();
+
+				console.log('#BiasGuessBtn click!!!', el.id);
+			});
+
+
+
+			// $().on('click', this.onBiasGuessClick);
 
 			var $Rect = $('#ArticleTextArea > rect', el);
 			var $TitleTextArea = $('#textTitle', el);
