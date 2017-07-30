@@ -125,45 +125,35 @@ window.sources = [
 		url : "",
 		name : "Vox.com",
 		bias : "LC",
-		desc : "",
-		auth : "",
-		aUID : 0
+		desc : "Vox is an American news and opinion website owned by Vox Media. The website was founded in 2014 by Melissa Bell and Ezra Klein. Vox is noted for its concept of explanatory journalism and its use of \"card stacks\" that define terms and provide context within an article. The website is generally considered to have a politically liberal perspective.",
 	},
 	{
 		id : 1001,
 		url : "",
 		name : "Reuters",
 		bias : "C",
-		desc : "",
-		auth : "",
-		aUID : 0
+		desc : "Reuters is an international news agency headquartered in London, England. It is a division of Thomson Reuters. \n\nUntil 2008, the Reuters news agency formed part of an independent company, Reuters Group plc, which was also a provider of financial market data. Since the acquisition of Reuters Group by the Thomson Corporation in 2008, the Reuters news agency has been a part of Thomson Reuters, making up the media division. Reuters was established in 1851."
 	},
 	{
 		id : 1002,
 		url : "",
 		name : "The Washington Times",
 		bias : "RC",
-		desc : "",
-		auth : "",
-		aUID : 0
+		desc : "The Washington Times is an American daily newspaper. It is published as a broadsheet at 3600 New York Avenue NE, Washington, D.C.. The paper covers general interest topics with a particular emphasis on American politics. Its slogan is \"America's Newspaper\". It is currently owned by diversified conglomerate Operations Holdings, which is a wholly owned subsidiary of the church."
 	},
 	{
 		id : 1000,
 		url : "",
 		name : "Vanity Fair",
 		bias : "L",
-		desc : "",
-		auth : "",
-		aUID : 0
+		desc : "Vanity Fair has been the title of at least five magazines, The first magazine bearing the name Vanity Fair appeared in New York as a humorous weekly, from 1859 to 1863. The current Vanity Fair is an American monthly magazine of pop culture, fashion, and politics published by Condé Nast Publications."
 	},
 	{
 		id : 1000,
 		url : "",
 		name : "Wall Street Journal",
 		bias : "C",
-		desc : "",
-		auth : "",
-		aUID : 0
+		desc : "The Wall Street Journal is an American business-focused, English-language international daily newspaper based in New York City. The Journal, along with its Asian and European editions, is published six days a week by Dow Jones & Company, a division of News Corp. The newspaper is published in the broadsheet format and online."
 	// },
 	// {
 	// 	id : 1000,
