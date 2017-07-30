@@ -9,7 +9,7 @@ var QubeApp = function () {
 	this.$saveSkip = $('#saveSkip');
 
 	// QUBE APP STATE
-	this.currentUser = window.users["chief4000"];
+	this.currentUser = window.users["conkelly_uw_edu"];
 
 	this.currentTopic = 'North Korea';
 	this.biasGuessCount = 0;
@@ -60,22 +60,18 @@ var QubeApp = function () {
 		},
 		center_source : { 
 			el : null,
-			sideNumber : 1,
-			isLocked : true 
+			sideNumber : 1
 		},
 		left_source : { 
 			el : null,
-			sideNumber : 1,
-			isLocked : true
+			sideNumber : 1
 		},
 		right_source : { 
 			el : null,
-			sideNumber : 1,
-			isLocked : true
+			sideNumber : 1
 		},
 		save_skip : {
-			sideNumber : 1,
-			hasSaved : false
+			sideNumber : 1
 		}
 	}
 
@@ -209,9 +205,6 @@ var QubeApp = function () {
 
 	}
 
-
-
-
 	// END CSS / JS / SVG Implementation
 
 
@@ -227,25 +220,30 @@ var QubeApp = function () {
 	}
 
 	this.onBiasGuess = function (e, el, selection) {
-		// Define actual Bias
 		var thisAritcle = self.screens[el.id].article;
-		var correctBias = self.screens[el.id].article.bias;
-		var isCorrect = correctBias == selection
+
+		// Define actual Bias and if user got it correct
+		correctBias = self.screens[el.id].article.bias;
+		isCorrect = correctBias == selection
+
+		// If it's the first guess, count it towards their stats
 		if ( !thisAritcle.userGuess.length ) {
 			thisAritcle.userGuess = selection;
 			thisAritcle.isCorrect = isCorrect;
 
-			// todo - trigger firebase update
+			// handler to update firebase
+			self.handleBiasGuess(el, correctBias, isCorrect)
 		}
 
-
-		self.screens[el.id + '_source'].isLocked = false; // do we unlock them all at once?
-
+		// modify SVG element to be 'unlocked'
 		self.updateSourceScreenEl(el, correctBias)
 
+		// count up to next round
 		self.biasGuessCount++;
+
+		// if all articles are guessed, unlock the save/skip buttons
 		if (self.biasGuessCount === this.articles.length) {
-			//unlock next round of articles!
+			// todo - unlock next round of articles!
 			self.biasGuessCount = 0;
 		}
 
@@ -262,16 +260,9 @@ var QubeApp = function () {
 		},1000)
 	}
 
-
-
-
 	// END EVENT LISTENERS
 
-	// START BIAS GUESSING HANDLING
-
-
-
-
+	
 
 	// FIREBASE CONFIG / INIT
 	var config = { // todo - update this
@@ -285,29 +276,61 @@ var QubeApp = function () {
 
 	var usersRef = firebase.database().ref('users'); // users firebase ref
 	var articlesRef = firebase.database().ref('articles')
-	function getValueCallback (snapshot) {
-		console.log(snapshot.val())
-		// $("#valueText").html(self.value);
-		// var val = snapshot.val()
-		// if (doUpdate && val == self.value) {
-		// 	if (DEBUG) console.log('Uddate Feedback Loop Terminated!!' + self.value + ' === ' + val);
-		// 	return false;
-		// } else {
-		// 	if (DEBUG) console.log('Realtime "value" update');
-		// }
-		// self.value = val;
+	var sourcesRef = firebase.database().ref('sources')
+	var authorsRef = firebase.database().ref('authors')
+
+
+	//  // Generic Callback
+	// function getValueCallback (snapshot) {
+	// 	console.log(snapshot.val())
+	// 	// $("#valueText").html(self.value);
+	// 	// var val = snapshot.val()
+	// 	// if (doUpdate && val == self.value) {
+	// 	// 	if (DEBUG) console.log('Uddate Feedback Loop Terminated!!' + self.value + ' === ' + val);
+	// 	// 	return false;
+	// 	// } else {
+	// 	// 	if (DEBUG) console.log('Realtime "value" update');
+	// 	// }
+	// 	// self.value = val;
 		
 
-		// self.nodeFirebaseAPI.updateValue("sliderValue", self.value)
-	}
+	// 	// self.nodeFirebaseAPI.updateValue("sliderValue", self.value)
+	// }
 
 	// usersRef.on("value", getValueCallback);
 	// articlesRef.on("value", getValueCallback);
 
+	//  // USED TO RESET FIREBASE TO STUB DATA!!!
 	// var setUser = { };
-	// setUser[this.currentUser.username] = window.users[this.currentUser.username];
+	// var UID = this.currentUser.email
+	// setUser[UID] = window.users[UID];
 	// usersRef.set(setUser);
 	// articlesRef.set(window.articles)
+	// sourcesRef.set(window.sources)
+	// authorsRef.set(window.authors)
+
+
+
+
+	// START BIAS GUESSING HANDLING
+	this.handleBiasGuess = function (el, correctBias, isCorrect) {
+		var queryString = "users/" + self.currentUser + "/biasGuessing/" + correctBias
+
+		var userBiasGuessingRef = usersRef.child(self.currentUser.email)
+										  .child('biasGuessing')
+										  .child(correctBias)
+
+		// once gets the value pretty much immediately and we can update the stats!
+		userBiasGuessingRef.once('value',function(snapshot) {
+			var stats = snapshot.val()
+			stats.totalGuessed++;
+			stats.guessedCorrectly = stats.guessedCorrectly + (Number(isCorrect))
+			if (stats.totalGuessed) stats.avg = stats.guessedCorrectly / stats.totalGuessed;
+
+			userBiasGuessingRef.set(stats)
+		})
+
+	}
 
 
 	// Prevents images from swallowing click and dragging of the cube! :D

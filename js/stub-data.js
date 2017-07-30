@@ -166,7 +166,7 @@ window.sources = [
 	}
 ]
 
-// authors id base 0 (through 999)
+// authors id base 0 (through 99)
 window.authors = [
 	{
 		id: 0,
@@ -199,16 +199,43 @@ window.authors = [
 
 // users id base 100
 window.users = {
-	"chief4000" : {
+	"conkelly_uw_edu" : {
 		id : 100,
 		name : "Conor",
-		username : "chief4000",
+		email : "conkelly_uw_edu",
 		topic_preferences : {
 			'Global Politics' : 25,
 			'US Politics' : 25,
 			'Science & Space' : 30,
 			'Tech' : 10,
 			'Design' : 10
+		},
+		biasGuessing : {
+			L : {
+				totalGuessed: 0,
+				guessedCorrectly: 0,
+				avg: 0
+			},
+			LC : {
+				totalGuessed: 0,
+				guessedCorrectly: 0,
+				avg: 0
+			},
+			C : {
+				totalGuessed: 0,
+				guessedCorrectly: 0,
+				avg: 0
+			},
+			RC : {
+				totalGuessed: 0,
+				guessedCorrectly: 0,
+				avg: 0
+			},
+			R : {
+				totalGuessed: 0,
+				guessedCorrectly: 0,
+				avg: 0
+			},
 
 		},
 		article_history : [],
