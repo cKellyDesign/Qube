@@ -83,11 +83,6 @@ var QubeApp = function () {
 	var IS_CSS_JS = true; // toggle this for side by side implementations
 	this.renderScreens = function () {
 
-		// $('#top').append($('#SourceScreen'))
-
-
-
-
 		$('#left, #center, #right').each(function (i, el) {
 			var thisScreen  = self.screens[el.id]
 			var thisAritcle = thisScreen.article;
@@ -109,18 +104,27 @@ var QubeApp = function () {
 			
 			// Defining Guess Button el
 			self.renderArticleSreen(el, thisAritcle, i)
-			
-
 		})
+
+		$('#top').append($('#SourceScreen_center'))
 	}
 
 	this.renderSourceScreen = function (el, thisSource, thisAritcle) {
 		thisAritcle.el = $('#SourceScreen').clone()
-		$(thisAritcle.el).attr('id', $(thisAritcle.el).attr('id') + '_' + el.id)
+		$(thisAritcle.el).attr('id', $(thisAritcle.el).attr('id') + '_' + el.id).addClass(el.id)
 
 		// Drop that bad gal into the #top div
 		$('#top').append(thisAritcle.el)
 
+		// if ($(thisAritcle.el)hasClass(''))
+
+
+
+		window.viewport.on('side-change-complete', function (e) {
+			if ( !$(el).hasClass('active')) return false;
+
+			$('#top').append(thisAritcle.el)
+		});
 	}
 
 	this. renderArticleSreen = function (el, thisAritcle, i) {

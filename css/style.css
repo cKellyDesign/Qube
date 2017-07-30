@@ -202,7 +202,7 @@ body {
 .side > iframe,
 .side > img,
 .side > svg {
-  opacity: .8;
+  /*opacity: .8;*/
   transition: opacity .5s;
   top: 27.5px; left: 27.5px;;
   position: absolute;
@@ -210,7 +210,6 @@ body {
 .side.active > svg {
   opacity: 1;
 }
-
 
 #svgTemplateWrap {
   display: none;
@@ -220,3 +219,19 @@ body {
   transition: opacity .4s;
   opacity: 0 !important;
 }
+
+
+/* class names based on physical position on qube!! */
+#top > svg.left {
+  transform: rotate(90deg);
+}
+
+#top > svg.center {
+  transform: rotate(0deg);
+}
+
+#top > svg.right {
+  transform: rotate(-90deg); 
+}
+
+

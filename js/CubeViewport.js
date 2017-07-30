@@ -332,7 +332,7 @@ Cube.prototype.sideChange = function() {
   }
 
   this.sides[this.viewport.currentSide - 1].className = 'side active';
-
+  this.viewport.emit('side-change-complete'); // custom event to signify the new side of the cube has been caluclated and set
 }
 
 
