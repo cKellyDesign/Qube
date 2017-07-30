@@ -41,30 +41,40 @@ var QubeApp = function () {
 	];
 	this.screens = {
 		center : {
+			sideNumber : 2,
 			hasGuessed : false,
 			article : this.articles[0].article,
 			articleI : 0
 		},
 		left : {
+			sideNumber : 5,
 			hasGuessed : false,
 			article : this.articles[1].article,
 			articleI : 1
 		},
 		right : {
+			sideNumber : 3,
 			hasGuessed : false,
 			article : this.articles[2].article,
 			articleI : 2
 		},
 		center_source : { 
+			el : null,
+			sideNumber : 1,
 			isLocked : true 
 		},
 		left_source : { 
+			el : null,
+			sideNumber : 1,
 			isLocked : true
 		},
 		right_source : { 
+			el : null,
+			sideNumber : 1,
 			isLocked : true
 		},
 		save_skip : {
+			sideNumber : 1,
 			hasSaved : false
 		}
 	}
@@ -73,44 +83,71 @@ var QubeApp = function () {
 	var IS_CSS_JS = true; // toggle this for side by side implementations
 	this.renderScreens = function () {
 
-		$('#top').append($('#SourceScreen'))
+		// $('#top').append($('#SourceScreen'))
+
+
 
 
 		$('#left, #center, #right').each(function (i, el) {
-			// console.log('i', i, 'el', el);\
-			var thisScreen = self.screens[$(el).attr('id')]
-			var thisAritcle = self.articles[thisScreen.articleI]
+			var thisScreen  = self.screens[el.id]
+			var thisAritcle = thisScreen.article;
+
+			var thisAuthor = _.findWhere(window.authors, { id : thisAritcle.authorUID})
+			var thisSource = _.findWhere(window.sources, { id : thisAritcle.sourceUID})
+
+			var thisArticleScreen = self.screens[$(el).attr('id')]
+			var thisSourceScreen =  self.screens[$(el).attr('id') + '_source']
+
+			
+			var thisArticleTemplate = $(el).append($('#ArticleTemplate').clone()).children('svg')
+
+			$(thisArticleTemplate).attr('id', $(thisArticleTemplate).attr('id') + '_' + i)
 
 
-			var thisTemplate = $(el).append($('#ArticleTemplate').clone()).children('svg')
-			$(thisTemplate).attr('id', $(thisTemplate).attr('id') + '_' + i);
+			// Setup Source Sreen
+			self.renderSourceScreen(el, thisSource, thisAritcle)
 			
 			// Defining Guess Button el
-			var $guessButton = $('#BiasGuessBtn').attr('id', 'BiasGuessBtn_' + i);
-
-			// Adding event listener (for some reason it doesn't like .on('click', this.callbackFunc); )
-			$($guessButton).on('click', function (e) {
-				self.onBiasButtonClick(e, el)
-			});
-
-
-			// Defining SVG els
-			var $Rect = $('#ArticleTextArea > rect', el); // The bounding box in which to contain the text
-			var $TitleTextArea = $('#textTitle', el); // svg text element for title
-			var $BodyTextArea = $('#textBody', el); // svg text element for body
-
-			// Defining two pieces of text which need to be thrown into the svg
-			var articleText = thisAritcle.article.body;
-			var articleTitle = thisAritcle.article.title;
-
-			// Runs a helper function to wrap text via svg tspan els
-			wrapTextRect($Rect, $TitleTextArea, articleTitle)
-
-			var bodyOffset = Number($($TitleTextArea).attr('font-size')) * 1.4 * $($TitleTextArea).children('tspan').length;
-			wrapTextRect($Rect, $BodyTextArea, articleText, bodyOffset + 12)
+			self.renderArticleSreen(el, thisAritcle, i)
+			
 
 		})
 	}
+
+	this.renderSourceScreen = function (el, thisSource, thisAritcle) {
+		thisAritcle.el = $('#SourceScreen').clone()
+		$(thisAritcle.el).attr('id', $(thisAritcle.el).attr('id') + '_' + el.id)
+
+		// Drop that bad gal into the #top div
+		$('#top').append(thisAritcle.el)
+
+	}
+
+	this. renderArticleSreen = function (el, thisAritcle, i) {
+		var $guessButton = $('#BiasGuessBtn').attr('id', 'BiasGuessBtn_' + i)
+
+		// Adding event listener (for some reason it doesn't like .on('click', this.callbackFunc); )
+		$($guessButton).on('click', function (e) {
+			self.onBiasButtonClick(e, el)
+		});
+
+
+		// Defining SVG els
+		var $Rect = $('#ArticleTextArea > rect', el); // The bounding box in which to contain the text
+		var $TitleTextArea = $('#textTitle', el); // svg text element for title
+		var $BodyTextArea = $('#textBody', el); // svg text element for body
+
+		// Defining two pieces of text which need to be thrown into the svg
+		var articleText = thisAritcle.body;
+		var articleTitle = thisAritcle.title;
+
+		// Runs a helper function to wrap text via svg tspan els
+		wrapTextRect($Rect, $TitleTextArea, articleTitle)
+
+		var bodyOffset = Number($($TitleTextArea).attr('font-size')) * 1.4 * $($TitleTextArea).children('tspan').length;
+		wrapTextRect($Rect, $BodyTextArea, articleText, bodyOffset + 12)
+	}
+
 	this.renderScreens();
 
 	this.hasGuessedN = 0;
