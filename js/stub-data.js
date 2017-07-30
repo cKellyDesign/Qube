@@ -1,9 +1,9 @@
 var str =  "North Korea just successfully tested an intercontinental ballistic missile, one of its most audacious moves yet — and a vivid reminder that Pyongyang seems determined to test whether President Donald Trump is willing to turn his tough talk about the country’s nuclear threat into action.\n\nThe Hwasong-14 flew for 37 minutes, according to US Pacific Command, and traveled about 578 miles . It didn’t go as far as it could because it was shot at a high trajectory, likely to ensure it didn’t make another country believe it was being attacked. The projectile eventually landed in the sea between Japan and North Korea, but analysts believe it could have traveled as far as 4,200 miles if it had been fired with an actual intent to strike a target in case of conflict. \n\nIn response, the US and South Korea held a military exercise within 10 miles of the demilitarized zone that separates North Korea from its neighbor. Meanwhile, Secretary of State Rex Tillerson called for “ global action ” to counter North Korea, while China and Russia asked for a “ double suspension ” of the military exercise and North Korea’s weapons program. \n\nBased on the global reaction, the missile test was clearly a big deal. That’s because another of the caveats about North Korea — primarily that it didn’t have an intercontinental ballistic missile, or ICBM, that could hit the mainland United States — are steadily disappearing. “That range would not be enough to reach the lower 48 states or the large islands of Hawaii, but would allow it to reach all of Alaska,” wrote David Wright, co-director of the Union of Concerned Scientists. \n\nAnd, down the line, this test could be seen as a stepping stone to an even more threatening development. “Even if this is a 7,000-km-range missile, a 10,000-km-range missile that can hit New York isn’t far off,” Jeffrey Lewis, director of the East Asia Nonproliferation Program at the Middlebury Institute of International Studies, told the New York Times . \n\nWhat’s still not clear is if North Korea has the ability to miniaturize a nuclear weapon so it could be placed on the tip of the missile, and, even if it can, if the missile could reach the US and still detonate. However, Lewis told me in April that North Korea was only about five years away from being able to do that. \n\nBack in January, North Korean leader Kim Jong Un said that his country was close to testing an ICBM. President Donald Trump promised that it wouldn’t happen, which could raise the pressure on the administration to do something beyond tweeting out words of disapproval. \n\nAnd that’s what’s important to keep in mind: No matter what Trump has said, or the pressure the US, China, and others try to place on North Korea, Kim continues to test missiles that could harm America and its allies. \n\nThis was not the kind of projectile Americans are used to hearing about on July Fourth. \n\nNorth Korea continues to defy international pressure \n\nTrump’s strategy for containing North Korea is to have China lean on Pyongyang to knock off its aggressive behavior. The problem is Beijing has given no sign that it’s willing to pressure its neighbor, a major Chinese trading partner. That’s left Trump, who famously said he changed his mind about North Korea after a 10-minute conversation with Chinese President Xi Jinping, to take a swing at Beijing.\n\nAs my Vox colleague Zeeshan Aleem noted, the Trump administration has slapped sanctions on China because it has yet to curtail North Korea’s missile program. \n\n“While we will continue to seek international cooperation on North Korea, the United States is sending an emphatic message across the globe that we will not hesitate to take action against persons, companies, and financial institutions who enable this regime,” Treasury Secretary Steve Mnuchin said in a June 29 statement on the sanctions, clearly alluding to China. \n\nThen again, there was little reason to believe that China was going to step up and put immense pressure on North Korea to stop its program, in part because it fears a collapse of the regime would lead to millions of desperate refugees streaming over its border. “That’s because Beijing has a vested interest in a stable North Korea — and will drag its heels as much as it can on measures that could destabilize the country,” wrote Aleem. \n\nBut the administration rightly feels there’s a growing sense of urgency to quell the threat, especially since North Korea’s missile program has improved very quickly recently. “In the past three years, North Korea has launched more major missiles than in the three previous decades combined,” noted the Wall Street Journal . This latest test is now the gold standard for North Korea. \n\nThere is some good news: The United States successfully pulled off its own test in May that showed it is capable of stopping one of these missiles before it hits American territory. Still, the US anti-ICBM system has yet to be tested against the real thing — and most hope the US never has to do that. \n\nSo for now, there is no real reason for complete panic. But there is reason to worry that one of the most dangerous and unpredictable regimes on earth is coming closer and closer to being able to hit major American cities. Trump is mired in an array of scandals and crises of his own making. This is one where the culprit is someone else — and where the solution remains painfully elusive.";
 
-
+// Article IDs base 10000
 window.articles = [
 	{
-		id : 0,
+		id : 10000,
 		topic : "North Korea",
 		bias : "LC",
 		title : "North Korea’s successful test of an intercontinental missile is a test for Trump",
@@ -12,12 +12,14 @@ window.articles = [
 		date : "07/04/2017",
 		url : "https://www.vox.com/2017/7/4/15919118/north-korea-missle-test-icbm-july-3",
 		source : "Vox.com",
+		sourceUID : 1000,
 		author : "Alex Ward",
+		authorUID : 0,
 		userGuess : ""
 	},
 
 	{
-		id : 2,
+		id : 10001,
 		topic : "North Korea",
 		bias : "C",
 		title : "U.S. prepared to use force on North Korea 'if we must': U.N. envoy",
@@ -26,12 +28,14 @@ window.articles = [
 		date : "07/03/2017",
 		url : "https://www.reuters.com/article/us-northkorea-missiles-idUSKBN19P02W",
 		source : "Reuters",
+		sourceUID : 1001,
 		author : "Michelle Nichols",
+		authorUID : 1,
 		userGuess : ""
 	},
 
 	{
-		id : 3,
+		id : 10002,
 		topic : "North Korea",
 		bias : "RC",
 		title : "North Korea’s surprise launch of ICBM has power to reach Alaska, upset East Asia power balance",
@@ -41,12 +45,14 @@ window.articles = [
 		date : "07/04/2017",
 		url : "http://www.washingtontimes.com/news/2017/jul/4/rumblings-of-icbm-shatter-balance-of-power-in-east/",
 		source : "The Washington Times",
-		author : "David R. Sands ",
+		sourceUID : 1002,
+		author : "David R. Sands",
+		authorUID : 2,
 		userGuess : ""
 	},
 
 	{
-		id : 4,
+		id : 10003,
 		topic : "Global Politics",
 		bias : "RC",
 		title : "Grins and handshakes as Trump encounters Putin for 1st time at G-20",
@@ -55,12 +61,14 @@ window.articles = [
 		date : "07/07/2017",
 		url : "http://www.washingtontimes.com/news/2017/jul/7/donald-trump-encounters-vladimir-putin-1st-time-g-/",
 		source : "The Washington Times",
+		sourceUID : 1002,
 		author : "S.A. Miller",
+		authorUID : 3,
 		userGuess : ""
 	},
 
 	{
-		id : 5,
+		id : 10004,
 		topic : "Global Politics",
 		bias : "L",
 		title : "How Putin Tricked Trump Into a Game He Can't Win",
@@ -69,12 +77,14 @@ window.articles = [
 		date : "07/06/2017",
 		url : "http://www.vanityfair.com/news/2017/07/how-putin-tricked-trump-into-a-game-he-cant-win",
 		source : "Vanity Fair",
+		sourceUID : 1003,
 		author : "Peter Savodink",
+		authorUID : 4,
 		userGuess : ""
 	},
 
 	{
-		id : 6,
+		id : 10005,
 		topic : "Global Politics",
 		bias : "C",
 		title : "Trump, Putin Spar on Hacks, Act on Syria",
@@ -83,12 +93,14 @@ window.articles = [
 		date : "07/07/2017",
 		url : "https://www.wsj.com/articles/trump-putin-shake-hands-in-first-face-to-face-meeting-1499423683",
 		source : "Wall Street Journal",
+		sourceUID : 1004,
 		author : "Peter Nicholas",
+		authorUID : 5,
 		userGuess : ""
 	// },
 
 	// {
-	// 	id : 7,
+	// 	id : 10006,
 	// 	topic : "",
 	// 	bias : "",
 	// 	title : "",
@@ -97,14 +109,105 @@ window.articles = [
 	// 	date : "",
 	// 	url : "",
 	// 	source : "",
+	//  sourceUID : 0,
 	// 	author : "",
+	//  authorUID : 6,
 	// 	userGuess : ""
 	}
 
 
 ];
 
+// sources id base 1000
+window.sources = [
+	{
+		id : 1000,
+		url : "",
+		name : "Vox.com",
+		bias : "LC",
+		desc : "",
+		auth : "",
+		aUID : 0
+	},
+	{
+		id : 1001,
+		url : "",
+		name : "Reuters",
+		bias : "C",
+		desc : "",
+		auth : "",
+		aUID : 0
+	},
+	{
+		id : 1002,
+		url : "",
+		name : "The Washington Times",
+		bias : "RC",
+		desc : "",
+		auth : "",
+		aUID : 0
+	},
+	{
+		id : 1000,
+		url : "",
+		name : "Vanity Fair",
+		bias : "L",
+		desc : "",
+		auth : "",
+		aUID : 0
+	},
+	{
+		id : 1000,
+		url : "",
+		name : "Wall Street Journal",
+		bias : "C",
+		desc : "",
+		auth : "",
+		aUID : 0
+	// },
+	// {
+	// 	id : 1000,
+	// 	url : "",
+	// 	name : "Vox.com",
+	// 	bias : "LC",
+	// 	desc : "",
+	// 	auth : "",
+	// 	aUID : 0
+	}
+]
 
+// authors id base 0 (through 999)
+window.authors = [
+	{
+		id: 0,
+		name: "Alex Ward"
+	},
+	{
+		id: 1,
+		name: "Michelle Nichols"
+	},
+	{
+		id: 2,
+		name: "David R. Sands"
+	},
+	{
+		id: 3,
+		name: "S.A. Miller"
+	},
+	{
+		id: 4,
+		name: "Peter Savodink"
+	},
+	{
+		id: 5,
+		name: "Peter Nicholas"
+	},
+
+
+]
+
+
+// users id base 100
 window.users = {
 	"chief4000" : {
 		id : 100,
