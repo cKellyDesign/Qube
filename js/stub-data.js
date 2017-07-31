@@ -166,6 +166,7 @@ window.sources = [
 	}
 ]
 
+
 // authors id base 0 (through 99)
 window.authors = [
 	{
@@ -307,7 +308,7 @@ window.users = {
 				'US Politics' : 10,
 				'Tech' : 5,
 				'Design' : 10
-			}, 
+			},
 			history : []
 		}
 	}
