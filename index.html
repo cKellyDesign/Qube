@@ -13,11 +13,367 @@
 <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
 <script type="text/javascript" src="js/stub-data.js"></script>
+<script type="text/javascript" src="js/wrapSVGtext.js"></script>
 </head>
 <body>
 	
 
+
+<!-- Start CSS/JS Qube -->
+<div id="wrapper">
+	<div class="viewport">
+		<div class="cube">
+			<div id="top" class="side active">
+				<div class="cube-image">1</div>
+			</div>
+
+			<div id="center" class="side">
+				<div class="cube-image">2</div>
+			</div>
+
+			<div id="right" class="side">
+				<div class="cube-image">3</div>
+			</div>
+
+			<div id="base" class="side">
+				<div  class="cube-image">4</div>
+			</div>
+
+			<div id="left" class="side">
+				<div  class="cube-image">5</div>
+			</div>
+
+			<div id="saveSkip" class="side">
+				<h1>Save or Skip</h1>
+				<a>Save</a>
+				<a>Skip</a>
+			<div class="cube-image">6</div>
+		</div>
+	</div>
+	</div>
+</div>  
+<!-- End CSS/JS Qube -->
+
+<!-- Start SVG Templates -->
+<div id="svgTemplateWrap">
+	<svg id="ArticleTemplate" width="445px" height="445px" viewBox="0 0 445 445" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #FFFFFF;">
+	    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+	        <g id="__Cube-Article-HIFI">
+
+		        <g id="ArticleTextArea">
+		            <rect fill="#FFFFFF" x="30" y="98" width="397" height="236"></rect>
+		            <text id="textTitle" fill="#548800" font-family="OpenSans-Regular, Open Sans" font-size="24" x="30" y="120" width="397">Hello</text>
+		            <text y="30" id="textBody" fill="black" font-size="16" font-family="Arial" font-size="OpenSans-Regular, Open Sans">World</text>
+	            </g>
+
+
+	            <g id="SourceIndicator" transform="translate(198.000000, 0.000000)" fill="#BBBBBB">
+	                <g id="'Screen-Indicator/Top/Inactive">
+	                    <text id="SOURCE" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal">
+	                        <tspan x="2" y="29">SOURCE</tspan>
+	                    </text>
+	                    <polyline id="Arrow" fill-rule="evenodd" transform="translate(24.497500, 8.009500) rotate(-90.000000) translate(-24.497500, -8.009500) " points="19.278 21.507 32.507 8.016 19.265 -5.488 16.488 -2.655 26.952 8.017 16.501 18.675 19.278 21.507"></polyline>
+	                </g>
+	            </g>
+	            <g id="Save/SkipIndicator" transform="translate(192.000000, 411.000000)" fill="#BBBBBB">
+	                <g id="'Screen-Indicator/Bottom/Inactive">
+	                    <text id="SAVE-/-SKIP" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal">
+	                        <tspan x="0" y="12">SAVE / SKIP</tspan>
+	                    </text>
+	                    <polyline id="Arrow" fill-rule="evenodd" transform="translate(31.009500, 25.497500) rotate(90.000000) translate(-31.009500, -25.497500) " points="25.79 38.995 39.019 25.504 25.777 12 23 14.833 33.464 25.505 23.013 36.163 25.79 38.995"></polyline>
+	                </g>
+	            </g>
+	            <g id="TopicBar" transform="translate(1.000000, 44.000000)">
+	                <rect id="Rectangle-4" fill="#444444" x="0" y="0" width="445" height="41"></rect>
+	                <text id="NORTH-KOREA" font-family="OpenSans-Regular, Open Sans" font-size="14" font-weight="normal" fill="#FFFFFF">
+	                    <tspan x="173" y="26">NORTH KOREA</tspan>
+	                </text>
+	            </g>
+	            <g id="BiasGuessBtn" transform="translate(126.000000, 343.000000)">
+	                <rect id="BG" fill="#72B800" x="0" y="0" width="193" height="53" rx="5"></rect>
+	                <text id="10:10:10:10" font-family="OpenSans-Regular, Open Sans" font-size="18" font-weight="normal" fill="#FFFFFF">
+	                    <tspan x="29.3783885" y="32">What's the bias?</tspan>
+	                </text>
+	            </g>
+	        </g>
+	    </g>
+	</svg>
+
+	<svg id="SourceScreen" width="445px" height="445px" viewBox="0 0 445 445" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #FFFFFF;">
+	    <title>Cube HIFI Source</title>
+	    <desc>Created with Sketch.</desc>
+	    <defs>
+	        <linearGradient x1="50%" y1="100%" x2="50%" y2="-2.48949813e-15%" id="linearGradient-1">
+	            <stop stop-color="#00748D" offset="0%"></stop>
+	            <stop stop-color="#009BBD" offset="100%"></stop>
+	        </linearGradient>
+	        <linearGradient x1="100%" y1="3.74939946e-31%" x2="1.11022302e-14%" y2="100%" id="linearGradient-2">
+	            <stop stop-color="#9100B8" offset="0%"></stop>
+	            <stop stop-color="#009BBD" offset="100%"></stop>
+	        </linearGradient>
+	        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-3">
+	            <stop stop-color="#9100B8" offset="0%"></stop>
+	            <stop stop-color="#63007E" offset="100%"></stop>
+	        </linearGradient>
+	        <linearGradient x1="6.123234e-15%" y1="0%" x2="100%" y2="100%" id="linearGradient-4">
+	            <stop stop-color="#9100B8" offset="0%"></stop>
+	            <stop stop-color="#ED006F" offset="100%"></stop>
+	        </linearGradient>
+	        <linearGradient x1="50%" y1="100%" x2="50%" y2="3.061617e-15%" id="linearGradient-5">
+	            <stop stop-color="#AA0050" offset="0%"></stop>
+	            <stop stop-color="#ED006F" offset="100%"></stop>
+	        </linearGradient>
+	        <rect id="path-6" x="0" y="0" width="445" height="445"></rect>
+	    </defs>
+	    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Source">
+            <g id="L" transform="translate(170.000000, 40.000000)">
+                <g id="'Bias/Large/Left" stroke="#E6E6E6">
+                    <g id="left-bias" transform="translate(3.000000, 3.000000)">
+                        <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#009BBD" fill-rule="nonzero"></path>
+                        <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
+                        <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
+                    </g>
+                </g>
+                <text font-family="OpenSans-Regular, Open Sans" font-size="18" font-weight="normal" fill="#444444">
+                    <tspan x="33" y="126">LEFT</tspan>
+                </text>
+            </g>
+            <g id="LC" transform="translate(168.000000, 40.000000)">
+                <g id="'Bias/Large/Left-Center" transform="translate(2.000000, 0.000000)" stroke="#E6E6E6">
+                    <g id="left-center-bias" transform="translate(3.000000, 3.000000)">
+                        <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#009BBD" fill-rule="nonzero"></path>
+                        <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
+                        <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#9100B8" fill-rule="nonzero"></path>
+                    </g>
+                </g>
+                <text font-family="OpenSans-Regular, Open Sans" font-size="18" font-weight="normal" fill="#444444">
+                    <tspan x="0" y="126">Left Center</tspan>
+                </text>
+            </g>
+            <g id="C" transform="translate(170.000000, 40.000000)">
+                <g id="'Bias/Large/Center" stroke="#E6E6E6">
+                    <g id="center-bias" transform="translate(3.000000, 3.000000)">
+                        <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
+                        <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
+                        <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#9100B8" fill-rule="nonzero"></path>
+                    </g>
+                </g>
+                <text font-family="OpenSans-Regular, Open Sans" font-size="18" font-weight="normal" fill="#444444">
+                    <tspan x="19" y="126">Center</tspan>
+                </text>
+            </g>
+            <g id="RC" transform="translate(161.000000, 40.000000)">
+                <g id="'Bias/Large/Right-Center" transform="translate(9.000000, 0.000000)" stroke="#E6E6E6">
+                    <g id="right-center-bias" transform="translate(3.000000, 3.000000)">
+                        <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
+                        <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#ED006F" fill-rule="nonzero"></path>
+                        <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#9100B8" fill-rule="nonzero"></path>
+                    </g>
+                </g>
+                <text font-family="OpenSans-Regular, Open Sans" font-size="18" font-weight="normal" fill="#444444">
+                    <tspan x="0" y="126">Right Center</tspan>
+                </text>
+            </g>
+            <g id="R" transform="translate(170.000000, 40.000000)">
+                <g id="'Bias/Large/Right" stroke="#E6E6E6">
+                    <g id="right-bias" transform="translate(3.000000, 3.000000)">
+                        <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
+                        <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#ED006F" fill-rule="nonzero"></path>
+                        <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
+                    </g>
+                </g>
+                <text font-family="OpenSans-Regular, Open Sans" font-size="18" font-weight="normal" fill="#444444">
+                    <tspan x="26" y="126">Right</tspan>
+                </text>
+            </g>
+            <g id="Borders">
+                <rect id="Border_L" stroke="url(#linearGradient-1)" stroke-width="20" x="10" y="10" width="425" height="425"></rect>
+                <rect id="Border_LC" stroke="url(#linearGradient-2)" stroke-width="20" x="10" y="10" width="425" height="425"></rect>
+                <rect id="Border_C" stroke="url(#linearGradient-3)" stroke-width="20" x="10" y="10" width="425" height="425"></rect>
+                <rect id="Border_RC" stroke="url(#linearGradient-4)" stroke-width="20" x="10" y="10" width="425" height="425"></rect>
+                <rect id="Border_R" stroke="url(#linearGradient-5)" stroke-width="20" x="10" y="10" width="425" height="425"></rect>
+                <g id="Border_Locked">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-6"></use>
+                    <rect stroke="#BBBBBB" stroke-width="20" x="10" y="10" width="425" height="425"></rect>
+                </g>
+            </g>
+            <rect id="Rectangle-9" fill="#FFFFFF" x="185" y="422" width="75" height="23"></rect>
+            <g id="'Screen-Indicator/Bottom/Inactive" transform="translate(200.000000, 410.000000)" fill="#BBBBBB">
+                <text id="SAVE-/-SKIP" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal">
+                    <tspan x="0" y="12">ARTICLE</tspan>
+                </text>
+                <polyline id="Arrow" fill-rule="evenodd" transform="translate(22.506895, 25.497500) rotate(90.000000) translate(-22.506895, -25.497500) " points="18.7185484 38.995 28.3202419 25.504 18.7091129 12 16.6935484 14.833 24.2883871 25.505 16.7029839 36.163 18.7185484 38.995"></polyline>
+            </g>
+            <g id="Locked_Pie" transform="translate(170.000000, 40.000000)">
+                <g id="'Bias/Large/Center" stroke="#E6E6E6" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero">
+                    <g id="left-bias" transform="translate(3.000000, 3.000000)">
+                        <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape"></path>
+                        <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape"></path>
+                        <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape"></path>
+                    </g>
+                </g>
+                <text id="?" font-family="OpenSans-Regular, Open Sans" font-size="18" font-weight="normal" fill="#444444">
+                    <tspan x="49" y="126">?</tspan>
+                </text>
+            </g>
+            <g id="Locked_Text" transform="translate(40.000000, 184.000000)" font-size="24" font-family="OpenSans-Bold, Open Sans" letter-spacing="0.352941185" fill="#333333" font-weight="bold">
+                <text id="Article-Source-Guess">
+                    <tspan x="96.9962086" y="26">Article Source</tspan>
+                    <tspan x="268.003791" y="26" font-family="OpenSans-Regular, Open Sans" font-weight="normal"></tspan>
+                    <tspan x="0" y="71" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal">Guess the bias of this article on the screen </tspan>
+                    <tspan x="0" y="93" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal">below to unlock the article source information!</tspan>
+                    <tspan x="0" y="115" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal"></tspan>
+                    <tspan x="0" y="137" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal"></tspan>
+                    <tspan x="87.7309282" y="171" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal">Written by Author Name</tspan>
+                    <tspan x="106.619715" y="205" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal">Published Recently!</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+	</svg>
+
+	<svg id="GuessOverlay" width="445px" height="445px" viewBox="0 0 445 445" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #FFFFFF;">
+	    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+	    <title>Cube Article HIFI</title>
+	    <desc>Created with Sketch.</desc>
+	    <defs>
+	        <linearGradient x1="50%" y1="3.061617e-15%" x2="50%" y2="100%" id="linearGradient-1">
+	            <stop stop-color="#00748D" offset="0%"></stop>
+	            <stop stop-color="#009BBD" offset="100%"></stop>
+	        </linearGradient>
+	        <rect id="path-2" x="0" y="0" width="405" height="405" rx="20"></rect>
+	        <filter x="-1.7%" y="-1.2%" width="103.5%" height="103.5%" filterUnits="objectBoundingBox" id="filter-3">
+	            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+	            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+	            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+	        </filter>
+	        <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-4">
+	            <stop stop-color="#9100B8" offset="0%"></stop>
+	            <stop stop-color="#009BBD" offset="100%"></stop>
+	        </linearGradient>
+	        <rect id="path-5" x="0" y="0" width="405" height="405" rx="20"></rect>
+	        <filter x="-1.7%" y="-1.2%" width="103.5%" height="103.5%" filterUnits="objectBoundingBox" id="filter-6">
+	            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+	            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+	            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+	        </filter>
+	        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-7">
+	            <stop stop-color="#9100B8" offset="0%"></stop>
+	            <stop stop-color="#63007E" offset="100%"></stop>
+	        </linearGradient>
+	        <rect id="path-8" x="0" y="0" width="405" height="405" rx="20"></rect>
+	        <filter x="-1.7%" y="-1.2%" width="103.5%" height="103.5%" filterUnits="objectBoundingBox" id="filter-9">
+	            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+	            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+	            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+	        </filter>
+	        <linearGradient x1="0%" y1="0%" x2="100%" y2="96.5391413%" id="linearGradient-10">
+	            <stop stop-color="#9100B8" offset="0%"></stop>
+	            <stop stop-color="#ED006F" offset="100%"></stop>
+	        </linearGradient>
+	        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-11">
+	            <stop stop-color="#AA0050" offset="0%"></stop>
+	            <stop stop-color="#ED006F" offset="100%"></stop>
+	        </linearGradient>
+	    </defs>
+	    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+	        <g id="Cube-Article-HIFI">
+	            <rect id="Guess_Screen_Overlay" fill="#BBBBBB" x="0" y="0" width="445" height="445"></rect>
+	            <g id="Guess_BGs" transform="translate(20.000000, 20.000000)">
+	                <g id="Guess_L_BG">
+	                    <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+	                    <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+	                </g>
+	                <g id="Guess_LC_BG">
+	                    <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"></use>
+	                    <use fill="url(#linearGradient-4)" fill-rule="evenodd" xlink:href="#path-5"></use>
+	                </g>
+	                <g id="Guess_C_BG">
+	                    <use fill="black" fill-opacity="1" filter="url(#filter-9)" xlink:href="#path-8"></use>
+	                    <use fill="url(#linearGradient-7)" fill-rule="evenodd" xlink:href="#path-8"></use>
+	                </g>
+	                <rect id="Guess_RC_BG" fill="url(#linearGradient-10)" x="0" y="0" width="405" height="405" rx="20"></rect>
+	                <rect id="Guess_R_BG" fill="url(#linearGradient-11)" x="0" y="0" width="405" height="405" rx="20"></rect>
+	                <rect id="Guess_BG" fill="#FFFFFF" x="0" y="0" width="405" height="405" rx="20"></rect>
+	            </g>
+	            <text id="Take-a-guess" font-family="OpenSans-Bold, Open Sans" font-size="16" font-weight="bold" fill="#444444">
+	                <tspan x="197.4375" y="227">Take a</tspan>
+	                <tspan x="201.042969" y="249">guess</tspan>
+	            </text>
+	            <g id="L" transform="translate(94.000000, 280.000000)">
+	                <text id="Left-Guess" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#444444">
+	                    <tspan x="40" y="123">Left</tspan>
+	                </text>
+	                <g id="'Bias/Large/Left" stroke="#E6E6E6">
+	                    <g id="left-bias" transform="translate(3.000000, 3.000000)">
+	                        <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#009BBD" fill-rule="nonzero"></path>
+	                        <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
+	                        <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
+	                    </g>
+	                </g>
+	            </g>
+	            <g id="LC" transform="translate(52.000000, 141.000000)">
+	                <text id="Left-Center-Guess" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#444444">
+	                    <tspan x="16" y="125">Left Center</tspan>
+	                </text>
+	                <g id="'Bias/Large/Left-Center" stroke="#E6E6E6">
+	                    <g id="left-center-bias" transform="translate(3.000000, 3.000000)">
+	                        <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#009BBD" fill-rule="nonzero"></path>
+	                        <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
+	                        <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#9100B8" fill-rule="nonzero"></path>
+	                    </g>
+	                </g>
+	            </g>
+	            <g id="R" transform="translate(247.000000, 280.000000)">
+	                <text id="Center-Guess" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#444444">
+	                    <tspan x="35" y="123">Right</tspan>
+	                </text>
+	                <g id="'Bias/Large/Right" stroke="#E6E6E6">
+	                    <g id="right-bias" transform="translate(3.000000, 3.000000)">
+	                        <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
+	                        <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#ED006F" fill-rule="nonzero"></path>
+	                        <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
+	                    </g>
+	                </g>
+	            </g>
+	            <g id="RC" transform="translate(289.000000, 141.000000)">
+	                <text id="Right-Center-Guess" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#444444">
+	                    <tspan x="11" y="125">Right Center</tspan>
+	                </text>
+	                <g id="'Bias/Large/Right-Center" stroke="#E6E6E6">
+	                    <g id="right-center-bias" transform="translate(3.000000, 3.000000)">
+	                        <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
+	                        <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#ED006F" fill-rule="nonzero"></path>
+	                        <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#9100B8" fill-rule="nonzero"></path>
+	                    </g>
+	                </g>
+	            </g>
+	            <g id="C" transform="translate(173.000000, 43.000000)">
+	                <text id="Right-Guess" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#444444">
+	                    <tspan x="28" y="119">Center</tspan>
+	                </text>
+	                <g id="'Bias/Large/Center" stroke="#E6E6E6">
+	                    <g id="center-bias" transform="translate(2.857143, 2.857143)">
+	                        <path d="M47.7641723,47.7732426 L47.7641723,95.0839002 C21.6352176,95.0839002 0.453514739,73.9021973 0.453514739,47.7732426 C0.354251172,39.454287 2.55119644,31.2690966 6.80272109,24.1179138 L47.7641723,47.7732426 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
+	                        <path d="M47.7641723,47.7732426 L88.7346939,24.1179138 C101.798294,46.7454236 94.0461932,75.678748 71.4195011,88.7437642 C64.2683184,92.9952888 56.083128,95.1922341 47.7641723,95.0929705 L47.7641723,47.7732426 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
+	                        <path d="M47.7641723,47.7732426 L6.79365079,24.1179138 C19.8586669,1.49122181 48.7919914,-6.26087872 71.4195011,6.80272109 C78.6734441,10.8726843 84.6647307,16.8639708 88.7346939,24.1179138 L47.7641723,47.7732426 Z" id="Shape" stroke-width="8.55" fill="#9100B8" fill-rule="nonzero"></path>
+	                    </g>
+	                </g>
+	            </g>
+	            <g id="Close_Btn" transform="translate(390.000000, 31.000000)" fill="#B80056">
+	                <g id="`Icons/delete/red">
+	                    <polygon id="delete" points="21.296 23.023 11.554 13.881 2.139 23.022 2.84217094e-14 20.916 9.687 11.511 2.84217094e-14 2.106 2.139 -2.27373675e-13 11.555 9.142 21.296 0.002 23.51 2.108 13.487 11.512 23.51 20.917"></polygon>
+	                </g>
+	            </g>
+	        </g>
+	    </g>
+	</svg>
+</div>
+<!-- End SVG Templates -->
+
 <!-- Front-End App -->
+<script type="text/javascript" src="js/CubeViewport.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 </body>
 </html>
