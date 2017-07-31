@@ -16,7 +16,14 @@ var QubeApp = function () {
 	this.hasGuessedN = 0;
 	this.hasSavedCurrentArticles = false;
 	this.activeScreen = "center";
+	window.viewport.on('side-change-complete', function () {
+		// I couldn't come up with a quicker easier way to set the active Screen
+		if ($('#left').hasClass('active')) self.activeScreen = "left";
+		if ($('#center').hasClass('active')) self.activeScreen = "center";
+		if ($('#right').hasClass('active')) self.activeScreen = "right";
 
+		$('#top').append($('#SourceScreen_' + self.activeScreen))
+	})
 
 	this.articles = [ 
 		{
@@ -85,7 +92,10 @@ var QubeApp = function () {
 
 	// handler to update QubeApp states for new screens
 	this.handleNextRound = function (e) {
-		if (self.biasGuessCount < self.articles.length) return false;
+		if (self.biasGuessCount < self.articles.length) {
+			console.log('can\'t go to next, don\'t have enoug guesses')
+			return false;
+		}
 		if (e) e.stopPropagation()
 
 		// todo - insert analytics at end of last round (which is now)
@@ -119,6 +129,7 @@ var QubeApp = function () {
 
 
 			$('#top, #left, #center, #right').children('*').remove()
+			console.log('data updated for next round!')
 			self.updateUserArticleHistory()
 			self.renderScreens()
 		})
@@ -126,7 +137,7 @@ var QubeApp = function () {
 
 
 	this.renderScreens = function () {
-
+		$('#left, #center, #right, #top').html('')
 		$('#left, #center, #right').each(function (i, el) {
 			// defining the article content to render per screen
 			var thisScreen  = self.screens[el.id]
@@ -151,7 +162,7 @@ var QubeApp = function () {
 			self.renderArticleSreen(el, thisAritcle, i)
 		})
 
-		$('#top').append($('#SourceScreen_center'))
+		$('#top').append($('#SourceScreen_' + self.activeScreen))
 
 		self.renderSaveSkipScreen()
 	}
@@ -159,10 +170,10 @@ var QubeApp = function () {
 	this.renderSaveSkipScreen = function () {
 		var $el = $('#saveSkip')
 
-		// $('#saveBtn').on('click', self.onSaveClick)
-		$('#nextBtn').on('click', self.handleNextRound)
+		
 	}
-
+// $('#saveBtn').on('click', self.onSaveClick)
+	$('#nextBtn').on('click', self.handleNextRound)
 	this.renderSourceScreen = function (el, thisSource) {
 		// Create new SVG
 		thisSource.el = $('#SourceScreen').clone()
@@ -176,17 +187,6 @@ var QubeApp = function () {
 
 		// todo - all the customization bits to populate the source info
 
-
-		// Listen for a custom event from the view port listening for
-		// the completion of the viewport calculating the new side and
-		// giving it the class active.
-		window.viewport.on('side-change-complete', function (e) {
-			// ignore if the side isn't active
-			if ( !$(el).hasClass('active')) return false;
-
-			// move the corresponding SVG lower in the DOM to become visible 
-			$('#top').append(thisSource.el)
-		});
 	}
 
 	this.renderArticleSreen = function (el, thisAritcle, i) {
@@ -239,6 +239,10 @@ var QubeApp = function () {
 		$('#Close_Btn', el).on('click', function (e) {
 			$('#L, #LC, #C, #RC, #R', el).off('click')
 			$('#GuessOverlay', el).addClass('ghost')
+			setTimeout(function(){
+				$(el).prepend($(ov))
+			}, 400)
+				
 		})
 		
 	}
@@ -285,7 +289,7 @@ var QubeApp = function () {
 			thisAritcle.isCorrect = isCorrect;
 
 			// handler to update firebase
-			self.handleBiasGuess(el, correctBias, isCorrect)
+			self.handleBiasGuess(el, correctBias, selection)
 		}
 
 		// modify SVG element to be 'unlocked'
@@ -385,18 +389,25 @@ var QubeApp = function () {
 
 
 	// START BIAS GUESSING HANDLING
-	this.handleBiasGuess = function (el, correctBias, isCorrect) {
+	this.handleBiasGuess = function (el, correctBias, selection) {
 		var queryString = "users/" + self.user + "/biasGuessing/" + correctBias
 
 		var userBiasGuessingRef = usersRef.child(self.user.email)
 										  .child('biasGuessing')
 										  .child(correctBias)
 
+
+		if (!self.userHistoryRef) 
+			self.userHistoryRef = self.userRef.child('article_history')
+		var articleID = self.screens[el.id].article.id;
+		var userHistoryArticleBiasGuessRef = self.userHistoryRef.child(articleID).child('userGuess')
+		userHistoryArticleBiasGuessRef.set(selection)
+
 		// once gets the value pretty much immediately and we can update the stats!
 		userBiasGuessingRef.once('value',function(snapshot) {
 			var stats = snapshot.val()
 			stats.totalGuessed++;
-			stats.guessedCorrectly = stats.guessedCorrectly + (Number(isCorrect))
+			stats.guessedCorrectly = stats.guessedCorrectly + (Number(correctBias == selection))
 			if (stats.totalGuessed) stats.avg = stats.guessedCorrectly / stats.totalGuessed;
 
 			userBiasGuessingRef.set(stats)
