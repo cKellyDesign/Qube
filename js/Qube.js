@@ -12,7 +12,12 @@ var QubeApp = function () {
 	this.currentUser = window.users["conkelly_uw_edu"];
 
 	this.currentTopic = 'North Korea';
-	this.biasGuessCount = 0;
+	this.biasGuessCount = 3; // used to control locking / unlocking next round
+	this.hasGuessedN = 0;
+	this.hasSavedCurrentArticles = false;
+	this.activeScreen = "center";
+
+
 	this.articles = [ 
 		{
 			article: window.articles[0],
@@ -76,7 +81,45 @@ var QubeApp = function () {
 	}
 
 	// START CSS / JS / SVG Implementation
-	var IS_CSS_JS = true; // toggle this for side by side implementations
+
+
+	// handler to update QubeApp states for new screens
+	this.handleNextRound = function () {
+		if (self.biasGuessCount < self.articles.length) return false;
+		self.biasGuessCount = 0;
+
+		// get existing articles (limited and random for now)
+		// todo - narrow this reference via user topic preference
+		articlesRef.once("value", function (snapshot) {
+
+			self.articles = []
+			var articles = snapshot.val()
+			var qubeSides = ['left', 'center', 'right'] // note - this is a great example of accidentally injecting bias into an algorithm. I think it feels natural bc it's LTR but it also aligns to my left leaning baises so I have to be conscious about not letting that seep furhter
+			
+			// randomly select an index along the aritcles array
+			var i = Math.floor(Math.random() * articles.length)
+			// Floor down to the nearest multiple of 3 and subtract 1 to convert to base 0
+			i = i - (i % 3)
+
+			// vanilla for loop to iterate over the set of 3 articles
+			for (var k=0; k < 3; k++) {
+				var thisAritcle = articles[i + k]
+				thisAritcle.userGuess = "";
+				self.articles[k] = thisAritcle;
+
+				// select a random side of the qube and assign thisArticle to it to randomize biase positioning on the qube
+				var thisSide =  qubeSides.splice(Math.floor(Math.random() * (qubeSides.length)), 1)
+				self.screens[thisSide].article = self.articles[k]
+			}
+
+
+			$('#top, #left, #center, #right').children('*').remove()
+
+			self.renderScreens();
+		})
+	}
+
+
 	this.renderScreens = function () {
 
 		$('#left, #center, #right').each(function (i, el) {
@@ -132,8 +175,8 @@ var QubeApp = function () {
 		});
 	}
 
-	this. renderArticleSreen = function (el, thisAritcle, i) {
-		// Rende
+	this.renderArticleSreen = function (el, thisAritcle, i) {
+		// Render Article SVGs to their repsective sides
 		var thisArticleTemplate = $(el).append($('#ArticleTemplate').clone()).children('svg')
 		$(thisArticleTemplate).attr('id', $(thisArticleTemplate).attr('id') + '_' + i)
 		var $guessButton = $('#BiasGuessBtn').attr('id', 'BiasGuessBtn_' + i)
@@ -160,11 +203,7 @@ var QubeApp = function () {
 		wrapTextRect($Rect, $BodyTextArea, articleText, bodyOffset + 12)
 	}
 
-	this.renderScreens();
-
-	this.hasGuessedN = 0;
-	this.hasSavedCurrentArticles = false;
-	this.activeScreen = "center";
+	
 
 	this.showBiasGuessOverlay = function (el) {
 		if (!$('#GuessOverlay', el).length) {
@@ -216,7 +255,7 @@ var QubeApp = function () {
 		e.preventDefault();
 		e.stopPropagation();
 
-		if (IS_CSS_JS) this.showBiasGuessOverlay(el)
+		this.showBiasGuessOverlay(el)
 	}
 
 	this.onBiasGuess = function (e, el, selection) {
@@ -240,12 +279,6 @@ var QubeApp = function () {
 
 		// count up to next round
 		self.biasGuessCount++;
-
-		// if all articles are guessed, unlock the save/skip buttons
-		if (self.biasGuessCount === this.articles.length) {
-			// todo - unlock next round of articles!
-			self.biasGuessCount = 0;
-		}
 
 		// Hiding Overlay after guessing
 		setTimeout(function () {
@@ -280,7 +313,7 @@ var QubeApp = function () {
 	var authorsRef = firebase.database().ref('authors')
 
 
-	//  // Generic Callback
+	// // Generic Callback
 	// function getValueCallback (snapshot) {
 	// 	console.log(snapshot.val())
 	// 	// $("#valueText").html(self.value);
@@ -309,7 +342,7 @@ var QubeApp = function () {
 	// sourcesRef.set(window.sources)
 	// authorsRef.set(window.authors)
 
-
+	
 
 
 	// START BIAS GUESSING HANDLING
@@ -335,7 +368,7 @@ var QubeApp = function () {
 
 	// Prevents images from swallowing click and dragging of the cube! :D
 	$('#top, #center, #left, #right, #base, #saveSkip').on('dragstart', function (e) { return false; })
-
+	this.handleNextRound();
 }
 
 window.qubeApp = new QubeApp()

@@ -14,8 +14,7 @@ window.articles = [
 		source : "Vox.com",
 		sourceUID : 1000,
 		author : "Alex Ward",
-		authorUID : 0,
-		userGuess : ""
+		authorUID : 0
 	},
 
 	{
@@ -30,8 +29,7 @@ window.articles = [
 		source : "Reuters",
 		sourceUID : 1001,
 		author : "Michelle Nichols",
-		authorUID : 1,
-		userGuess : ""
+		authorUID : 1
 	},
 
 	{
@@ -47,8 +45,7 @@ window.articles = [
 		source : "The Washington Times",
 		sourceUID : 1002,
 		author : "David R. Sands",
-		authorUID : 2,
-		userGuess : ""
+		authorUID : 2
 	},
 
 	{
@@ -64,8 +61,7 @@ window.articles = [
 		source : "Slate",
 		sourceUID : 1003,
 		author : "Mark Joseph Stern",
-		authorUID : 3,
-		userGuess : ""
+		authorUID : 3
 	},
 
 	{
@@ -96,8 +92,7 @@ window.articles = [
 		source : "Fox News",
 		sourceUID : 1005,
 		author : "Barnini Chakrabotry",
-		authorUID : 5,
-		userGuess : ""
+		authorUID : 5
 		},
 
 	// {
@@ -112,8 +107,7 @@ window.articles = [
 	// 	source : "",
 	//  sourceUID : 0,
 	// 	author : "",
-	//  authorUID : 6,
-	// 	userGuess : ""
+	//  authorUID : 6
 	// }
 
 
