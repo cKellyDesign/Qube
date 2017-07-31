@@ -1,3 +1,8 @@
+@font-face {
+    font-family: OpenSans;
+    src: url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+}
+
 
 /* ********** START CUBE / VIEWPORT STYLING ********** */
 *, *:before, *:after {
@@ -5,9 +10,11 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
+
+
 body {
   background: #1b1b1b;
-  font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  font-family: 'OpenSans', Arial, sans-serif;
   font-weight: 300; }
 
 #wrapper {
@@ -204,7 +211,7 @@ body {
 .side > svg {
   /*opacity: .8;*/
   transition: opacity .5s;
-  top: 27.5px; left: 27.5px;;
+  top: 27.5px; left: 27.5px;
   position: absolute;
 }
 .side.active > svg {
@@ -232,6 +239,35 @@ body {
 
 #top > svg.right {
   transform: rotate(-90deg); 
+}
+
+#saveSkip { 
+  
+}
+
+#saveSkipWrapper {
+  transform: rotate(180deg);
+  height: 445px; width: 445px;
+  position: absolute;
+  top: 27.5px; left: 27.5px;
+
+  background-color: white;
+  text-align: center;
+}
+#saveSkip h3 {
+  font-size: 30px;
+  color: #333;
+  margin: 60px 0;
+}
+
+#saveSkip  button {
+  margin: 0 auto 48px;
+  background-color: #e6e6e6;
+  padding: 24px 60px;
+  font-size: 24px;
+  display: block;
+  color: #333;
+  border-width: 0;
 }
 
 

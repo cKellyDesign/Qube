@@ -233,6 +233,7 @@ window.users = {
 
 		},
 		article_history : [],
+		saved_articles : [],
 		bias_balance : {
 			current : {
 				date : '08/16/2017',

@@ -9,7 +9,7 @@ var QubeApp = function () {
 	this.$saveSkip = $('#saveSkip');
 
 	// QUBE APP STATE
-	this.currentUser = window.users["conkelly_uw_edu"];
+	this.currentUser = "conkelly_uw_edu";
 
 	this.currentTopic = 'North Korea';
 	this.biasGuessCount = 3; // used to control locking / unlocking next round
@@ -84,8 +84,13 @@ var QubeApp = function () {
 
 
 	// handler to update QubeApp states for new screens
-	this.handleNextRound = function () {
+	this.handleNextRound = function (e) {
 		if (self.biasGuessCount < self.articles.length) return false;
+		if (e) e.stopPropagation()
+
+		// todo - insert analytics at end of last round (which is now)
+
+
 		self.biasGuessCount = 0;
 
 		// get existing articles (limited and random for now)
@@ -114,8 +119,8 @@ var QubeApp = function () {
 
 
 			$('#top, #left, #center, #right').children('*').remove()
-
-			self.renderScreens();
+			self.updateUserArticleHistory()
+			self.renderScreens()
 		})
 	}
 
@@ -147,6 +152,15 @@ var QubeApp = function () {
 		})
 
 		$('#top').append($('#SourceScreen_center'))
+
+		self.renderSaveSkipScreen()
+	}
+
+	this.renderSaveSkipScreen = function () {
+		var $el = $('#saveSkip')
+
+		// $('#saveBtn').on('click', self.onSaveClick)
+		$('#nextBtn').on('click', self.handleNextRound)
 	}
 
 	this.renderSourceScreen = function (el, thisSource) {
@@ -312,6 +326,34 @@ var QubeApp = function () {
 	var sourcesRef = firebase.database().ref('sources')
 	var authorsRef = firebase.database().ref('authors')
 
+	this.user = this.user || null
+	this.userRef = usersRef.child(self.currentUser)
+	this.userRef.once('value', function (snapshot) {
+		self.user = snapshot.val()
+		console.log(self.user)
+	})
+
+
+	this.updateUserArticleHistory = function () {
+		if (!self.userHistoryRef) 
+			self.userHistoryRef = self.userRef.child('article_history')
+
+
+		for (var i = 0; i < self.articles.length; i++) {
+			// debugger
+			var thisAritcle = self.articles[i]
+			var userHistoryEntryRef = self.userHistoryRef.child(thisAritcle.id)
+
+
+			userHistoryEntryRef.set(thisAritcle)
+		} 
+
+		
+
+	}
+
+
+
 
 	// // Generic Callback
 	// function getValueCallback (snapshot) {
@@ -334,10 +376,7 @@ var QubeApp = function () {
 	// articlesRef.on("value", getValueCallback);
 
 	//  // USED TO RESET FIREBASE TO STUB DATA!!!
-	// var setUser = { };
-	// var UID = this.currentUser.email
-	// setUser[UID] = window.users[UID];
-	// usersRef.set(setUser);
+	// usersRef.set(window.users)
 	// articlesRef.set(window.articles)
 	// sourcesRef.set(window.sources)
 	// authorsRef.set(window.authors)
@@ -347,9 +386,9 @@ var QubeApp = function () {
 
 	// START BIAS GUESSING HANDLING
 	this.handleBiasGuess = function (el, correctBias, isCorrect) {
-		var queryString = "users/" + self.currentUser + "/biasGuessing/" + correctBias
+		var queryString = "users/" + self.user + "/biasGuessing/" + correctBias
 
-		var userBiasGuessingRef = usersRef.child(self.currentUser.email)
+		var userBiasGuessingRef = usersRef.child(self.user.email)
 										  .child('biasGuessing')
 										  .child(correctBias)
 

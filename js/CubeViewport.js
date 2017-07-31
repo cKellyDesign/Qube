@@ -322,7 +322,8 @@ Cube.prototype.upsideDown = function(obj) {
   var i = 5;
 
   while(i > 0 && --i) {
-    this.sides[i].getElementsByClassName('cube-image')[0].style[userPrefix.js + 'Transform'] = 'rotate(' + deg + ')';
+    if (!!this.sides[i].getElementsByClassName('cube-image')[0])
+      this.sides[i].getElementsByClassName('cube-image')[0].style[userPrefix.js + 'Transform'] = 'rotate(' + deg + ')';
   }
 
 }
