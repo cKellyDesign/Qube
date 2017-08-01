@@ -289,8 +289,28 @@ body {
   fill: #BBBBBB;
 }
 
-#_author tspan {
+#_author tspan,
+#_date tspan,
+#_source tspan {
   text-align: center;
 }
+
+
+#sourceBiasPie_L.active {
+  fill : #FFFFFF !important;
+}
+
+#sourceBiasPie_C.active {
+  fill : #FFFFFF !important;
+}
+
+#sourceBiasPie_R.active {
+  fill : #FFFFFF !important;
+}
+
+
+
+
+
 
 

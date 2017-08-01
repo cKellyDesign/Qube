@@ -191,21 +191,22 @@ var QubeApp = function () {
 		// Set SVG to unique ID and add class to orient SVG 
 		// towards corresponding Article Screen
 		$(thisSource.el).attr('id', $(thisSource.el).attr('id') + '_' + el.id).addClass(el.id)
-
 		thisSource.content = $('#sourceContent', thisSource.el)
-
-		// $('#source', thisSource.content)
-
 		$('#top').append(thisSource.el)
 
-
-
-
-		// 
+		// dynamically update the text in the SVGs
+		// self.populateSourceScreen(el, thisSource, thisArticle)
 				 
+		$('#L, #LC, #C, #RC, #R', thisSource.el).addClass('hide')
+		
+
+		// todo - all the customization bits to populate the source info
+	}
+
+	this.populateSourceScreen = function (el, thisSource, thisArticle) {
 		$('#sourceContent > g', thisSource.el).each(function (i, sourceEl) { // i before e, except in underscore
 			// Define the Content Groups being iterated through
-			var el = $(sourceEl).parents('div#top')
+			// var el = $(sourceEl).parents('div#top')
 			var thisTextArea = $('#' + sourceEl.id + 'TextArea', sourceEl)
 			var thisEl, rect, textEl, elWidth, newOffset, pretext;
 
@@ -242,13 +243,7 @@ var QubeApp = function () {
 			thisTextArea.remove()
 		})
 
-
-
-
-		// todo - all the customization bits to populate the source info
 	}
-
-	
 
 
 	this.renderArticleSreen = function (el, thisArticle, i) {
