@@ -93,7 +93,7 @@ var QubeApp = function () {
 	// handler to update QubeApp states for new screens
 	this.handleNextRound = function (e) {
 		if (self.biasGuessCount < self.articles.length) {
-			console.log('can\'t go to next, don\'t have enoug guesses')
+			// console.log('can\'t go to next, don\'t have enough guesses')
 			return false;
 		}
 		if (e) e.stopPropagation()
@@ -129,7 +129,7 @@ var QubeApp = function () {
 
 
 			$('#top, #left, #center, #right').children('*').remove()
-			console.log('data updated for next round!')
+			// console.log('data updated for next round!')
 			self.updateUserArticleHistory()
 			self.renderScreens()
 		})
@@ -172,8 +172,9 @@ var QubeApp = function () {
 
 		
 	}
-// $('#saveBtn').on('click', self.onSaveClick)
-	$('#nextBtn').on('click', self.handleNextRound)
+
+	
+
 	this.renderSourceScreen = function (el, thisSource) {
 		// Create new SVG
 		thisSource.el = $('#SourceScreen').clone()
@@ -186,8 +187,10 @@ var QubeApp = function () {
 		$('#top').append(thisSource.el)
 
 		// todo - all the customization bits to populate the source info
-
 	}
+
+	
+
 
 	this.renderArticleSreen = function (el, thisAritcle, i) {
 		// Render Article SVGs to their repsective sides
@@ -326,6 +329,7 @@ var QubeApp = function () {
 
 
 	var usersRef = firebase.database().ref('users'); // users firebase ref
+	
 	var articlesRef = firebase.database().ref('articles')
 	var sourcesRef = firebase.database().ref('sources')
 	var authorsRef = firebase.database().ref('authors')
@@ -334,29 +338,40 @@ var QubeApp = function () {
 	this.userRef = usersRef.child(self.currentUser)
 	this.userRef.once('value', function (snapshot) {
 		self.user = snapshot.val()
-		console.log(self.user)
+		// console.log(self.user)
 	})
+	this.userHistoryRef = self.userRef.child('article_history')
+	this.userSavedArticlesRef = self.userRef.child('saved_articles')
+
 
 
 	this.updateUserArticleHistory = function () {
-		if (!self.userHistoryRef) 
-			self.userHistoryRef = self.userRef.child('article_history')
-
-
+		// save each article from current round to users' saved_articels
 		for (var i = 0; i < self.articles.length; i++) {
-			// debugger
+
 			var thisAritcle = self.articles[i]
 			var userHistoryEntryRef = self.userHistoryRef.child(thisAritcle.id)
 
-
 			userHistoryEntryRef.set(thisAritcle)
 		} 
-
-		
-
 	}
 
 
+	this.handleSaveArticles = function(e) {
+		e.preventDefault()
+		e.stopPropagation()
+
+		for (var i = 0; i < self.articles.length; i++) {
+
+			var thisAritcle = self.articles[i]
+			// console.log('thisAritcle to save', thisAritcle)
+			var userSavedArticlesEntryRef = self.userSavedArticlesRef.child(thisAritcle.id)
+			userSavedArticlesEntryRef.set(thisAritcle)
+		}	
+	}
+
+	$('#nextBtn').on('click', self.handleNextRound);
+	$('#saveBtn').on('click', self.handleSaveArticles);
 
 
 	// // Generic Callback
