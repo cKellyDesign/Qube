@@ -193,44 +193,55 @@ var QubeApp = function () {
 
 		thisSource.content = $('#sourceContent', thisSource.el)
 
-		$('#source', thisSource.content)
+		// $('#source', thisSource.content)
+
+		$('#top').append(thisSource.el)
 
 
 
 		// 
 				 
 		$(thisSource.contentEl).children('g').each(function (i, sourceEl) { // i before e, except in underscore
-			var thisTextArea = $(sourceEl.id + 'TextArea')
-			var thisVal;
+			
+
+			var thisTextArea = $('#' + sourceEl.id + 'TextArea', sourceEl)
+			var thisVal, rect, textEl;
 
 			switch (sourceEl.id) {
 				case 'source':
 					thisVal = window.sources[thisArticle.sourceUID].name
+					$('#_source tspan', sourceEl).html(thisVal)
 				break;
 				case 'description':
 					thisVal = window.sources[thisArticle.sourceUID].desc
+					rect = $('#descriptionTextArea rect', sourceEl)
+					textEl = $('#_description', sourceEl)
+					wrapTextRect(rect, textEl, thisVal)
 				break;
 				case 'author':
 					thisVal = window.authors[thisArticle.authorUID].name
+					$('#_author tspan', sourceEl).html('Written by ' + thisVal)
 				break;
 				case 'date':
 					thisVal = _.findWhere(window.articles, { id : thisArticle.id})
+					$('#_date tspan', sourceEl).html('Published on ' + thisVal)
 				break;
 			}
 
-			console.log('top population content' + sourceEl.id + ' : ', thisVal)
+			thisTextArea.remove()
 		})
 
+		
 
 
 
 
-		console.log('thisSource.content', thisSource.content)
+		// console.log('thisSource.content', thisSource.content)
 
 		// Drop that bad gal into the #top div
-		$('#top').append(thisSource.el)
+		
 
-		debugger;
+
 
 
 

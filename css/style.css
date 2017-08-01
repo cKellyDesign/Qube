@@ -289,6 +289,8 @@ body {
   fill: #BBBBBB;
 }
 
-
+#_author tspan {
+  text-align: center;
+}
 
 
