@@ -119,9 +119,9 @@ var QubeApp = function () {
 
 			// vanilla for loop to iterate over the set of 3 articles
 			for (var k=0; k < 3; k++) {
-				var thisAritcle = articles[i + k]
-				thisAritcle.userGuess = "";
-				self.articles[k] = thisAritcle;
+				var thisArticle = articles[i + k]
+				thisArticle.userGuess = "";
+				self.articles[k] = thisArticle;
 
 				// select a random side of the qube and assign thisArticle to it to randomize biase positioning on the qube
 				var thisSide =  qubeSides.splice(Math.floor(Math.random() * (qubeSides.length)), 1)
@@ -142,11 +142,11 @@ var QubeApp = function () {
 		$('#left, #center, #right').each(function (i, el) {
 			// defining the article content to render per screen
 			var thisScreen  = self.screens[el.id]
-			var thisAritcle = thisScreen.article;
+			var thisArticle = thisScreen.article;
 
-			// defining author / source per article
-			var thisAuthor = _.findWhere(window.authors, { id : thisAritcle.authorUID})
-			var thisSource = _.findWhere(window.sources, { id : thisAritcle.sourceUID})
+			// referencing author / source per article
+			var thisAuthor = window.authors[thisArticle.authorUID] 
+			var thisSource = window.sources[thisArticle.sourceUID]
 
 			// referencing current qube app screen/source states
 			var thisArticleScreen = self.screens[$(el).attr('id')]
@@ -157,10 +157,10 @@ var QubeApp = function () {
 
 
 			// Setup Source Sreen
-			self.renderSourceScreen(el, thisSource, thisAritcle)
+			self.renderSourceScreen(el, thisSource, thisArticle)
 			
 			// Defining Guess Button el
-			self.renderArticleSreen(el, thisAritcle, i)
+			self.renderArticleSreen(el, thisArticle, i)
 		})
 
 		$('#top').append($('#SourceScreen_' + self.activeScreen))
@@ -182,16 +182,58 @@ var QubeApp = function () {
 
 	
 
-	this.renderSourceScreen = function (el, thisSource) {
+	this.renderSourceScreen = function (el, thisSource, thisArticle) {
 		// Create new SVG
-		thisSource.el = $('#SourceScreen').clone()
+		thisSource.el = $('#SourceScreen_template').clone()
+		thisSource.contentEl = $('#sourceContent', thisSource.el)
 
 		// Set SVG to unique ID and add class to orient SVG 
 		// towards corresponding Article Screen
 		$(thisSource.el).attr('id', $(thisSource.el).attr('id') + '_' + el.id).addClass(el.id)
 
+		thisSource.content = $('#sourceContent', thisSource.el)
+
+		$('#source', thisSource.content)
+
+
+
+		// 
+				 
+		$(thisSource.contentEl).children('g').each(function (i, sourceEl) { // i before e, except in underscore
+			var thisTextArea = $(sourceEl.id + 'TextArea')
+			var thisVal;
+
+			switch (sourceEl.id) {
+				case 'source':
+					thisVal = window.sources[thisArticle.sourceUID].name
+				break;
+				case 'description':
+					thisVal = window.sources[thisArticle.sourceUID].desc
+				break;
+				case 'author':
+					thisVal = window.authors[thisArticle.authorUID].name
+				break;
+				case 'date':
+					thisVal = _.findWhere(window.articles, { id : thisArticle.id})
+				break;
+			}
+
+			console.log('top population content' + sourceEl.id + ' : ', thisVal)
+		})
+
+
+
+
+
+		console.log('thisSource.content', thisSource.content)
+
 		// Drop that bad gal into the #top div
 		$('#top').append(thisSource.el)
+
+		debugger;
+
+
+
 
 		// todo - all the customization bits to populate the source info
 	}
@@ -199,7 +241,7 @@ var QubeApp = function () {
 	
 
 
-	this.renderArticleSreen = function (el, thisAritcle, i) {
+	this.renderArticleSreen = function (el, thisArticle, i) {
 		// Render Article SVGs to their repsective sides
 		var thisArticleTemplate = $(el).append($('#ArticleTemplate').clone()).children('svg')
 		$(thisArticleTemplate).attr('id', $(thisArticleTemplate).attr('id') + '_' + i)
@@ -217,8 +259,8 @@ var QubeApp = function () {
 		var $BodyTextArea = $('#textBody', el); // svg text element for body
 
 		// Defining two pieces of text which need to be thrown into the svg
-		var articleText = thisAritcle.body;
-		var articleTitle = thisAritcle.title;
+		var articleText = thisArticle.body;
+		var articleTitle = thisArticle.title;
 
 		// Runs a helper function to wrap text via svg tspan els
 		wrapTextRect($Rect, $TitleTextArea, articleTitle)
@@ -287,16 +329,16 @@ var QubeApp = function () {
 	}
 
 	this.onBiasGuess = function (e, el, selection) {
-		var thisAritcle = self.screens[el.id].article;
+		var thisArticle = self.screens[el.id].article;
 
 		// Define actual Bias and if user got it correct
 		correctBias = self.screens[el.id].article.bias;
 		isCorrect = correctBias == selection
 
 		// If it's the first guess, count it towards their stats
-		if ( !thisAritcle.userGuess.length ) {
-			thisAritcle.userGuess = selection;
-			thisAritcle.isCorrect = isCorrect;
+		if ( !thisArticle.userGuess.length ) {
+			thisArticle.userGuess = selection;
+			thisArticle.isCorrect = isCorrect;
 
 			// handler to update firebase
 			self.handleBiasGuess(el, correctBias, selection)
@@ -356,10 +398,10 @@ var QubeApp = function () {
 		// save each article from current round to users' saved_articels
 		for (var i = 0; i < self.articles.length; i++) {
 
-			var thisAritcle = self.articles[i]
-			var userHistoryEntryRef = self.userHistoryRef.child(thisAritcle.id)
+			var thisArticle = self.articles[i]
+			var userHistoryEntryRef = self.userHistoryRef.child(thisArticle.id)
 
-			userHistoryEntryRef.set(thisAritcle)
+			userHistoryEntryRef.set(thisArticle)
 		} 
 	}
 
@@ -370,10 +412,10 @@ var QubeApp = function () {
 
 		for (var i = 0; i < self.articles.length; i++) {
 
-			var thisAritcle = self.articles[i]
-			// console.log('thisAritcle to save', thisAritcle)
-			var userSavedArticlesEntryRef = self.userSavedArticlesRef.child(thisAritcle.id)
-			userSavedArticlesEntryRef.set(thisAritcle)
+			var thisArticle = self.articles[i]
+			// console.log('thisArticle to save', thisArticle)
+			var userSavedArticlesEntryRef = self.userSavedArticlesRef.child(thisArticle.id)
+			userSavedArticlesEntryRef.set(thisArticle)
 		}	
 	}
 
