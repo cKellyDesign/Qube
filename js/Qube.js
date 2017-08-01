@@ -89,12 +89,7 @@ var QubeApp = function () {
 
 	// START CSS / JS / SVG Implementation
 
-	this.initSaveSkipScreen = function() {
-		var $svg = $('#SaveSkipScreen_template').clone()
-		$('#saveSkip').append($svg)
-	}
 
-	this.initSaveSkipScreen();
 
 	// handler to update QubeApp states for new screens
 	this.handleNextRound = function (e) {
@@ -173,10 +168,16 @@ var QubeApp = function () {
 		self.renderSaveSkipScreen()
 	}
 
-	this.renderSaveSkipScreen = function () {
-		var $el = $('#saveSkip')
+	this.renderSaveSkipScreen = function() {
+		var $svg = $('#SaveSkipScreen_template').clone()
 
-		
+		$('#btn_skip', $svg).on('click', self.handleNextRound)
+		$('#btn_save', $svg).on('click', self.handleSaveArticles)
+
+
+
+
+		$('#saveSkip').append($svg)
 	}
 
 	
@@ -376,8 +377,7 @@ var QubeApp = function () {
 		}	
 	}
 
-	$('#nextBtn').on('click', self.handleNextRound);
-	$('#saveBtn').on('click', self.handleSaveArticles);
+	
 
 
 	// // Generic Callback

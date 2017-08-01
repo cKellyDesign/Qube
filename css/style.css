@@ -279,7 +279,15 @@ body {
 
 }
 
+#btn_skip:active rect,
+#btn_save:active rect {
+  fill: #4F8000;
+}
 
+#btn_skip.disabled rect,
+#btn_save.disabled rect {
+  fill: #BBBBBB;
+}
 
 
 
