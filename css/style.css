@@ -226,7 +226,10 @@ body {
   transition: opacity .4s;
   opacity: 0 !important;
 }
-
+.hide {
+  display: none;
+  /*visibility: 0;*/
+}
 
 /* class names based on physical position on qube!! */
 #top > svg.left {

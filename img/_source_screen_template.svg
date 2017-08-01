@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="445px" height="445px" viewBox="0 0 445 445" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #FFFFFF;">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>sourceScreen_template</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#9100B8" offset="0%"></stop>
+            <stop stop-color="#63007E" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="-2.48949813e-15%" id="linearGradient-2">
+            <stop stop-color="#00748D" offset="0%"></stop>
+            <stop stop-color="#009BBD" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="100%" y1="3.74939946e-31%" x2="1.11022302e-14%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#9100B8" offset="0%"></stop>
+            <stop stop-color="#009BBD" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="6.123234e-15%" y1="0%" x2="100%" y2="100%" id="linearGradient-4">
+            <stop stop-color="#9100B8" offset="0%"></stop>
+            <stop stop-color="#ED006F" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="3.061617e-15%" id="linearGradient-5">
+            <stop stop-color="#AA0050" offset="0%"></stop>
+            <stop stop-color="#ED006F" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-6" x="0" y="0" width="365" height="22"></rect>
+        <rect id="path-7" x="0" y="0" width="365" height="22"></rect>
+        <rect id="path-8" x="0" y="0" width="365" height="88"></rect>
+        <rect id="path-9" x="0" y="0" width="365" height="33"></rect>
+    </defs>
+    <g id="Cube-Screens" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="sourceScreen_template">
+            <g id="C" stroke="url(#linearGradient-1)" stroke-width="20">
+                <rect id="border_c" x="10" y="10" width="425" height="425"></rect>
+            </g>
+            <g id="L" stroke="url(#linearGradient-2)" stroke-width="20">
+                <rect id="border_l" x="10" y="10" width="425" height="425"></rect>
+            </g>
+            <g id="LC" stroke="url(#linearGradient-3)" stroke-width="20">
+                <rect id="border_lc" x="10" y="10" width="425" height="425"></rect>
+            </g>
+            <g id="RC" stroke="url(#linearGradient-4)" stroke-width="20">
+                <rect id="border_rc" x="10" y="10" width="425" height="425"></rect>
+            </g>
+            <g id="R" stroke="url(#linearGradient-5)" stroke-width="20">
+                <rect id="border_r" x="10" y="10" width="425" height="425"></rect>
+            </g>
+            <g id="sourceContent" transform="translate(40.000000, 184.000000)">
+                <g id="date" transform="translate(0.000000, 180.000000)">
+                    <g id="dateTextArea">
+                        <use fill="#D8D8D8" fill-rule="evenodd" xlink:href="#path-6"></use>
+                        <rect stroke="#979797" stroke-width="1" x="0.5" y="0.5" width="364" height="21"></rect>
+                    </g>
+                    <text id="_date" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" letter-spacing="0.235294119" fill="#333333">
+                        <tspan x="86.7775735" y="17">Published on July 5, 2017</tspan>
+                    </text>
+                </g>
+                <g id="author" transform="translate(0.000000, 145.000000)">
+                    <g id="authorTextArea">
+                        <use fill="#D8D8D8" fill-rule="evenodd" xlink:href="#path-7"></use>
+                        <rect stroke="#979797" stroke-width="1" x="0.5" y="0.5" width="364" height="21"></rect>
+                    </g>
+                    <text id="_author" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" letter-spacing="0.235294119" fill="#333333">
+                        <tspan x="83.245864" y="17">Written by Michelle Nicols</tspan>
+                    </text>
+                </g>
+                <g id="description" transform="translate(0.000000, 45.000000)">
+                    <g id="descriptionTextArea">
+                        <use fill="#D8D8D8" fill-rule="evenodd" xlink:href="#path-8"></use>
+                        <rect stroke="#979797" stroke-width="1" x="0.5" y="0.5" width="364" height="87"></rect>
+                    </g>
+                    <text font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" letter-spacing="0.3529412" fill="#333333">
+                        <tspan x="0" y="17">Reuters is is an international news agency </tspan>
+                        <tspan x="0" y="39">headquartered in London, England. It tries to </tspan>
+                        <tspan x="0" y="61">avoid any bias which may stem from control </tspan>
+                        <tspan x="0" y="83">by specific individuals or interests.</tspan>
+                    </text>
+                </g>
+                <g id="source">
+                    <g id="sourceTextArea">
+                        <use fill="#D8D8D8" fill-rule="evenodd" xlink:href="#path-9"></use>
+                        <rect stroke="#979797" stroke-width="1" x="0.5" y="0.5" width="364" height="32"></rect>
+                    </g>
+                    <text id="_source" font-family="OpenSans-Bold, Open Sans" font-size="24" font-weight="bold" letter-spacing="0.3529412" fill="#333333">
+                        <tspan x="135.153378" y="26">Reuters</tspan>
+                    </text>
+                </g>
+            </g>
+            <g id="sourceBias" transform="translate(170.000000, 40.000000)">
+                <g id="sourceBiasPie" stroke="#E6E6E6" stroke-width="8.55" fill-rule="nonzero">
+                    <g id="_sourceBiasPie" transform="translate(3.000000, 3.000000)">
+                        <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#FFFFFF"></path>
+                        <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" fill="#FFFFFF"></path>
+                        <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#9100B8"></path>
+                    </g>
+                </g>
+                <text id="_sourceBias" font-family="OpenSans-Regular, Open Sans" font-size="18" font-weight="normal" fill="#444444">
+                    <tspan x="19" y="126">Center</tspan>
+                </text>
+            </g>
+            <g id="indicatorBottom_article" transform="translate(185.000000, 410.000000)">
+                <rect id="Rectangle-9" fill="#FFFFFF" x="0" y="12" width="75" height="23"></rect>
+                <text id="ARTICLE" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" letter-spacing="0.5" fill="#4F8000">
+                    <tspan x="13" y="13">ARTICL</tspan>
+                    <tspan x="54.7949219" y="13">E</tspan>
+                </text>
+                <g id="arrow" transform="translate(23.000000, 18.000000)" fill="#72B800">
+                    <path d="M8.79,21.995 L20.6459015,9.90429268 L20.6459015,9.90429268 C21.4085576,9.12653221 21.4085516,7.8814736 20.6458882,7.1037204 L10.1657639,-3.5837587 L10.1657639,-3.5837587 C9.41379183,-4.3506089 8.18254314,-4.36267004 7.41569294,-3.610698 C7.40653919,-3.60172186 7.39747444,-3.59265541 7.3885,-3.5835 L7.37254624,-3.56722453 L7.37254624,-3.56722453 C6.61014851,-2.78945254 6.61023635,-1.54463357 7.37274385,-0.766969197 L16.464,8.505 L7.38608266,17.7627211 L7.38608266,17.7627211 C6.62343305,18.5404763 6.62343341,19.7855234 7.38608346,20.5632781 L8.79,21.995" id="Arrow" transform="translate(14.009500, 8.497500) rotate(90.000000) translate(-14.009500, -8.497500) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
