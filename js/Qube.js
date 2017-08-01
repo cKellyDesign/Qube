@@ -17,12 +17,13 @@ var QubeApp = function () {
 	this.hasSavedCurrentArticles = false;
 	this.activeScreen = "center";
 	window.viewport.on('side-change-complete', function () {
+		// console.log('side-change-complete listener for sourceScreen update', self.activeScreen);
 		// I couldn't come up with a quicker easier way to set the active Screen
 		if ($('#left').hasClass('active')) self.activeScreen = "left";
 		if ($('#center').hasClass('active')) self.activeScreen = "center";
 		if ($('#right').hasClass('active')) self.activeScreen = "right";
 
-		$('#top').append($('#SourceScreen_' + self.activeScreen))
+		$('#top').append($('#SourceScreen_template_' + self.activeScreen))
 	})
 
 	this.articles = [ 
@@ -199,49 +200,47 @@ var QubeApp = function () {
 
 
 
+
 		// 
 				 
-		$(thisSource.contentEl).children('g').each(function (i, sourceEl) { // i before e, except in underscore
-			
-
+		$('#sourceContent > g', thisSource.el).each(function (i, sourceEl) { // i before e, except in underscore
+			// Define the Content Groups being iterated through
+			var el = $(sourceEl).parents('div#top')
 			var thisTextArea = $('#' + sourceEl.id + 'TextArea', sourceEl)
-			var thisVal, rect, textEl;
+			var thisEl, rect, textEl, elWidth, newOffset, pretext;
 
+			// define all the text values
 			switch (sourceEl.id) {
-				case 'source':
-					thisVal = window.sources[thisArticle.sourceUID].name
-					$('#_source tspan', sourceEl).html(thisVal)
-				break;
 				case 'description':
+					// just handle 
 					thisVal = window.sources[thisArticle.sourceUID].desc
 					rect = $('#descriptionTextArea rect', sourceEl)
 					textEl = $('#_description', sourceEl)
-					wrapTextRect(rect, textEl, thisVal)
-				break;
-				case 'author':
-					thisVal = window.authors[thisArticle.authorUID].name
-					$('#_author tspan', sourceEl).html('Written by ' + thisVal)
 				break;
 				case 'date':
-					thisVal = _.findWhere(window.articles, { id : thisArticle.id})
-					$('#_date tspan', sourceEl).html('Published on ' + thisVal)
+					thisVal = _.findWhere(window.articles, { id : thisArticle.id}).date
+					pretext = 'Published on '
+				break;
+				case 'source':
+				case 'author':
+					thisVal = window[sourceEl.id + 's'][thisArticle[sourceEl.id + 'UID']].name
+					pretext = (sourceEl.id == 'author') ? 'Written by ' : false
 				break;
 			}
 
+			// replace text and center tspan if not the description, else do the textwrapping
+			if (sourceEl.id != 'description') {
+				thisEl = $('#_' + sourceEl.id + ' tspan', sourceEl).html((!!pretext ? pretext : '') + thisVal)
+				elWidth = thisEl[0].getBBox().width
+				newOffset = ($(thisEl).parents('#' + sourceEl.id)[0].getBBox().width / 2 ) - (elWidth / 2)
+				$(thisEl).attr('x', newOffset)
+			} else {
+				wrapTextRect(rect, textEl, thisVal)
+			}
+
+			// delete rectangle
 			thisTextArea.remove()
 		})
-
-		
-
-
-
-
-		// console.log('thisSource.content', thisSource.content)
-
-		// Drop that bad gal into the #top div
-		
-
-
 
 
 
