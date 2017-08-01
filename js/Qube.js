@@ -9,10 +9,22 @@ var QubeApp = function () {
 	this.$saveSkip = $('#saveSkip');
 
 	// QUBE APP STATE
-	this.currentUser = window.users["conkelly_uw_edu"];
+	this.currentUser = "conkelly_uw_edu";
 
 	this.currentTopic = 'North Korea';
-	this.biasGuessCount = 0;
+	this.biasGuessCount = 3; // used to control locking / unlocking next round
+	this.hasGuessedN = 0;
+	this.hasSavedCurrentArticles = false;
+	this.activeScreen = "center";
+	window.viewport.on('side-change-complete', function () {
+		// I couldn't come up with a quicker easier way to set the active Screen
+		if ($('#left').hasClass('active')) self.activeScreen = "left";
+		if ($('#center').hasClass('active')) self.activeScreen = "center";
+		if ($('#right').hasClass('active')) self.activeScreen = "right";
+
+		$('#top').append($('#SourceScreen_' + self.activeScreen))
+	})
+
 	this.articles = [ 
 		{
 			article: window.articles[0],
@@ -76,9 +88,56 @@ var QubeApp = function () {
 	}
 
 	// START CSS / JS / SVG Implementation
-	var IS_CSS_JS = true; // toggle this for side by side implementations
-	this.renderScreens = function () {
 
+
+	// handler to update QubeApp states for new screens
+	this.handleNextRound = function (e) {
+		if (self.biasGuessCount < self.articles.length) {
+			// console.log('can\'t go to next, don\'t have enough guesses')
+			return false;
+		}
+		if (e) e.stopPropagation()
+
+		// todo - insert analytics at end of last round (which is now)
+
+
+		self.biasGuessCount = 0;
+
+		// get existing articles (limited and random for now)
+		// todo - narrow this reference via user topic preference
+		articlesRef.once("value", function (snapshot) {
+
+			self.articles = []
+			var articles = snapshot.val()
+			var qubeSides = ['left', 'center', 'right'] // note - this is a great example of accidentally injecting bias into an algorithm. I think it feels natural bc it's LTR but it also aligns to my left leaning baises so I have to be conscious about not letting that seep furhter
+			
+			// randomly select an index along the aritcles array
+			var i = Math.floor(Math.random() * articles.length)
+			// Floor down to the nearest multiple of 3 and subtract 1 to convert to base 0
+			i = i - (i % 3)
+
+			// vanilla for loop to iterate over the set of 3 articles
+			for (var k=0; k < 3; k++) {
+				var thisAritcle = articles[i + k]
+				thisAritcle.userGuess = "";
+				self.articles[k] = thisAritcle;
+
+				// select a random side of the qube and assign thisArticle to it to randomize biase positioning on the qube
+				var thisSide =  qubeSides.splice(Math.floor(Math.random() * (qubeSides.length)), 1)
+				self.screens[thisSide].article = self.articles[k]
+			}
+
+
+			$('#top, #left, #center, #right').children('*').remove()
+			// console.log('data updated for next round!')
+			self.updateUserArticleHistory()
+			self.renderScreens()
+		})
+	}
+
+
+	this.renderScreens = function () {
+		$('#left, #center, #right, #top').html('')
 		$('#left, #center, #right').each(function (i, el) {
 			// defining the article content to render per screen
 			var thisScreen  = self.screens[el.id]
@@ -103,8 +162,18 @@ var QubeApp = function () {
 			self.renderArticleSreen(el, thisAritcle, i)
 		})
 
-		$('#top').append($('#SourceScreen_center'))
+		$('#top').append($('#SourceScreen_' + self.activeScreen))
+
+		self.renderSaveSkipScreen()
 	}
+
+	this.renderSaveSkipScreen = function () {
+		var $el = $('#saveSkip')
+
+		
+	}
+
+	
 
 	this.renderSourceScreen = function (el, thisSource) {
 		// Create new SVG
@@ -118,22 +187,13 @@ var QubeApp = function () {
 		$('#top').append(thisSource.el)
 
 		// todo - all the customization bits to populate the source info
-
-
-		// Listen for a custom event from the view port listening for
-		// the completion of the viewport calculating the new side and
-		// giving it the class active.
-		window.viewport.on('side-change-complete', function (e) {
-			// ignore if the side isn't active
-			if ( !$(el).hasClass('active')) return false;
-
-			// move the corresponding SVG lower in the DOM to become visible 
-			$('#top').append(thisSource.el)
-		});
 	}
 
-	this. renderArticleSreen = function (el, thisAritcle, i) {
-		// Rende
+	
+
+
+	this.renderArticleSreen = function (el, thisAritcle, i) {
+		// Render Article SVGs to their repsective sides
 		var thisArticleTemplate = $(el).append($('#ArticleTemplate').clone()).children('svg')
 		$(thisArticleTemplate).attr('id', $(thisArticleTemplate).attr('id') + '_' + i)
 		var $guessButton = $('#BiasGuessBtn').attr('id', 'BiasGuessBtn_' + i)
@@ -160,11 +220,7 @@ var QubeApp = function () {
 		wrapTextRect($Rect, $BodyTextArea, articleText, bodyOffset + 12)
 	}
 
-	this.renderScreens();
-
-	this.hasGuessedN = 0;
-	this.hasSavedCurrentArticles = false;
-	this.activeScreen = "center";
+	
 
 	this.showBiasGuessOverlay = function (el) {
 		if (!$('#GuessOverlay', el).length) {
@@ -186,6 +242,10 @@ var QubeApp = function () {
 		$('#Close_Btn', el).on('click', function (e) {
 			$('#L, #LC, #C, #RC, #R', el).off('click')
 			$('#GuessOverlay', el).addClass('ghost')
+			setTimeout(function(){
+				$(el).prepend($(ov))
+			}, 400)
+				
 		})
 		
 	}
@@ -216,7 +276,7 @@ var QubeApp = function () {
 		e.preventDefault();
 		e.stopPropagation();
 
-		if (IS_CSS_JS) this.showBiasGuessOverlay(el)
+		this.showBiasGuessOverlay(el)
 	}
 
 	this.onBiasGuess = function (e, el, selection) {
@@ -232,7 +292,7 @@ var QubeApp = function () {
 			thisAritcle.isCorrect = isCorrect;
 
 			// handler to update firebase
-			self.handleBiasGuess(el, correctBias, isCorrect)
+			self.handleBiasGuess(el, correctBias, selection)
 		}
 
 		// modify SVG element to be 'unlocked'
@@ -240,12 +300,6 @@ var QubeApp = function () {
 
 		// count up to next round
 		self.biasGuessCount++;
-
-		// if all articles are guessed, unlock the save/skip buttons
-		if (self.biasGuessCount === this.articles.length) {
-			// todo - unlock next round of articles!
-			self.biasGuessCount = 0;
-		}
 
 		// Hiding Overlay after guessing
 		setTimeout(function () {
@@ -275,12 +329,52 @@ var QubeApp = function () {
 
 
 	var usersRef = firebase.database().ref('users'); // users firebase ref
+	
 	var articlesRef = firebase.database().ref('articles')
 	var sourcesRef = firebase.database().ref('sources')
 	var authorsRef = firebase.database().ref('authors')
 
+	this.user = this.user || null
+	this.userRef = usersRef.child(self.currentUser)
+	this.userRef.once('value', function (snapshot) {
+		self.user = snapshot.val()
+		// console.log(self.user)
+	})
+	this.userHistoryRef = self.userRef.child('article_history')
+	this.userSavedArticlesRef = self.userRef.child('saved_articles')
 
-	//  // Generic Callback
+
+
+	this.updateUserArticleHistory = function () {
+		// save each article from current round to users' saved_articels
+		for (var i = 0; i < self.articles.length; i++) {
+
+			var thisAritcle = self.articles[i]
+			var userHistoryEntryRef = self.userHistoryRef.child(thisAritcle.id)
+
+			userHistoryEntryRef.set(thisAritcle)
+		} 
+	}
+
+
+	this.handleSaveArticles = function(e) {
+		e.preventDefault()
+		e.stopPropagation()
+
+		for (var i = 0; i < self.articles.length; i++) {
+
+			var thisAritcle = self.articles[i]
+			// console.log('thisAritcle to save', thisAritcle)
+			var userSavedArticlesEntryRef = self.userSavedArticlesRef.child(thisAritcle.id)
+			userSavedArticlesEntryRef.set(thisAritcle)
+		}	
+	}
+
+	$('#nextBtn').on('click', self.handleNextRound);
+	$('#saveBtn').on('click', self.handleSaveArticles);
+
+
+	// // Generic Callback
 	// function getValueCallback (snapshot) {
 	// 	console.log(snapshot.val())
 	// 	// $("#valueText").html(self.value);
@@ -301,30 +395,34 @@ var QubeApp = function () {
 	// articlesRef.on("value", getValueCallback);
 
 	//  // USED TO RESET FIREBASE TO STUB DATA!!!
-	// var setUser = { };
-	// var UID = this.currentUser.email
-	// setUser[UID] = window.users[UID];
-	// usersRef.set(setUser);
+	// usersRef.set(window.users)
 	// articlesRef.set(window.articles)
 	// sourcesRef.set(window.sources)
 	// authorsRef.set(window.authors)
 
-
+	
 
 
 	// START BIAS GUESSING HANDLING
-	this.handleBiasGuess = function (el, correctBias, isCorrect) {
-		var queryString = "users/" + self.currentUser + "/biasGuessing/" + correctBias
+	this.handleBiasGuess = function (el, correctBias, selection) {
+		var queryString = "users/" + self.user + "/biasGuessing/" + correctBias
 
-		var userBiasGuessingRef = usersRef.child(self.currentUser.email)
+		var userBiasGuessingRef = usersRef.child(self.user.email)
 										  .child('biasGuessing')
 										  .child(correctBias)
+
+
+		if (!self.userHistoryRef) 
+			self.userHistoryRef = self.userRef.child('article_history')
+		var articleID = self.screens[el.id].article.id;
+		var userHistoryArticleBiasGuessRef = self.userHistoryRef.child(articleID).child('userGuess')
+		userHistoryArticleBiasGuessRef.set(selection)
 
 		// once gets the value pretty much immediately and we can update the stats!
 		userBiasGuessingRef.once('value',function(snapshot) {
 			var stats = snapshot.val()
 			stats.totalGuessed++;
-			stats.guessedCorrectly = stats.guessedCorrectly + (Number(isCorrect))
+			stats.guessedCorrectly = stats.guessedCorrectly + (Number(correctBias == selection))
 			if (stats.totalGuessed) stats.avg = stats.guessedCorrectly / stats.totalGuessed;
 
 			userBiasGuessingRef.set(stats)
@@ -335,7 +433,7 @@ var QubeApp = function () {
 
 	// Prevents images from swallowing click and dragging of the cube! :D
 	$('#top, #center, #left, #right, #base, #saveSkip').on('dragstart', function (e) { return false; })
-
+	this.handleNextRound();
 }
 
 window.qubeApp = new QubeApp()

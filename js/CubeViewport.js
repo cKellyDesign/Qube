@@ -307,6 +307,7 @@ function Cube(data) {
 }
 Cube.prototype.rotateSides = function() {
   var viewport = this.viewport;
+  if (!this.sides[0].getElementsByClassName('cube-image')[0] || !this.sides[5].getElementsByClassName('cube-image')[0]) return false;
   if(viewport.positionY > 90 && viewport.positionY < 270) {
     this.sides[0].getElementsByClassName('cube-image')[0].style[userPrefix.js + 'Transform'] = 'rotate(' + (viewport.positionX + viewport.torqueX) + 'deg)';
     this.sides[5].getElementsByClassName('cube-image')[0].style[userPrefix.js + 'Transform'] = 'rotate(' + -(viewport.positionX + 180 + viewport.torqueX) + 'deg)';
@@ -321,7 +322,8 @@ Cube.prototype.upsideDown = function(obj) {
   var i = 5;
 
   while(i > 0 && --i) {
-    this.sides[i].getElementsByClassName('cube-image')[0].style[userPrefix.js + 'Transform'] = 'rotate(' + deg + ')';
+    if (!!this.sides[i].getElementsByClassName('cube-image')[0])
+      this.sides[i].getElementsByClassName('cube-image')[0].style[userPrefix.js + 'Transform'] = 'rotate(' + deg + ')';
   }
 
 }

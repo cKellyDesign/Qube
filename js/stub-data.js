@@ -14,8 +14,7 @@ window.articles = [
 		source : "Vox.com",
 		sourceUID : 1000,
 		author : "Alex Ward",
-		authorUID : 0,
-		userGuess : ""
+		authorUID : 0
 	},
 
 	{
@@ -30,8 +29,7 @@ window.articles = [
 		source : "Reuters",
 		sourceUID : 1001,
 		author : "Michelle Nichols",
-		authorUID : 1,
-		userGuess : ""
+		authorUID : 1
 	},
 
 	{
@@ -47,8 +45,7 @@ window.articles = [
 		source : "The Washington Times",
 		sourceUID : 1002,
 		author : "David R. Sands",
-		authorUID : 2,
-		userGuess : ""
+		authorUID : 2
 	},
 
 	{
@@ -57,15 +54,14 @@ window.articles = [
 		bias : "LC",
 		title : "Joint Chiefs: We Won't Implement a Trans Ban Until Trump Tells Us What His Tweets Mean",
 		subtitle : "",
-		img : ""
+		img : "",
 		body : "On Thursday, Chairman of the Joint Chiefs of Staff General Joseph Dunford informed the military that the Pentagon would not implement a ban on transgender troops \“until the President's direction has been received by the Secretary of Defense and the Secretary has issued implementation guidance.\” Until that point, Dunford wrote, there \“will be no modifications to the current policy,\” and “we will continue to treat all of our personnel with respect.\” About 15,000 transgender troops are currently serving openly in the United States military. In June of 2016, then-Secretary of Defense Ash Carter announced that already-serving transgender troops could come out without fear of discharge. He also established a plan to let openly transgender people enroll in the military within one year. On Wednesday morning, however, Trump declared on Twitter that \“the United States Government will not accept or allow\” transgender individuals \“to serve in any capacity in the U.S. Military.\” Trump’s proclamation raised the real possibility that the thousands of transgender troops in uniform might be purged. But Trump made his announcement without consulting the Pentagon. He reportedly did not even discuss the issue with his Secretary of Defense, James Mattis, who has strongly supported open transgender service in the past. Trump’s sudden decision threatened to jettison years of careful planning and preparation on the part of the military. It also left military leaders in a lurch, caught between the president’s tweets and formal policy. The Navy has clarified that, at least for now, transgender troops may still serve and receive transition-related medical care; Dunford’s letter makes clear that remains official policy in every branch of the armed forces. It is not surprising that the military would continue to adhere to settled policy until it is explicitly revoked. But Dunford’s careful wording indicates real discomfort with Trump’s declaration. By writing that \“we will continue to treat all of our personnel with respect,\” Dunford strongly implies that Trump’s policy would entail treating service members with disrespect. And his follow-up—\“As importantly, given the current fight and the challenges we face, we will all remain focused on accomplishing our assigned missions\”—suggests that Trump’s tweets are a distraction. (His statement also makes clear that the sheer incompetance and communication breakdown we have come to expect from this administration is alive and well.) The Pentagon is not defying Trump. But it is signaling its discomfort, and perhaps even irritation, with his abrupt attack on transgender individuals who simply want to serve their country in uniform. Mattis will soon have to decide whether to escalate this discomfort into concrete pushback.",
 		date : "07/27/2017",
-		url : "http://www.slate.com/blogs/outward/2017/07/27/joint_chiefs_chairman_won_t_implement_trump_s_trans_ban.html"
+		url : "http://www.slate.com/blogs/outward/2017/07/27/joint_chiefs_chairman_won_t_implement_trump_s_trans_ban.html",
 		source : "Slate",
 		sourceUID : 1003,
 		author : "Mark Joseph Stern",
-		authorUID : 3,
-		userGuess : ""
+		authorUID : 3
 	},
 
 	{
@@ -74,7 +70,7 @@ window.articles = [
 		bias : "C",
 		title : "Trump Ban on Transgender Service Members Alarms Some Military Officers",
 		subtitle : "",
-		body : "U.S. President Donald Trump's sudden decision to ban transgender personnel from serving in the military has alarmed some senior military officers who were caught off guard by it. Trump's declaration, which came via early morning tweets on Wednesday, appeared to pre-empt an ongoing Pentagon review looking into allowing openly transgender recruits to join the military, and he drew criticism from three senior officers interviewed by Reuters on Thursday. \"I hope our commander in chief understands that we don't transmit orders via Twitter, and that he can't, either,\" one said by telephone, speaking on the condition of anonymity. \"Even if this were an order, implementing it legally would take considerable time, if it's even possible. \" Rights groups and some lawmakers from both parties accused Trump of politically motivated discrimination and said the decision creates uncertainty for transgender active-duty service members and reservists, who say they number in the thousands.. The United States' top military officer, Marine General Joseph Dunford, told the armed forces on Thursday there had been no change yet to Pentagon policy on transgender personnel. Dunford, chairman of the Joint Chiefs of Staff, acknowledged the uncertainty that followed Trump's announcement in a note to service chiefs, commanders and senior enlisted leaders. \"I know there are questions about yesterday's announcement on the transgender policy by the President, \" Dunford wrote. \"There will be no modifications to the current policy until the President's direction has been received by the Secretary of Defense and the Secretary has issued implementation guidance,\" Dunford said in the message, first reported by Reuters. His message neither voiced support nor opposition to Trump's decision. One official, speaking on condition of anonymity, said Dunford in a separate message sent more narrowly to heads of the Army, Navy, Marine Corps and Air Force acknowledged that Trump's announcement on Wednesday was \"unexpected.\" The Defense Department had been expected to begin formally allowing transgender people to enlist this year. But Mattis on June 30 approved a six-month delay to allow for a review. As a presidential candidate, Trump last year had vowed to fight for lesbians, gays, bisexuals and transgender people. His move on Wednesday was praised by conservative activists and some fellow Republicans. The White House said Trump had \"extensive discussions with his national security team," and that Defense Secretary Jim Mattis was informed after the president decided on Tuesday to go ahead. Dunford then made the assurance that the military would \"treat all of our personnel with respect.",
+		body : "U.S. President Donald Trump's sudden decision to ban transgender personnel from serving in the military has alarmed some senior military officers who were caught off guard by it. Trump's declaration, which came via early morning tweets on Wednesday, appeared to pre-empt an ongoing Pentagon review looking into allowing openly transgender recruits to join the military, and he drew criticism from three senior officers interviewed by Reuters on Thursday. \"I hope our commander in chief understands that we don't transmit orders via Twitter, and that he can't, either,\" one said by telephone, speaking on the condition of anonymity. \"Even if this were an order, implementing it legally would take considerable time, if it's even possible. \" Rights groups and some lawmakers from both parties accused Trump of politically motivated discrimination and said the decision creates uncertainty for transgender active-duty service members and reservists, who say they number in the thousands.. The United States' top military officer, Marine General Joseph Dunford, told the armed forces on Thursday there had been no change yet to Pentagon policy on transgender personnel. Dunford, chairman of the Joint Chiefs of Staff, acknowledged the uncertainty that followed Trump's announcement in a note to service chiefs, commanders and senior enlisted leaders. \"I know there are questions about yesterday's announcement on the transgender policy by the President, \" Dunford wrote. \"There will be no modifications to the current policy until the President's direction has been received by the Secretary of Defense and the Secretary has issued implementation guidance,\" Dunford said in the message, first reported by Reuters. His message neither voiced support nor opposition to Trump's decision. One official, speaking on condition of anonymity, said Dunford in a separate message sent more narrowly to heads of the Army, Navy, Marine Corps and Air Force acknowledged that Trump's announcement on Wednesday was \"unexpected.\" The Defense Department had been expected to begin formally allowing transgender people to enlist this year. But Mattis on June 30 approved a six-month delay to allow for a review. As a presidential candidate, Trump last year had vowed to fight for lesbians, gays, bisexuals and transgender people. His move on Wednesday was praised by conservative activists and some fellow Republicans. The White House said Trump had \"extensive discussions with his national security team,\" and that Defense Secretary Jim Mattis was informed after the president decided on Tuesday to go ahead. Dunford then made the assurance that the military would \"treat all of our personnel with respect.",
 		date : "07/27/2017",
 		url : "https://www.reuters.com/article/us-usa-military-transgender-exclusive-idUSKBN1AC2FN",
 		source : "Reuters",
@@ -96,8 +92,7 @@ window.articles = [
 		source : "Fox News",
 		sourceUID : 1005,
 		author : "Barnini Chakrabotry",
-		authorUID : 5,
-		userGuess : ""
+		authorUID : 5
 		},
 
 	// {
@@ -112,9 +107,8 @@ window.articles = [
 	// 	source : "",
 	//  sourceUID : 0,
 	// 	author : "",
-	//  authorUID : 6,
-	// 	userGuess : ""
-	}
+	//  authorUID : 6
+	// }
 
 
 ];
@@ -239,6 +233,7 @@ window.users = {
 
 		},
 		article_history : [],
+		saved_articles : [],
 		bias_balance : {
 			current : {
 				date : '08/16/2017',
