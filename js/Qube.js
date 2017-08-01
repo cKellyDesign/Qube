@@ -89,6 +89,12 @@ var QubeApp = function () {
 
 	// START CSS / JS / SVG Implementation
 
+	this.initSaveSkipScreen = function() {
+		var $svg = $('#SaveSkipScreen_template').clone()
+		$('#saveSkip').append($svg)
+	}
+
+	this.initSaveSkipScreen();
 
 	// handler to update QubeApp states for new screens
 	this.handleNextRound = function (e) {
