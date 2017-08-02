@@ -13,7 +13,7 @@ body {
 
 
 body {
-  background: #1b1b1b;
+  background: #EEEEEE;
   font-family: Open Sans, Arial, sans-serif;
   font-weight: 300; }
 
@@ -169,7 +169,7 @@ body {
 }
 /* Bumbing the Qube down */
 .viewport { 
-  margin-top: 120px;
+  /*margin-top: 120px;*/
 }
 /* Hiding the numbers on from the original Cube demo */
 .cube-image { 
@@ -202,7 +202,7 @@ body {
 .side {
   background-image: none !important;
   background-color: black;
-  outline: 1px solid white !important
+  outline: 1px solid #444 !important
 }
 
 .side > object,
