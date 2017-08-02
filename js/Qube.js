@@ -16,15 +16,8 @@ var QubeApp = function () {
 	this.hasGuessedN = 0;
 	this.hasSavedCurrentArticles = false;
 	this.activeScreen = "center";
-	window.viewport.on('side-change-complete', function () {
-		// console.log('side-change-complete listener for sourceScreen update', self.activeScreen);
-		// I couldn't come up with a quicker easier way to set the active Screen
-		if ($('#left').hasClass('active')) self.activeScreen = "left";
-		if ($('#center').hasClass('active')) self.activeScreen = "center";
-		if ($('#right').hasClass('active')) self.activeScreen = "right";
 
-		$('#top').append($('#SourceScreen_template_' + self.activeScreen))
-	})
+	window.viewport.on('side-change-complete', self.updateToActiveSourceScreen)
 
 	this.articles = [ 
 		{
@@ -88,9 +81,6 @@ var QubeApp = function () {
 		}
 	}
 
-	// START CSS / JS / SVG Implementation
-
-
 
 	// handler to update QubeApp states for new screens
 	this.handleNextRound = function (e) {
@@ -139,7 +129,14 @@ var QubeApp = function () {
 
 
 	this.renderScreens = function () {
-		$('#left, #center, #right, #top').html('')
+		
+		// Clear out the sides of the cube
+		$('#left, #center, #right, #top, #saveSkip').html('')
+
+		// Render the Save Skip Side
+		self.renderSaveSkipScreen()
+
+		// Iterate over the article screens to render article screens and source screen
 		$('#left, #center, #right').each(function (i, el) {
 			// defining the article content to render per screen
 			var thisScreen  = self.screens[el.id]
@@ -154,98 +151,29 @@ var QubeApp = function () {
 			var thisSourceScreen =  self.screens[$(el).attr('id') + '_source']
 
 			
-			
-
-
-			// Setup Source Sreen
+			// Setup New Locked Source Sreen
 			self.renderSourceScreen(el, thisSource, thisArticle)
 			
 			// Defining Guess Button el
 			self.renderArticleSreen(el, thisArticle, i)
 		})
 
-		$('#top').append($('#SourceScreen_' + self.activeScreen))
-
-		self.renderSaveSkipScreen()
+		self.updateActiveSourceScreen()
 	}
 
+	// rendering this simplest screen, save/skip
 	this.renderSaveSkipScreen = function() {
 		var $svg = $('#SaveSkipScreen_template').clone()
 
 		$('#btn_skip', $svg).on('click', self.handleNextRound)
 		$('#btn_save', $svg).on('click', self.handleSaveArticles)
 
-
-
-
 		$('#saveSkip').append($svg)
 	}
 
 	
 
-	this.renderSourceScreen = function (el, thisSource, thisArticle) {
-		// Create new SVG
-		thisSource.el = $('#SourceScreen_template').clone()
-		thisSource.contentEl = $('#sourceContent', thisSource.el)
-
-		// Set SVG to unique ID and add class to orient SVG 
-		// towards corresponding Article Screen
-		$(thisSource.el).attr('id', $(thisSource.el).attr('id') + '_' + el.id).addClass(el.id)
-		thisSource.content = $('#sourceContent', thisSource.el)
-		$('#top').append(thisSource.el)
-
-		// dynamically update the text in the SVGs
-		// self.populateSourceScreen(el, thisSource, thisArticle)
-				 
-		$('#L, #LC, #C, #RC, #R', thisSource.el).addClass('hide')
-		
-
-		// todo - all the customization bits to populate the source info
-	}
-
-	this.populateSourceScreen = function (el, thisSource, thisArticle) {
-		$('#sourceContent > g', thisSource.el).each(function (i, sourceEl) { // i before e, except in underscore
-			// Define the Content Groups being iterated through
-			// var el = $(sourceEl).parents('div#top')
-			var thisTextArea = $('#' + sourceEl.id + 'TextArea', sourceEl)
-			var thisEl, rect, textEl, elWidth, newOffset, pretext;
-
-			// define all the text values
-			switch (sourceEl.id) {
-				case 'description':
-					// just handle 
-					thisVal = window.sources[thisArticle.sourceUID].desc
-					rect = $('#descriptionTextArea rect', sourceEl)
-					textEl = $('#_description', sourceEl)
-				break;
-				case 'date':
-					thisVal = _.findWhere(window.articles, { id : thisArticle.id}).date
-					pretext = 'Published on '
-				break;
-				case 'source':
-				case 'author':
-					thisVal = window[sourceEl.id + 's'][thisArticle[sourceEl.id + 'UID']].name
-					pretext = (sourceEl.id == 'author') ? 'Written by ' : false
-				break;
-			}
-
-			// replace text and center tspan if not the description, else do the textwrapping
-			if (sourceEl.id != 'description') {
-				thisEl = $('#_' + sourceEl.id + ' tspan', sourceEl).html((!!pretext ? pretext : '') + thisVal)
-				elWidth = thisEl[0].getBBox().width
-				newOffset = ($(thisEl).parents('#' + sourceEl.id)[0].getBBox().width / 2 ) - (elWidth / 2)
-				$(thisEl).attr('x', newOffset)
-			} else {
-				wrapTextRect(rect, textEl, thisVal)
-			}
-
-			// delete rectangle
-			thisTextArea.remove()
-		})
-
-	}
-
-
+	// With render out the Article Screen SVGs with Article Data / Content
 	this.renderArticleSreen = function (el, thisArticle, i) {
 		// Render Article SVGs to their repsective sides
 		var thisArticleTemplate = $(el).append($('#ArticleTemplate').clone()).children('svg')
@@ -274,8 +202,23 @@ var QubeApp = function () {
 		wrapTextRect($Rect, $BodyTextArea, articleText, bodyOffset + 12)
 	}
 
-	
+	// Render Source Screen for every Article Screen (from within article rendering loop)
+	this.renderSourceScreen = function (el, thisSource, thisArticle) {
+		// Create new SVG
+		thisSource.el = $('#SourceScreen_template').clone()
+		thisSource.contentEl = $('#sourceContent', thisSource.el)
 
+		// Set SVG to unique ID and add class to orient SVG 
+		// towards corresponding Article Screen
+		$(thisSource.el).attr('id', $(thisSource.el).attr('id') + '_' + el.id).addClass(el.id)
+		thisSource.content = $('#sourceContent', thisSource.el)
+		$('#top').append(thisSource.el)
+	}
+
+
+
+	// Shows bias overlay when user clicks the button to see it
+	// todo - rework this for new SVGs
 	this.showBiasGuessOverlay = function (el) {
 		if (!$('#GuessOverlay', el).length) {
 			 $(el).append($('#svgTemplateWrap #GuessOverlay').clone())
@@ -304,26 +247,7 @@ var QubeApp = function () {
 		
 	}
 
-	this.updateSourceScreenEl = function (el, bias) {
-		// define svg elements to move around
-		var svg = $('#SourceScreen_' + el.id)
-		var biasPie = $('#Source #' + bias, svg)
-		var biasBG = $('#Borders #Border_' + bias, svg)
-
-		// move SVGs up and down through dom to hide / reveal them
-		svg.prepend($('#Locked_Pie', svg)).append(biasPie)
-		
-		// move correct bias to bottom of DOM in coorispoding source
-		// to reveal the right answer
-		$('#Borders', svg).append(biasBG)
-
-	}
-
-	// END CSS / JS / SVG Implementation
-
-
-	// START EVENT LISTENER CALLBACK FUNCTIONS
-	// These function should be used in either FE implementation
+	
 
 	// When a user clicks on the bias button 
 	this.onBiasButtonClick = function (e, el) {
@@ -367,6 +291,138 @@ var QubeApp = function () {
 			}, 500)
 		},1000)
 	}
+
+
+	// fires when user guesses the bias
+	this.updateSourceScreenEl = function (el, bias) {
+
+		var thisArticle = self.screens[el.id].article,
+			thisSource  = window.sources[thisArticle.sourceUID],
+			sourceEl 	= $('#SourceScreen_template_' + el.id),
+			thisPie 	= $('#_sourceBiasPie', sourceEl),
+			biasLabel
+
+		// reveal / hide bias borders
+		$('#sourceScreen_template .active').removeClass('active')
+		var activeBoarder =  $('#sourceScreen_template #' + thisSource.bias, sourceEl).addClass('active')
+
+		// update bias pie	
+		$('path', thisPie).each(function (i, sliceEl) {
+
+			// define if the slice should be active and thus not white
+			var thisSliceBias = sliceEl.id.replace('sourceBiasPie_',''),
+				doActivate = (bias.indexOf(thisSliceBias) !== -1)
+
+			// handle slice state via class
+			if (doActivate) {
+				$(sliceEl).addClass('active')
+			} else {
+				$(sliceEl).removeClass('active')
+			}
+
+		})
+
+		// dynamically update the text in the SVGs
+		self.populateSourceScreenText(el, thisSource, thisArticle)
+	}
+
+	this.populateSourceScreenText = function (el, thisSource, thisArticle) {
+		var templateSvg = $('#SourceScreen_template_' + el.id)
+
+		// start source context looop
+		$('#sourceContent > g', thisSource.el).each(function (i, sourceEl) { // i before e, except in underscore
+			
+			// Define the Content Groups being iterated through
+			var thisTextArea = $('#' + sourceEl.id + 'TextArea', sourceEl),
+				thisEl, rect, textEl, elWidth, newOffset, pretext;
+
+			// define all the text values
+			switch (sourceEl.id) {
+				case 'description':
+					// just handle 
+					thisVal = window.sources[thisArticle.sourceUID].desc
+					rect = $('#descriptionTextArea rect', sourceEl)
+					textEl = $('#_description', sourceEl)
+				break;
+				case 'date':
+					thisVal = _.findWhere(window.articles, { id : thisArticle.id}).date
+					pretext = 'Published on '
+				break;
+				case 'source':
+				case 'author':
+					thisVal = window[sourceEl.id + 's'][thisArticle[sourceEl.id + 'UID']].name
+					pretext = (sourceEl.id == 'author') ? 'Written by ' : false
+				break;
+			}
+
+			// replace text and center tspan if not the description, else do the textwrapping
+			if (sourceEl.id != 'description') {
+				self.centerSVGText(sourceEl, thisVal, pretext)
+			} else {
+				wrapTextRect(rect, textEl, thisVal)
+			}
+
+			// delete rectangle
+			thisTextArea.remove()
+		})
+		// end source context loop
+
+		// Define Label For Bias
+		var biasLabel = '';
+		console.log("thisSource", thisSource)
+		switch (thisSource.bias) {
+			case 'L':
+				biasLabel = 'LEFT'
+			break;
+			case 'LC':
+				biasLabel = 'LEFT CENTER'
+			break;
+			case 'C':
+				biasLabel = 'CENTER'
+			break;	
+			case 'RC':
+				biasLabel = 'RIGHT CENTER'
+			break;
+			case 'C':
+				biasLabel = 'RIGHT'
+			break;
+		}
+
+		if (!biasLabel) console.log(thisSource)
+		biasLabel = !!biasLabel ? biasLabel : ''
+
+		// Update Source Bias Label
+		var biasLabelEl = $('#sourceBias', templateSvg)[0]
+		self.centerSVGText(biasLabelEl, biasLabel)
+
+	}
+
+	// sourceEl => parentEl, thisVal => thisText, pretext => pretext
+	this.centerSVGText = function (parentEl, thisText, pretext) {
+		if (!pretext) pretext = '';
+
+		var thisEl = $('#_' + parentEl.id + ' tspan', parentEl).html((pretext + thisText) )
+		var elWidth = thisEl[0].getBBox().width
+		var newOffset = ( $(thisEl).parents('#' + parentEl.id)[0].getBBox().width 	/ 2 ) - (elWidth / 2) 
+
+		$(thisEl).attr('x', newOffset)
+	}
+
+
+
+	// Utility function to update the source screen to show the app's Active Screen's Source
+	this.updateActiveSourceScreen = function () {
+		// console.log('side-change-complete listener for sourceScreen update', self.activeScreen);
+		// I couldn't come up with a quicker easier way to set the active Screen
+		if ($('#left').hasClass('active')) self.activeScreen = "left";
+		if ($('#center').hasClass('active')) self.activeScreen = "center";
+		if ($('#right').hasClass('active')) self.activeScreen = "right";
+
+		$('#top').append($('#SourceScreen_template_' + self.activeScreen))
+	}
+
+
+
 
 	// END EVENT LISTENERS
 

@@ -32,8 +32,9 @@ window.wrapTextRect = function (myRect, myText, str, offset)
     var text_element = myText;
     var tspan_element = document.createElementNS(NS, "tspan");   // Create first tspan element
     var text_node = document.createTextNode(words[0]);           // Create text in tspan element
-    if (x == NaN || y == NaN) debugger;
 
+    x = !!x ? x : 0;
+    y = !!y ? y : 0;
 
     tspan_element.setAttribute("x", x+padding);
     tspan_element.setAttribute("y", y+padding+fontSize);

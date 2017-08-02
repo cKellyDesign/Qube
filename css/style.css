@@ -297,19 +297,21 @@ body {
 
 
 #sourceBiasPie_L.active {
-  fill : #FFFFFF !important;
+  fill : #009BBD !important;
 }
 
 #sourceBiasPie_C.active {
-  fill : #FFFFFF !important;
+  fill : #9100B8 !important;
 }
 
 #sourceBiasPie_R.active {
-  fill : #FFFFFF !important;
+  fill : #ED006F !important;
 }
 
-
-
+#top #L, #top #LC, #top #C, #top #RC, #top #R, #top #locked { display: none; }
+#top #L.active, #top #LC.active, #top #C.active, #top #RC.active, #top #R.active, #top #locked.active {
+  display: initial;
+}
 
 
 
