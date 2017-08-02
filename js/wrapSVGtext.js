@@ -19,7 +19,7 @@ window.wrapTextRect = function (myRect, myText, str, offset)
     var fontSize = Number($(myText).attr('font-size'));
     // console.log(myText)
     // var fontSize = 14;
-    var lineHeight = 1.4;
+    var lineHeight = fontSize == 16 ? 1.4 : 1.2;
 
     var maxHeight = Number($(myRect).attr('height')) - offset;
     var maxLines = Math.floor(maxHeight / ( fontSize * lineHeight ));

@@ -314,5 +314,17 @@ body {
 }
 
 
+#yourGuess_unlocked,
+#yourGuess_locked {
+  display: none;
+}
+
+
+[id*="BiasGuessBtn"]:active rect {
+  fill: #4F8000;
+}
+
+
+
 
 

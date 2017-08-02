@@ -183,8 +183,9 @@ var QubeApp = function () {
 
 	// With render out the Article Screen SVGs with Article Data / Content
 	this.renderArticleSreen = function (el, thisArticle, i) {
-		// Render Article SVGs to their repsective sides
-		var thisArticleTemplate = $(el).append($('#ArticleTemplate').clone()).children('svg')
+		// Render Article SVGs to their repsective sides article_screen_template
+		var thisArticleTemplate = $(el).append($('svg#article_screen_template').clone()).children('svg')
+		// var thisArticleTemplate = $(el).append($('#ArticleTemplate').clone()).children('svg')
 		$(thisArticleTemplate).attr('id', $(thisArticleTemplate).attr('id') + '_' + i)
 		var $guessButton = $('#BiasGuessBtn').attr('id', 'BiasGuessBtn_' + i)
 
@@ -193,21 +194,26 @@ var QubeApp = function () {
 			self.onBiasButtonClick(e, el)
 		});
 
+		// Update topic Bar & Center
+		var topicLabelEl = $('#TopicTextArea tspan', el).html(thisArticle.topic)
+		var topicWidth   = topicLabelEl[0].getBBox().width
+		var newX = ( 445 / 2 ) - ( topicWidth / 2 )
+		topicLabelEl.attr('x', newX)
 
-		// Defining SVG els
-		var $Rect = $('#ArticleTextArea > rect', el); // The bounding box in which to contain the text
-		var $TitleTextArea = $('#textTitle', el); // svg text element for title
-		var $BodyTextArea = $('#textBody', el); // svg text element for body
+		// Update article Date
+		var dateLabelEl = $('#_articleDate tspan', el).html(thisArticle.date);
 
-		// Defining two pieces of text which need to be thrown into the svg
-		var articleText = thisArticle.body;
-		var articleTitle = thisArticle.title;
+		// Update Title
+		var titleRect = $('#articleTitleTextArea rect', el);
+		var $TitleTextArea = $('#_articleTitle', el); // svg text element for title
+		wrapTextRect(titleRect, $TitleTextArea, thisArticle.title)
 
-		// Runs a helper function to wrap text via svg tspan els
-		wrapTextRect($Rect, $TitleTextArea, articleTitle)
+		// Update Body
+		var bodyRect = $('#articleBodyTextArea rect', el);
+		var bodyTextEl = $('#_articleBodyText', el)
+		var articleBody = thisArticle.body;
+		wrapTextRect(bodyRect, bodyTextEl, articleBody)
 
-		var bodyOffset = Number($($TitleTextArea).attr('font-size')) * 1.4 * $($TitleTextArea).children('tspan').length;
-		wrapTextRect($Rect, $BodyTextArea, articleText, bodyOffset + 12)
 	}
 
 	// Render Source Screen for every Article Screen (from within article rendering loop)
@@ -229,7 +235,7 @@ var QubeApp = function () {
 	// todo - rework this for new SVGs
 	this.showBiasGuessOverlay = function (el) {
 		if (!$('#GuessOverlay', el).length) {
-			 $(el).append($('#svgTemplateWrap #GuessOverlay').clone())
+			 $(el).append($('#wrapTextRect #GuessOverlay').clone())
 		} else {
 			$(el).append($('#GuessOverlay', el))
 			$('#GuessOverlay', el).removeClass('ghost')
