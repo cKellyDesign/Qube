@@ -200,6 +200,7 @@ var QubeApp = function () {
 		var topicWidth   = topicLabelEl[0].getBBox().width
 		var newX = ( 445 / 2 ) - ( topicWidth / 2 )
 		topicLabelEl.attr('x', newX)
+		// debugger;
 
 		// Update article Date
 		var dateLabelEl = $('#_articleDate tspan', el).html(thisArticle.date);
