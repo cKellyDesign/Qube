@@ -313,12 +313,17 @@ body {
   display: initial;
 }
 
-
+#actionBiasBtn,
 #yourGuess_unlocked,
 #yourGuess_locked {
   display: none;
 }
 
+#actionBiasBtn.active,
+#yourGuess_unlocked.active,
+#yourGuess_locked.active {
+  display: initial;
+}
 
 [id*="BiasGuessBtn"]:active rect {
   fill: #4F8000;

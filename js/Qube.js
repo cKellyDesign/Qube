@@ -232,6 +232,14 @@ var QubeApp = function () {
 
 
 
+	// When a user clicks on the bias button 
+	this.onBiasButtonClick = function (e, el) {
+		e.preventDefault();
+		e.stopPropagation();
+
+		this.showBiasGuessOverlay(el)
+	}
+
 	// Shows bias overlay when user clicks the button to see it
 	// todo - rework this for new SVGs
 	this.showBiasGuessOverlay = function (el) {
@@ -263,15 +271,8 @@ var QubeApp = function () {
 		
 	}
 
+
 	
-
-	// When a user clicks on the bias button 
-	this.onBiasButtonClick = function (e, el) {
-		e.preventDefault();
-		e.stopPropagation();
-
-		this.showBiasGuessOverlay(el)
-	}
 
 	this.onBiasGuess = function (e, el, selection) {
 		var thisArticle = self.screens[el.id].article;
@@ -294,6 +295,9 @@ var QubeApp = function () {
 
 		// count up to next round
 		self.biasGuessCount++;
+
+		$('.active', el).removeClass('active')
+		$('#yourGuess_unlocked', el).addClass('active')
 
 		// Hiding Overlay after guessing
 		setTimeout(function () {
