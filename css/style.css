@@ -59,7 +59,7 @@ body {
   position: absolute;
   height: 500px;
   width: 500px;
-  background-image: url("http://jordizle.com/demo/376/3d-interactive-cube-with-rotating-sides-using-css3-and-javascript/assets/img/cube/blank.png");
+  /*background-image: url("http://jordizle.com/demo/376/3d-interactive-cube-with-rotating-sides-using-css3-and-javascript/assets/img/cube/blank.png");*/
   -webkit-touch-callout: none;
   -moz-touch-callout: none;
   -ms-touch-callout: none;
@@ -200,9 +200,12 @@ body {
 }*/
 
 .side {
-  background-image: none !important;
-  background-color: black;
-  outline: 1px solid #444 !important
+  /*background: none !important;*/
+  /*background-color: black;*/
+  outline: 1px solid #444 !important;
+
+  background: #a57933;
+
 }
 
 .side > object,

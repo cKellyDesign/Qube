@@ -298,7 +298,7 @@ var QubeApp = function () {
 		self.biasGuessCount++;
 
 		$('.active', el).removeClass('active')
-		$('#yourGuess_unlocked', el).addClass('active')
+		$('#yourGuess_locked', el).addClass('active')
 
 		// Hiding Overlay after guessing
 		setTimeout(function () {
