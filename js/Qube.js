@@ -298,7 +298,26 @@ var QubeApp = function () {
 		self.biasGuessCount++;
 
 		$('.active', el).removeClass('active')
-		$('#yourGuess_locked', el).addClass('active')
+		var lockedGuess = $('#yourGuess_locked', el).addClass('active')
+		var userGuessPie = $('#_userGuess', lockedGuess)
+
+		// update bias guess pie
+		$('path', userGuessPie).each(function (i, sliceEl) {
+			// define if the slice should be active and thus not white
+			var thisSliceBias = sliceEl.id.replace('sourceBiasPie_',''),
+				doActivate = (selection.indexOf(thisSliceBias) !== -1)
+
+			// handle slice state via class
+			if (doActivate) {
+				$(sliceEl).addClass('active')
+			} else {
+				$(sliceEl).removeClass('active')
+			}
+		})
+
+		// update bias guess label
+		var biasLabel = this.getBiasLabel(selection)
+		var biasLabelEl = $('#_userRating tspan').html(biasLabel)
 
 		// Hiding Overlay after guessing
 		setTimeout(function () {
@@ -389,33 +408,34 @@ var QubeApp = function () {
 		// end source context loop
 
 		// Define Label For Bias
-		var biasLabel = '';
-		console.log("thisSource", thisSource)
-		switch (thisSource.bias) {
-			case 'L':
-				biasLabel = 'LEFT'
-			break;
-			case 'LC':
-				biasLabel = 'LEFT CENTER'
-			break;
-			case 'C':
-				biasLabel = 'CENTER'
-			break;	
-			case 'RC':
-				biasLabel = 'RIGHT CENTER'
-			break;
-			case 'C':
-				biasLabel = 'RIGHT'
-			break;
-		}
-
-		if (!biasLabel) console.log(thisSource)
+		var biasLabel = self.getBiasLabel(thisSource.bias);
 		biasLabel = !!biasLabel ? biasLabel : ''
 
 		// Update Source Bias Label
 		var biasLabelEl = $('#sourceBias', templateSvg)[0]
 		self.centerSVGText(biasLabelEl, biasLabel)
 
+	}
+
+	this.getBiasLabel = function (bias) {
+		switch (bias) {
+			case 'L':
+				return 'LEFT'
+			break;
+			case 'LC':
+				return 'LEFT CENTER'
+			break;
+			case 'C':
+				return 'CENTER'
+			break;	
+			case 'RC':
+				return 'RIGHT CENTER'
+			break;
+			case 'C':
+				return 'RIGHT'
+			break;
+		}
+		return ''
 	}
 
 	// sourceEl => parentEl, thisVal => thisText, pretext => pretext
