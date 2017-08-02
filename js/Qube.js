@@ -191,6 +191,7 @@ var QubeApp = function () {
 
 		// Adding event listener (for some reason it doesn't like .on('click', this.callbackFunc); )
 		$($guessButton).on('click', function (e) {
+			console.log('guess button clicked')
 			self.onBiasButtonClick(e, el)
 		});
 
@@ -234,25 +235,26 @@ var QubeApp = function () {
 	// Shows bias overlay when user clicks the button to see it
 	// todo - rework this for new SVGs
 	this.showBiasGuessOverlay = function (el) {
-		if (!$('#GuessOverlay', el).length) {
-			 $(el).append($('#wrapTextRect #GuessOverlay').clone())
+		if (!$('#guess_screen_template', el).length) {
+			 $(el).append($('#svgTemplateWrap svg#guess_screen_template').clone())
 		} else {
-			$(el).append($('#GuessOverlay', el))
-			$('#GuessOverlay', el).removeClass('ghost')
+			$(el).append($('svg#guess_screen_template', el))
+			$('svg#guess_screen_template', el).removeClass('ghost')
 		}
 		
-		var ov = $('#GuessOverlay', el);
-		$('#L, #LC, #C, #RC, #R', el).on('click', function (e) {
-			// pass extra parameter "this.id" to check the bias
-			self.onBiasGuess(e, el, this.id)
+		var ov = $('#guess_screen_template', el);
+		$('#overlay_pie_L, #overlay_pie_LC, #overlay_pie_C, #overlay_pie_RC, #overlay_pie_R', el).on('click', function (e) {
+			var biasGuess = this.id.replace('overlay_pie_', '')
+			self.onBiasGuess(e, el, biasGuess)
+
 			var BGs = $('#Guess_BGs', ov);
-			$(BGs).append($('#Guess_' + this.id + '_BG'), BGs);
+			BGs.append($('#Guess_' + biasGuess + '_BG', BGs))
 			$('text', ov).attr('fill', 'white')
 		})
 
 		$('#Close_Btn', el).on('click', function (e) {
-			$('#L, #LC, #C, #RC, #R', el).off('click')
-			$('#GuessOverlay', el).addClass('ghost')
+			$('#overlay_pie_L, #overlay_pie_LC, #overlay_pie_C, #overlay_pie_RC, #overlay_pie_R', el).off('click')
+			$('svg#guess_screen_template', el).addClass('ghost')
 			setTimeout(function(){
 				$(el).prepend($(ov))
 			}, 400)
@@ -295,13 +297,13 @@ var QubeApp = function () {
 
 		// Hiding Overlay after guessing
 		setTimeout(function () {
-			$('#L, #LC, #C, #RC, #R', el).off('click')
+			$('#overlay_pie_L, #overlay_pie_LC, #overlay_pie_C, #overlay_pie_RC, #overlay_pie_R', el).off('click')
 			$('#Close_Btn').off('click')
 
 
-			$('#GuessOverlay', el).addClass('ghost');
+			$('svg#guess_screen_template', el).addClass('ghost');
 			setTimeout(function(){
-				$(el).prepend($('#GuessOverlay', el))
+				$(el).prepend($('svg#guess_screen_template', el))
 			}, 500)
 		},1000)
 	}
@@ -317,7 +319,7 @@ var QubeApp = function () {
 			biasLabel
 
 		// reveal / hide bias borders
-		$('#sourceScreen_template .active').removeClass('active')
+		$('#sourceScreen_template .active', sourceEl).removeClass('active')
 		var activeBoarder =  $('#sourceScreen_template #' + thisSource.bias, sourceEl).addClass('active')
 
 		// update bias pie	

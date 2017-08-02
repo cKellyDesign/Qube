@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="445px" height="445px" viewBox="0 0 445 445" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #FFFFFF;">
-    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+<svg id="guess_screen_template" width="445px" height="445px" viewBox="0 0 445 445" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #FFFFFF;">
+
     <title>guess_screen_template</title>
-    <desc>Created with Sketch.</desc>
     <defs>
         <linearGradient x1="50%" y1="3.061617e-15%" x2="50%" y2="100%" id="linearGradient-1">
             <stop stop-color="#00748D" offset="0%"></stop>
@@ -50,9 +49,14 @@
     </defs>
     <g id="Cube-Screens" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="guess_screen_template">
+
+
             <g id="overlay" fill-opacity="0.5" fill="#444444">
                 <rect x="0" y="0" width="445" height="445"></rect>
             </g>
+
+
+
             <g id="Guess_L_BG" transform="translate(20.000000, 20.000000)">
                 <g id="left_bg">
                     <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
@@ -80,58 +84,67 @@
             <g id="Guess_BG" transform="translate(20.000000, 20.000000)" fill="url(#linearGradient-12)">
                 <rect id="guess_bg" x="0" y="0" width="405" height="405" rx="20"></rect>
             </g>
+
+
+
             <g id="question_mark" transform="translate(148.000000, 205.000000)" font-size="24" font-family="OpenSans-Bold, Open Sans" fill="#FFFFFF" font-weight="bold">
                 <text id="?">
                     <tspan x="69.2753906" y="26">?</tspan>
                 </text>
             </g>
-            <g id="L" transform="translate(97.000000, 283.000000)">
+
+
+
+            <g id="overlay_pie_L" transform="translate(97.000000, 283.000000)">
                 <g id="L_bias" stroke="#E6E6E6" stroke-width="8.55" fill-rule="nonzero">
                     <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#009BBD"></path>
                     <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" fill="#FFFFFF"></path>
                     <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#FFFFFF"></path>
                 </g>
-                <text id="Left" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#FFFFFF">
+                <text id="overlay_Label_Left" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#FFFFFF">
                     <tspan x="37" y="120">Left</tspan>
                 </text>
             </g>
-            <g id="LC" transform="translate(55.000000, 144.000000)">
+
+
+
+            <g id="overlay_pie_LC" transform="translate(55.000000, 144.000000)">
                 <g id="LC_bias" stroke="#E6E6E6" stroke-width="8.55" fill-rule="nonzero">
                     <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#009BBD"></path>
                     <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" fill="#FFFFFF"></path>
                     <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#9100B8"></path>
                 </g>
-                <text id="Left-Center" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#FFFFFF">
+                <text id="overlay_Label_Left-Center" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#FFFFFF">
                     <tspan x="13" y="122">Left Center</tspan>
                 </text>
             </g>
-            <g id="R" transform="translate(250.000000, 283.000000)">
+            <g id="overlay_pie_R" transform="translate(250.000000, 283.000000)">
                 <g id="R_bias" stroke="#E6E6E6" stroke-width="8.55" fill-rule="nonzero">
                     <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#FFFFFF"></path>
                     <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" fill="#ED006F"></path>
                     <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#FFFFFF"></path>
                 </g>
-                <text id="Right" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#FFFFFF">
+                <text id="overlay_Label_Right" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#FFFFFF">
                     <tspan x="32" y="120">Right</tspan>
                 </text>
             </g>
-            <g id="RC" transform="translate(292.000000, 144.000000)">
+            <g id="overlay_pie_RC" transform="translate(292.000000, 144.000000)">
                 <g id="RC_bias" stroke="#E6E6E6" stroke-width="8.55" fill-rule="nonzero">
                     <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#FFFFFF"></path>
                     <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" fill="#ED006F"></path>
                     <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#9100B8"></path>
                 </g>
-                <text id="Right-Center" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#FFFFFF">
+                <text id="overlay_Label_Right-Center" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#FFFFFF">
                     <tspan x="8" y="122">Right Center</tspan>
                 </text>
             </g>
-            <g id="C" transform="translate(175.000000, 45.000000)">
+            <g id="overlay_pie_C" transform="translate(175.000000, 45.000000)">
                 <g id="C_bias" transform="translate(0.857143, 0.857143)" stroke="#E6E6E6" stroke-width="8.55" fill-rule="nonzero">
                     <path d="M47.7641723,47.7732426 L47.7641723,95.0839002 C21.6352176,95.0839002 0.453514739,73.9021973 0.453514739,47.7732426 C0.354251172,39.454287 2.55119644,31.2690966 6.80272109,24.1179138 L47.7641723,47.7732426 Z" id="Shape" fill="#FFFFFF"></path>
                     <path d="M47.7641723,47.7732426 L88.7346939,24.1179138 C101.798294,46.7454236 94.0461932,75.678748 71.4195011,88.7437642 C64.2683184,92.9952888 56.083128,95.1922341 47.7641723,95.0929705 L47.7641723,47.7732426 Z" id="Shape" fill="#FFFFFF"></path>
                     <path d="M47.7641723,47.7732426 L6.79365079,24.1179138 C19.8586669,1.49122181 48.7919914,-6.26087872 71.4195011,6.80272109 C78.6734441,10.8726843 84.6647307,16.8639708 88.7346939,24.1179138 L47.7641723,47.7732426 Z" id="Shape" fill="#9100B8"></path>
                 </g>
-                <text id="Center" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#FFFFFF">
+                <text id="overlay_Label_Center" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#FFFFFF">
                     <tspan x="26" y="117">Center</tspan>
                 </text>
             </g>
