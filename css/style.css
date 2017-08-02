@@ -169,7 +169,7 @@ body {
 }
 /* Bumbing the Qube down */
 .viewport { 
-  /*margin-top: 120px;*/
+  margin-top: 60px;
 }
 /* Hiding the numbers on from the original Cube demo */
 .cube-image { 
