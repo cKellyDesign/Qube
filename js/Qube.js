@@ -17,7 +17,15 @@ var QubeApp = function () {
 	this.hasSavedCurrentArticles = false;
 	this.activeScreen = "center";
 
-	window.viewport.on('side-change-complete', self.updateToActiveSourceScreen)
+	window.viewport.on('side-change-complete', function () {
+		// console.log('side-change-complete listener for sourceScreen update', self.activeScreen);
+		// I couldn't come up with a quicker easier way to set the active Screen
+		if ($('#left').hasClass('active')) self.activeScreen = "left";
+		if ($('#center').hasClass('active')) self.activeScreen = "center";
+		if ($('#right').hasClass('active')) self.activeScreen = "right";
+
+		$('#top').append($('#SourceScreen_template_' + self.activeScreen))
+	})
 
 	this.articles = [ 
 		{
