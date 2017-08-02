@@ -17,12 +17,28 @@ var QubeApp = function () {
 	this.hasSavedCurrentArticles = false;
 	this.activeScreen = "center";
 
+	this.toUnlockLeftFromTop = false
+	this.toUnlockCenterFromTop = false
+	this.toUnlockRightFromTop = false
+
 	window.viewport.on('side-change-complete', function () {
+
+
+
 		// console.log('side-change-complete listener for sourceScreen update', self.activeScreen);
 		// I couldn't come up with a quicker easier way to set the active Screen
-		if ($('#left').hasClass('active')) self.activeScreen = "left";
-		if ($('#center').hasClass('active')) self.activeScreen = "center";
-		if ($('#right').hasClass('active')) self.activeScreen = "right";
+		if ($('#left').hasClass('active')) {
+			self.activeScreen = "left";
+			if (self.toUnlockLeftFromTop) self.handleBiasGuessReveal('left')
+		}
+		if ($('#center').hasClass('active')) {
+			self.activeScreen = "center";
+			if (self.toUnlockCenterFromTop) self.handleBiasGuessReveal('center')
+		}
+		if ($('#right').hasClass('active')) {
+			self.activeScreen = "right";
+			if (self.toUnlockRightFromTop) self.handleBiasGuessReveal('right')
+		}
 
 		$('#top').append($('#SourceScreen_template_' + self.activeScreen))
 	})
@@ -289,10 +305,11 @@ var QubeApp = function () {
 
 			// handler to update firebase
 			self.handleBiasGuess(el, correctBias, selection)
-		}
 
-		// modify SVG element to be 'unlocked'
-		self.updateSourceScreenEl(el, correctBias)
+			// modify SVG element to be 'unlocked'
+			self.updateSourceScreenEl(el, correctBias)
+		}
+		
 
 		// count up to next round
 		self.biasGuessCount++;
@@ -314,10 +331,15 @@ var QubeApp = function () {
 				$(sliceEl).removeClass('active')
 			}
 		})
+		self['toUnlock' + el.id +'FromTop'] = true
 
 		// update bias guess label
 		var biasLabel = this.getBiasLabel(selection)
-		var biasLabelEl = $('#_userRating tspan').html(biasLabel)
+		var biasLabelEl = $('#_userRating tspan', lockedGuess).html(biasLabel)
+
+		$('#btnRedo', lockedGuess).on('click', function (e) {
+			self.onBiasButtonClick(e, el)
+		})
 
 		// Hiding Overlay after guessing
 		setTimeout(function () {
@@ -462,7 +484,10 @@ var QubeApp = function () {
 		$('#top').append($('#SourceScreen_template_' + self.activeScreen))
 	}
 
-
+	this.handleBiasGuessReveal = function (side) {
+		// var el = $('#' + side),
+			
+	}
 
 
 	// END EVENT LISTENERS
