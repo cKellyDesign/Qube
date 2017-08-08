@@ -19,7 +19,7 @@ window.wrapTextRect = function (myRect, myText, str, offset)
     var fontSize = Number($(myText).attr('font-size'));
     // console.log(myText)
     // var fontSize = 14;
-    var lineHeight = 1.4;
+    var lineHeight = fontSize == 16 ? 1.4 : 1.2;
 
     var maxHeight = Number($(myRect).attr('height')) - offset;
     var maxLines = Math.floor(maxHeight / ( fontSize * lineHeight ));
@@ -32,6 +32,10 @@ window.wrapTextRect = function (myRect, myText, str, offset)
     var text_element = myText;
     var tspan_element = document.createElementNS(NS, "tspan");   // Create first tspan element
     var text_node = document.createTextNode(words[0]);           // Create text in tspan element
+
+    x = !!x ? x : 0;
+    y = !!y ? y : 0;
+
     tspan_element.setAttribute("x", x+padding);
     tspan_element.setAttribute("y", y+padding+fontSize);
     tspan_element.appendChild(text_node);                           // Add tspan element to DOM

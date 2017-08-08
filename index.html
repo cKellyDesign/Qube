@@ -44,7 +44,7 @@
 			</div>
 
 			<div id="saveSkip" class="side">
-                <div id="saveSkipWrapper">
+                <div id="saveSkipWrapper" class="hide">
                     <h3>Save Articles / Next Round</h3>
                     <button id="saveBtn">Save</button>
                     <button id="nextBtn">Next</button>
@@ -58,319 +58,571 @@
 
 <!-- Start SVG Templates -->
 <div id="svgTemplateWrap">
-	<svg id="ArticleTemplate" width="445px" height="445px" viewBox="0 0 445 445" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #FFFFFF;">
-	    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-	        <g id="__Cube-Article-HIFI">
-
-		        <g id="ArticleTextArea">
-		            <rect fill="#FFFFFF" x="30" y="98" width="397" height="236"></rect>
-		            <text id="textTitle" fill="#548800" font-family="OpenSans-Regular, OpenSans, Arial" font-size="24" x="30" y="120" width="397">Hello</text>
-		            <text y="30" id="textBody" fill="black" font-size="16" font-family="Arial" >World</text>
-	            </g>
 
 
-	            <g id="SourceIndicator" transform="translate(198.000000, 0.000000)" fill="#BBBBBB">
-	                <g id="'Screen-Indicator/Top/Inactive">
-	                    <text id="SOURCE" font-family="OpenSans-Regular, OpenSans, Arial" font-size="12" font-weight="normal">
-	                        <tspan x="2" y="29">SOURCE</tspan>
-	                    </text>
-	                    <polyline id="Arrow" fill-rule="evenodd" transform="translate(24.497500, 8.009500) rotate(-90.000000) translate(-24.497500, -8.009500) " points="19.278 21.507 32.507 8.016 19.265 -5.488 16.488 -2.655 26.952 8.017 16.501 18.675 19.278 21.507"></polyline>
-	                </g>
-	            </g>
-	            <g id="Save/SkipIndicator" transform="translate(192.000000, 411.000000)" fill="#BBBBBB">
-	                <g id="'Screen-Indicator/Bottom/Inactive">
-	                    <text id="SAVE-/-SKIP" font-family="OpenSans-Regular, OpenSans, Arial" font-size="12" font-weight="normal">
-	                        <tspan x="0" y="12">SAVE / SKIP</tspan>
-	                    </text>
-	                    <polyline id="Arrow" fill-rule="evenodd" transform="translate(31.009500, 25.497500) rotate(90.000000) translate(-31.009500, -25.497500) " points="25.79 38.995 39.019 25.504 25.777 12 23 14.833 33.464 25.505 23.013 36.163 25.79 38.995"></polyline>
-	                </g>
-	            </g>
-	            <g id="TopicBar" transform="translate(1.000000, 44.000000)">
-	                <rect id="Rectangle-4" fill="#444444" x="0" y="0" width="445" height="41"></rect>
-	                <text id="NORTH-KOREA" font-family="OpenSans-Regular, OpenSans, Arial" font-size="14" font-weight="normal" fill="#FFFFFF">
-	                    <tspan x="173" y="26">NORTH KOREA</tspan>
-	                </text>
-	            </g>
-	            <g id="BiasGuessBtn" transform="translate(126.000000, 343.000000)">
-	                <rect id="BG" fill="#72B800" x="0" y="0" width="193" height="53" rx="5"></rect>
-	                <text id="10:10:10:10" font-family="OpenSans-Regular, OpenSans, Arial" font-size="18" font-weight="normal" fill="#FFFFFF">
-	                    <tspan x="29.3783885" y="32">What's the bias?</tspan>
-	                </text>
-	            </g>
-	        </g>
-	    </g>
-	</svg>
+    <svg id="SaveSkipScreen_template" width="445px" height="445px" viewBox="0 0 445 445" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #FFFFFF;">
+        <title>saveskipScreen</title>
+        <defs></defs>
+        <g id="Cube-Screens" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="saveskipScreen">
+                
+                <g id="btn_skip" transform="translate(40.000000, 135.000000)">
+                    <rect id="btn_gray" fill="#72B800" x="0" y="0" width="175" height="175" rx="10"></rect>
+                    <g id="btn_content" transform="translate(43.000000, 27.000000)" fill="#FFFFFF">
+                        <text id="SKIP-ALL" font-size="16" font-weight="normal" line-spacing="18">
+                            <tspan x="13" y="120">SKIP ALL</tspan>
+                        </text>
+                        <path d="M45,0 C20.1624171,0 0,20.1623657 0,45 C0,69.8375571 20.1624171,90 45,90 C69.8375829,90 90,69.8375571 90,45 C90,20.1623657 69.8375829,0 45,0 Z M45,2.57142857 C68.4478813,2.57142857 87.4285714,21.5520686 87.4285714,45 C87.4285714,68.4478286 68.4478813,87.4285714 45,87.4285714 C21.55212,87.4285714 2.57142857,68.4478286 2.57142857,45 C2.57142857,21.5520686 21.55212,2.57142857 45,2.57142857 Z M42.3482143,29.53125 C41.8292328,29.5653183 41.3818816,29.9086725 41.2147759,30.4011947 C41.0476701,30.8937169 41.1937216,31.4384041 41.5848214,31.78125 L51.9508929,41.1428571 L34.7142857,41.1428571 C28.1021567,41.1428571 22.5846501,45.3787714 19.4464286,50.7857143 C19.0913884,51.4070346 19.3072511,52.1985312 19.9285714,52.5535714 C20.5498918,52.9086116 21.3413884,52.6927489 21.6964286,52.0714286 C24.4734647,47.2867714 29.2066161,43.7142857 34.7142857,43.7142857 L51.9508929,43.7142857 L41.5848214,53.0357143 C41.1484111,53.3060141 40.9145837,53.8099843 40.9899929,54.3177534 C41.0654021,54.8255224 41.4355975,55.2397887 41.9317252,55.3715966 C42.4278528,55.5034045 42.9548418,55.3274962 43.2723214,54.9241071 L56.1294643,43.3526786 C56.3927447,43.1092896 56.5424469,42.7670275 56.5424469,42.4084821 C56.5424469,42.0499368 56.3927447,41.7076747 56.1294643,41.4642857 L43.2723214,29.8928571 C43.0250792,29.653527 42.6922261,29.5232801 42.3482143,29.53125 Z M55.2053571,29.53125 C54.6863757,29.5653183 54.2390245,29.9086725 54.0719187,30.4011947 C53.904813,30.8937169 54.0508644,31.4384041 54.4419643,31.78125 L66.2544643,42.4285714 L54.4419643,53.0357143 C54.005554,53.3060141 53.7717266,53.8099843 53.8471358,54.3177534 C53.922545,54.8255224 54.2927404,55.2397887 54.788868,55.3715966 C55.2849957,55.5034045 55.8119847,55.3274962 56.1294643,54.9241071 L68.9866071,43.3526786 C69.2498875,43.1092896 69.3995898,42.7670275 69.3995898,42.4084821 C69.3995898,42.0499368 69.2498875,41.7076747 68.9866071,41.4642857 L56.1294643,29.8928571 C55.8822221,29.653527 55.5493689,29.5232801 55.2053571,29.53125 L55.2053571,29.53125 Z" id="Shape" stroke="#FFFFFF" stroke-width="2" fill-rule="nonzero"></path>
+                    </g>
+                    <text id="Skip-to-next-topic" font-size="16" font-weight="normal" letter-spacing="0.666666687" fill="#444444">
+                        <tspan x="17.1158852" y="205">Skip to next topic </tspan>
+                    </text>
+                </g>
 
-	<svg id="SourceScreen" width="445px" height="445px" viewBox="0 0 445 445" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #FFFFFF;">
-	    <title>Cube HIFI Source</title>
-	    <desc>Created with Sketch.</desc>
-	    <defs>
-	        <linearGradient x1="50%" y1="100%" x2="50%" y2="-2.48949813e-15%" id="linearGradient-1">
-	            <stop stop-color="#00748D" offset="0%"></stop>
-	            <stop stop-color="#009BBD" offset="100%"></stop>
-	        </linearGradient>
-	        <linearGradient x1="100%" y1="3.74939946e-31%" x2="1.11022302e-14%" y2="100%" id="linearGradient-2">
-	            <stop stop-color="#9100B8" offset="0%"></stop>
-	            <stop stop-color="#009BBD" offset="100%"></stop>
-	        </linearGradient>
-	        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-3">
-	            <stop stop-color="#9100B8" offset="0%"></stop>
-	            <stop stop-color="#63007E" offset="100%"></stop>
-	        </linearGradient>
-	        <linearGradient x1="6.123234e-15%" y1="0%" x2="100%" y2="100%" id="linearGradient-4">
-	            <stop stop-color="#9100B8" offset="0%"></stop>
-	            <stop stop-color="#ED006F" offset="100%"></stop>
-	        </linearGradient>
-	        <linearGradient x1="50%" y1="100%" x2="50%" y2="3.061617e-15%" id="linearGradient-5">
-	            <stop stop-color="#AA0050" offset="0%"></stop>
-	            <stop stop-color="#ED006F" offset="100%"></stop>
-	        </linearGradient>
-	        <rect id="path-6" x="0" y="0" width="445" height="445"></rect>
-	    </defs>
-	    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Source">
-            <g id="L" transform="translate(170.000000, 40.000000)">
-                <g id="'Bias/Large/Left" stroke="#E6E6E6">
-                    <g id="left-bias" transform="translate(3.000000, 3.000000)">
-                        <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#009BBD" fill-rule="nonzero"></path>
-                        <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
-                        <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
+                <g id="btn_save" transform="translate(230.000000, 135.000000)">
+                    <rect id="btn_green" fill="#72B800" x="0" y="0" width="175" height="175" rx="10"></rect>
+                    <g id="btn_content" transform="translate(43.000000, 27.000000)" fill="#FFFFFF">
+                        <text id="SAVE-ALL" font-size="16" font-weight="normal" line-spacing="18">
+                            <tspan x="10" y="120">SAVE ALL</tspan>
+                        </text>
+                        <path d="M43.5198505,1.50753832 L43.5198505,59.0367053 L24.2083733,41.0390069 C23.9294184,40.768966 23.5538716,40.622006 23.1657349,40.6309986 C22.5638812,40.6342699 22.0265474,41.0088258 21.8152194,41.572394 C21.6038913,42.1359622 21.7624602,42.7714939 22.2137607,43.1697167 L43.9731715,63.479462 C44.5326064,64.0090201 45.4083492,64.0090201 45.9677842,63.479462 L67.727195,43.1697167 C68.3097404,42.6177096 68.337261,41.698882 67.7887977,41.1129957 C67.2403344,40.5271095 66.3217328,40.4940554 65.7325824,41.0390069 L46.4211052,59.0367053 L46.4211052,1.50753832 C46.4377672,1.08140658 46.2661132,0.669524681 45.9517633,0.381356916 C45.6374133,0.09318915 45.2122069,-0.0420768744 44.7891494,0.0115079788 C44.0419084,0.105143659 43.4905509,0.754988573 43.5198505,1.50753832 Z M7.25348047,0.0568422318 C3.26014643,0.0568422318 0,3.31699156 0,7.3103227 L0,82.7465195 C0,86.7398507 3.26014643,90 7.25348047,90 L82.6896773,90 C86.6830113,90 89.9431578,86.7398507 89.9431578,82.7465195 L89.9431578,7.3103227 C89.9431578,3.31699156 86.6830113,0.0568422318 82.6896773,0.0568422318 L60.9292359,0.0568422318 C60.4060628,0.0494432616 59.9194334,0.324314754 59.6556876,0.776203037 C59.3919418,1.22809132 59.3919418,1.78698533 59.6556876,2.23887361 C59.9194334,2.6907619 60.4060628,2.96563339 60.9292359,2.95823442 L82.6896773,2.95823442 C85.1258254,2.95823442 87.0417656,4.87416875 87.0417656,7.3103227 L87.0417656,82.7465195 C87.0417656,85.1826735 85.1258254,87.0986078 82.6896773,87.0986078 L7.25348047,87.0986078 C4.81733232,87.0986078 2.90139219,85.1826735 2.90139219,82.7465195 L2.90139219,7.3103227 C2.90139219,4.87416875 4.81733232,2.95823442 7.25348047,2.95823442 L29.0139219,2.95823442 C29.537095,2.96563339 30.0237244,2.6907619 30.2874701,2.23887361 C30.5512159,1.78698533 30.5512159,1.22809132 30.2874701,0.776203037 C30.0237244,0.324314754 29.537095,0.0494432616 29.0139219,0.0568422318 L7.25348047,0.0568422318 Z" id="Shape" stroke="#FFFFFF" stroke-width="2" fill-rule="nonzero"></path>
                     </g>
+                    <text id="Save-skip" font-size="16" font-weight="normal" letter-spacing="0.666666687" fill="#444444">
+                        <tspan x="41.5598957" y="205">Save &amp; skip</tspan>
+                    </text>
                 </g>
-                <text font-family="OpenSans-Regular, OpenSans, Arial" font-size="18" font-weight="normal" fill="#444444">
-                    <tspan x="33" y="126">LEFT</tspan>
-                </text>
-            </g>
-            <g id="LC" transform="translate(168.000000, 40.000000)">
-                <g id="'Bias/Large/Left-Center" transform="translate(2.000000, 0.000000)" stroke="#E6E6E6">
-                    <g id="left-center-bias" transform="translate(3.000000, 3.000000)">
-                        <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#009BBD" fill-rule="nonzero"></path>
-                        <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
-                        <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#9100B8" fill-rule="nonzero"></path>
-                    </g>
+
+                <g id="title" transform="translate(0.000000, 40.000000)">
+                    <rect id="Rectangle-5" fill="#F6F6F6" x="0" y="0" width="445" height="41"></rect>
+                    <text id="Take-Action" font-size="20" font-weight="normal" letter-spacing="0.833333313" fill="#444444">
+                        <tspan x="165.04069" y="28">Take Action</tspan>
+                    </text>
                 </g>
-                <text font-family="OpenSans-Regular, OpenSans, Arial" font-size="18" font-weight="normal" fill="#444444">
-                    <tspan x="0" y="126">Left Center</tspan>
-                </text>
-            </g>
-            <g id="C" transform="translate(170.000000, 40.000000)">
-                <g id="'Bias/Large/Center" stroke="#E6E6E6">
-                    <g id="center-bias" transform="translate(3.000000, 3.000000)">
-                        <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
-                        <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
-                        <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#9100B8" fill-rule="nonzero"></path>
-                    </g>
+                <g id="batteryLife" transform="translate(198.000000, 406.000000)" fill="#BBBBBB">
+                    <path d="M3.00000056,0 L42.0000006,0 C43.6560006,0 45.0000006,1.342 45.0000006,3 L45.0000006,16 C45.0000006,17.657 43.6560006,19 42.0000006,19 L3.00000056,19 C1.34300056,19 5.58088707e-07,17.657 5.58088707e-07,16 L5.58088707e-07,3 C-0.000999441911,1.342 1.34200056,0 3.00000056,0 Z M3.00000056,0.999 C1.89500056,0.999 0.999000558,1.895 1.00000056,2.999 L1.00000056,15.999 C1.00000056,17.103 1.89600056,17.999 3.00000056,17.999 L42.0000006,17.999 C43.1040006,17.999 44.0000006,17.103 44.0000006,15.999 L44.0000006,2.999 C44.0000006,1.895 43.1040006,0.999 42.0000006,0.999 L3.00000056,0.999 Z M3.00000056,2 L42.0000006,2 C42.5520006,2 43.0000006,2.447 43.0000006,3 L43.0000006,16 C43.0000006,16.552 42.5520006,17 42.0000006,17 L3.00000056,17 C2.44700056,17 2.00000056,16.553 2.00000056,16 L2.00000056,3 C1.99900056,2.447 2.44700056,2 3.00000056,2 Z M45.9990006,5.999 C47.6560006,5.999 48.9990006,7.343 48.9990006,9 L48.9990006,10 C48.9990006,11.657 47.6560006,13 45.9990006,13 L45.9990006,5.999 Z" id="Battery"></path>
                 </g>
-                <text font-family="OpenSans-Regular, OpenSans, Arial" font-size="18" font-weight="normal" fill="#444444">
-                    <tspan x="19" y="126">Center</tspan>
-                </text>
-            </g>
-            <g id="RC" transform="translate(161.000000, 40.000000)">
-                <g id="'Bias/Large/Right-Center" transform="translate(9.000000, 0.000000)" stroke="#E6E6E6">
-                    <g id="right-center-bias" transform="translate(3.000000, 3.000000)">
-                        <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
-                        <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#ED006F" fill-rule="nonzero"></path>
-                        <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#9100B8" fill-rule="nonzero"></path>
-                    </g>
-                </g>
-                <text font-family="OpenSans-Regular, OpenSans, Arial" font-size="18" font-weight="normal" fill="#444444">
-                    <tspan x="0" y="126">Right Center</tspan>
-                </text>
-            </g>
-            <g id="R" transform="translate(170.000000, 40.000000)">
-                <g id="'Bias/Large/Right" stroke="#E6E6E6">
-                    <g id="right-bias" transform="translate(3.000000, 3.000000)">
-                        <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
-                        <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#ED006F" fill-rule="nonzero"></path>
-                        <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
-                    </g>
-                </g>
-                <text font-family="OpenSans-Regular, OpenSans, Arial" font-size="18" font-weight="normal" fill="#444444">
-                    <tspan x="26" y="126">Right</tspan>
-                </text>
-            </g>
-            <g id="Borders">
-                <rect id="Border_L" stroke="url(#linearGradient-1)" stroke-width="20" x="10" y="10" width="425" height="425"></rect>
-                <rect id="Border_LC" stroke="url(#linearGradient-2)" stroke-width="20" x="10" y="10" width="425" height="425"></rect>
-                <rect id="Border_C" stroke="url(#linearGradient-3)" stroke-width="20" x="10" y="10" width="425" height="425"></rect>
-                <rect id="Border_RC" stroke="url(#linearGradient-4)" stroke-width="20" x="10" y="10" width="425" height="425"></rect>
-                <rect id="Border_R" stroke="url(#linearGradient-5)" stroke-width="20" x="10" y="10" width="425" height="425"></rect>
-                <g id="Border_Locked">
-                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-6"></use>
-                    <rect stroke="#BBBBBB" stroke-width="20" x="10" y="10" width="425" height="425"></rect>
-                </g>
-            </g>
-            <rect id="Rectangle-9" fill="#FFFFFF" x="185" y="422" width="75" height="23"></rect>
-            <g id="'Screen-Indicator/Bottom/Inactive" transform="translate(200.000000, 410.000000)" fill="#BBBBBB">
-                <text id="SAVE-/-SKIP" font-family="OpenSans-Regular, OpenSans, Arial" font-size="12" font-weight="normal">
-                    <tspan x="0" y="12">ARTICLE</tspan>
-                </text>
-                <polyline id="Arrow" fill-rule="evenodd" transform="translate(22.506895, 25.497500) rotate(90.000000) translate(-22.506895, -25.497500) " points="18.7185484 38.995 28.3202419 25.504 18.7091129 12 16.6935484 14.833 24.2883871 25.505 16.7029839 36.163 18.7185484 38.995"></polyline>
-            </g>
-            <g id="Locked_Pie" transform="translate(170.000000, 40.000000)">
-                <g id="'Bias/Large/Center" stroke="#E6E6E6" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero">
-                    <g id="left-bias" transform="translate(3.000000, 3.000000)">
-                        <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape"></path>
-                        <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape"></path>
-                        <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape"></path>
-                    </g>
-                </g>
-                <text id="?" font-family="OpenSans-Regular, OpenSans, Arial" font-size="18" font-weight="normal" fill="#444444">
-                    <tspan x="49" y="126">?</tspan>
-                </text>
-            </g>
-            <g id="Locked_Text" transform="translate(40.000000, 184.000000)" font-size="24" font-family="OpenSans-Bold, Open Sans" letter-spacing="0.352941185" fill="#333333" font-weight="bold">
-                <text id="Article-Source-Guess" font-family="OpenSans-Regular, OpenSans, Arial">
-                    <tspan x="96.9962086" y="26">Article Source</tspan>
-                    <tspan x="268.003791" y="26" font-family="OpenSans-Regular, OpenSans, Arial" font-weight="normal"></tspan>
-                    <tspan x="0" y="71" font-family="OpenSans-Regular, OpenSans, Arial" font-size="16" font-weight="normal">Guess the bias of this article on the screen </tspan>
-                    <tspan x="0" y="93" font-family="OpenSans-Regular, OpenSans, Arial" font-size="16" font-weight="normal">below to unlock the article source information!</tspan>
-                    <tspan x="0" y="115" font-family="OpenSans-Regular, OpenSans, Arial" font-size="16" font-weight="normal"></tspan>
-                    <tspan x="0" y="137" font-family="OpenSans-Regular, OpenSans, Arial" font-size="16" font-weight="normal"></tspan>
-                    <tspan x="87.7309282" y="171" font-family="OpenSans-Regular, OpenSans, Arial" font-size="16" font-weight="normal">Written by Author Name</tspan>
-                    <tspan x="106.619715" y="205" font-family="OpenSans-Regular, OpenSans, Arial" font-size="16" font-weight="normal">Published Recently!</tspan>
-                </text>
             </g>
         </g>
-    </g>
-	</svg>
+    </svg>
 
-	<svg id="GuessOverlay" width="445px" height="445px" viewBox="0 0 445 445" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #FFFFFF;">
-	    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
-	    <title>Cube Article HIFI</title>
-	    <desc>Created with Sketch.</desc>
+
+
+    <svg id="SourceScreen_template" width="445px" height="445px" viewBox="0 0 445 445" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #FFFFFF;">
+        <title>sourceScreen_template</title>
+        <defs>
+            <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+                <stop stop-color="#9100B8" offset="0%"></stop>
+                <stop stop-color="#63007E" offset="100%"></stop>
+            </linearGradient>
+            <linearGradient x1="50%" y1="100%" x2="50%" y2="-2.48949813e-15%" id="linearGradient-2">
+                <stop stop-color="#00748D" offset="0%"></stop>
+                <stop stop-color="#009BBD" offset="100%"></stop>
+            </linearGradient>
+            <linearGradient x1="100%" y1="3.74939946e-31%" x2="1.11022302e-14%" y2="100%" id="linearGradient-3">
+                <stop stop-color="#9100B8" offset="0%"></stop>
+                <stop stop-color="#009BBD" offset="100%"></stop>
+            </linearGradient>
+            <linearGradient x1="6.123234e-15%" y1="0%" x2="100%" y2="100%" id="linearGradient-4">
+                <stop stop-color="#9100B8" offset="0%"></stop>
+                <stop stop-color="#ED006F" offset="100%"></stop>
+            </linearGradient>
+            <linearGradient x1="50%" y1="100%" x2="50%" y2="3.061617e-15%" id="linearGradient-5">
+                <stop stop-color="#AA0050" offset="0%"></stop>
+                <stop stop-color="#ED006F" offset="100%"></stop>
+            </linearGradient>
+            <rect id="path-6" x="0" y="0" width="365" height="22"></rect>
+            <rect id="path-7" x="0" y="0" width="365" height="22"></rect>
+            <rect id="path-8" x="0" y="0" width="365" height="88"></rect>
+            <rect id="path-9" x="0" y="0" width="365" height="33"></rect>
+        </defs>
+        <g id="Cube-Screens" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="sourceScreen_template">
+                <g id="C" stroke="url(#linearGradient-1)" stroke-width="20">
+                    <rect id="border_c" x="10" y="10" width="425" height="425"></rect>
+                </g>
+                <g id="L" stroke="url(#linearGradient-2)" stroke-width="20">
+                    <rect id="border_l" x="10" y="10" width="425" height="425"></rect>
+                </g>
+                <g id="LC" stroke="url(#linearGradient-3)" stroke-width="20">
+                    <rect id="border_lc" x="10" y="10" width="425" height="425"></rect>
+                </g>
+                <g id="RC" stroke="url(#linearGradient-4)" stroke-width="20">
+                    <rect id="border_rc" x="10" y="10" width="425" height="425"></rect>
+                </g>
+                <g id="R" stroke="url(#linearGradient-5)" stroke-width="20">
+                    <rect id="border_r" x="10" y="10" width="425" height="425"></rect>
+                </g>
+                <g id="locked" class="active" stroke="#F6F6F6" stroke-width="20">
+	                <rect id="border_locked" x="10" y="10" width="425" height="425"></rect>
+                </g>
+                <g id="sourceContent" transform="translate(40.000000, 184.000000)">
+                    <g id="date" transform="translate(0.000000, 180.000000)">
+                        <g id="dateTextArea">
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-6"></use>
+                            <rect stroke="#FFFFFF" stroke-width="1" x="0.5" y="0.5" width="364" height="21"></rect>
+                        </g>
+                        <text id="_date" font-size="16" font-weight="normal" letter-spacing="0.235294119" fill="#333333">
+                            <tspan x="125" y="17">Published on ?</tspan>
+                        </text>
+                    </g>
+                    <g id="author" transform="translate(0.000000, 145.000000)">
+                        <g id="authorTextArea">
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-7"></use>
+                            <rect stroke="#FFFFFF" stroke-width="1" x="0.5" y="0.5" width="364" height="21"></rect>
+                        </g>
+                        <text id="_author" font-size="16" font-weight="normal" letter-spacing="0.235294119" fill="#333333">
+                            <tspan x="135" y="17">Written by ?</tspan>
+                        </text>
+                    </g>
+                    <g id="description" transform="translate(0.000000, 45.000000)">
+                        <g id="descriptionTextArea">
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-8"></use>
+                            <rect stroke="##FFFFFF" stroke-width="1" x="0.5" y="0.5" width="365" height="87"></rect>
+                        </g>
+                        <text id="_description" font-size="16" font-weight="normal" letter-spacing="0.3529412" fill="#333333">
+                            <tspan x="0" y="17">Guess the source bias of the article to unlock </tspan>
+                            <tspan x="0" y="39">information on the article and source!</tspan>
+                        </text>
+                    </g>
+                    <g id="source">
+                        <g id="sourceTextArea">
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-9"></use>
+                            <rect stroke="#FFFFFF" stroke-width="1" x="0.5" y="0.5" width="364" height="32"></rect>
+                        </g>
+                        <text id="_source" font-size="24" font-weight="bold" letter-spacing="0.3529412" fill="#333333">
+                            <tspan x="179" y="26">?</tspan>
+                        </text>
+                    </g>
+                </g>
+                <g id="sourceBias" transform="translate(170.000000, 40.000000)">
+                    <g id="sourceBiasPie" stroke="#E6E6E6" stroke-width="8.55" fill-rule="nonzero">
+                        <g id="_sourceBiasPie" transform="translate(3.000000, 3.000000)">
+                            <path id="sourceBiasPie_L" d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#FFFFFF"></path>
+                            <path id="sourceBiasPie_R" d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" fill="#FFFFFF"></path>
+                            <path id="sourceBiasPie_C" d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#FFFFFF"></path>
+                        </g>
+                    </g>
+                    <text id="_sourceBias" font-size="18" font-weight="normal" fill="#444444">
+                        <tspan x="50" y="126">?</tspan>
+                    </text>
+                </g>
+                <g id="indicatorBottom_article" transform="translate(185.000000, 410.000000)">
+                    <rect id="Rectangle-9" fill="#FFFFFF" x="0" y="12" width="75" height="23"></rect>
+                    <text id="ARTICLE" font-size="12" font-weight="normal" letter-spacing="0.5" fill="#4F8000">
+                        <tspan x="13" y="13">ARTICLE</tspan>
+                    </text>
+                    <g id="arrow" transform="translate(23.000000, 18.000000)" fill="#72B800">
+                        <path d="M8.79,21.995 L20.6459015,9.90429268 L20.6459015,9.90429268 C21.4085576,9.12653221 21.4085516,7.8814736 20.6458882,7.1037204 L10.1657639,-3.5837587 L10.1657639,-3.5837587 C9.41379183,-4.3506089 8.18254314,-4.36267004 7.41569294,-3.610698 C7.40653919,-3.60172186 7.39747444,-3.59265541 7.3885,-3.5835 L7.37254624,-3.56722453 L7.37254624,-3.56722453 C6.61014851,-2.78945254 6.61023635,-1.54463357 7.37274385,-0.766969197 L16.464,8.505 L7.38608266,17.7627211 L7.38608266,17.7627211 C6.62343305,18.5404763 6.62343341,19.7855234 7.38608346,20.5632781 L8.79,21.995" id="Arrow" transform="translate(14.009500, 8.497500) rotate(90.000000) translate(-14.009500, -8.497500) "></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </svg>
+
+
+
+	<svg id="article_screen_template" width="445px" height="445px" viewBox="0 0 445 445" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #FFFFFF;">
+
+	    <title>article_screen_template</title>
 	    <defs>
-	        <linearGradient x1="50%" y1="3.061617e-15%" x2="50%" y2="100%" id="linearGradient-1">
-	            <stop stop-color="#00748D" offset="0%"></stop>
-	            <stop stop-color="#009BBD" offset="100%"></stop>
-	        </linearGradient>
-	        <rect id="path-2" x="0" y="0" width="405" height="405" rx="20"></rect>
-	        <filter x="-1.7%" y="-1.2%" width="103.5%" height="103.5%" filterUnits="objectBoundingBox" id="filter-3">
+	        <rect id="path-1" x="0" y="0" width="385" height="95"></rect>
+	        <rect id="path-2" x="0" y="6" width="385" height="226"></rect>
+	        <rect id="path-3" x="0" y="0" width="243" height="123" rx="10"></rect>
+	        <filter x="-2.9%" y="-4.1%" width="105.8%" height="111.4%" filterUnits="objectBoundingBox" id="filter-4">
 	            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
 	            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
 	            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
 	        </filter>
-	        <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-4">
-	            <stop stop-color="#9100B8" offset="0%"></stop>
-	            <stop stop-color="#009BBD" offset="100%"></stop>
-	        </linearGradient>
-	        <rect id="path-5" x="0" y="0" width="405" height="405" rx="20"></rect>
-	        <filter x="-1.7%" y="-1.2%" width="103.5%" height="103.5%" filterUnits="objectBoundingBox" id="filter-6">
+	        <rect id="path-5" x="0" y="0" width="337" height="135" rx="10"></rect>
+	        <filter x="-2.1%" y="-3.7%" width="104.2%" height="110.4%" filterUnits="objectBoundingBox" id="filter-6">
 	            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
 	            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
 	            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
 	        </filter>
-	        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-7">
-	            <stop stop-color="#9100B8" offset="0%"></stop>
-	            <stop stop-color="#63007E" offset="100%"></stop>
-	        </linearGradient>
-	        <rect id="path-8" x="0" y="0" width="405" height="405" rx="20"></rect>
-	        <filter x="-1.7%" y="-1.2%" width="103.5%" height="103.5%" filterUnits="objectBoundingBox" id="filter-9">
+	        <rect id="path-70" x="0" y="0" width="337" height="160" rx="10"></rect>
+	        <filter x="-2.1%" y="-3.1%" width="104.2%" height="108.8%" filterUnits="objectBoundingBox" id="filter-8">
 	            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
 	            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
 	            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
 	        </filter>
-	        <linearGradient x1="0%" y1="0%" x2="100%" y2="96.5391413%" id="linearGradient-10">
-	            <stop stop-color="#9100B8" offset="0%"></stop>
-	            <stop stop-color="#ED006F" offset="100%"></stop>
-	        </linearGradient>
-	        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-11">
-	            <stop stop-color="#AA0050" offset="0%"></stop>
-	            <stop stop-color="#ED006F" offset="100%"></stop>
-	        </linearGradient>
 	    </defs>
-	    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-	        <g id="Cube-Article-HIFI">
-	            <rect id="Guess_Screen_Overlay" fill="#BBBBBB" x="0" y="0" width="445" height="445"></rect>
-	            <g id="Guess_BGs" transform="translate(20.000000, 20.000000)">
-	                <g id="Guess_L_BG">
-	                    <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
-	                    <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+	    <g id="Cube-Screens" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+	        <g id="article_screen_template">
+	            
+
+
+	            <g id="topic" transform="translate(0.000000, 20.000000)">
+	                <rect id="bgTopic" fill="#F6F6F6" x="0" y="0" width="445" height="41"></rect>
+	                <text id="TopicTextArea" font-family="OpenSans-Regular, Open Sans" font-size="14" font-weight="normal" fill="#444444">
+	                    <tspan x="174" y="31">NORTH KOREA</tspan>
+	                </text>
+	            </g>
+
+
+
+	            <g id="articleTitle" transform="translate(30.000000, 80.000000)">
+	                <g id="articleTitleTextArea">
+	                    <use fill="transparent" fill-rule="evenodd" xlink:href="#path-1"></use>
+	                    <rect stroke="transparent" stroke-width="1" x="0.5" y="0.5" width="384" height="94"></rect>
 	                </g>
-	                <g id="Guess_LC_BG">
+	                <text id="_articleTitle" font-family="OpenSans-Bold, Open Sans" font-size="24" font-weight="bold" fill="#444444">
+	                    <tspan x="0" y="26">North Korea says its ICBM can </tspan>
+	                    <tspan x="0" y="59">carry nuclear warhead; U.S. </tspan>
+	                    <tspan x="0" y="92">urges global action</tspan>
+	                </text>
+	            </g>
+
+
+
+	            <g id="articleDate" transform="translate(30.000000, 192.000000)" font-size="16" font-family="OpenSans-Regular, Open Sans" fill="#444444" font-weight="normal">
+	                <text id="_articleDate">
+	                    <tspan x="0" y="17">July 5, 2017</tspan>
+	                </text>
+	            </g>
+
+
+
+
+	            <g id="articleBodyText" transform="translate(30.000000, 223.000000)">
+	                <g id="articleBodyTextArea">
+	                    <use fill="transparent" fill-rule="evenodd" xlink:href="#path-2"></use>
+	                    <rect stroke="transparent" stroke-width="1" x="0.5" y="6.5" width="384" height="225"></rect>
+	                </g>
+	                <text id="_articleBodyText" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">
+	                    <tspan x="0" y="17">The United States cautioned on Wednesday it was </tspan>
+	                    <tspan x="0" y="39">ready to use force if need be to stop North Korea's </tspan>
+	                    <tspan x="0" y="61">nuclear missile program but said it preferred global </tspan>
+	                    <tspan x="0" y="83">diplomatic action against Pyongyang for defying </tspan>
+	                    <tspan x="0" y="105">world powers by test launching a ballistic missile </tspan>
+	                    <tspan x="0" y="127">that could hit Alaska.</tspan>
+	                    <tspan x="0" y="161">U.S. Ambassador to the United Nations Nikki Haley </tspan>
+	                    <tspan x="0" y="183">told a meeting of the U.N. Security Council that </tspan>
+	                    <tspan x="0" y="205">North Korea's actions were "quickly closing off the </tspan>
+	                    <tspan x="0" y="227">possibility of a diplomatic solution" and the United </tspan>
+	                    <tspan x="0" y="249">States was prepared to defend itself and its allies.</tspan>
+	                    <tspan x="0" y="283">"One of our capabilities lies with our considerable </tspan>
+	                    <tspan x="0" y="305">military forces. We will use them if we must, but we </tspan>
+	                    <tspan x="0" y="327">prefer not to have to go in that direction," Haley </tspan>
+	                    <tspan x="0" y="349">said. She urged China, North Korea's only major </tspan>
+	                    <tspan x="0" y="371">ally, to do more to rein in Pyongyang.</tspan>
+	                    <tspan x="0" y="405">Speaking with his Japanese counterpart on </tspan>
+	                    <tspan x="0" y="427">Wednesday, U.S. Defense Secretary James Mattis </tspan>
+	                    <tspan x="0" y="449">underscored the "ironclad commitment" of the </tspan>
+	                    <tspan x="0" y="471">United States to defending Japan and providing </tspan>
+	                    <tspan x="0" y="493">"extended deterrence using the full range of U.S. </tspan>
+	                    <tspan x="0" y="515">capabilities," Pentagon spokeswoman Dana White </tspan>
+	                    <tspan x="0" y="537">said in a statement.</tspan>
+	                    <tspan x="0" y="571">Mattis' assurances to Japanese Defense Minister </tspan>
+	                    <tspan x="0" y="593">Tomomi Inada came during a phone call to discuss </tspan>
+	                    <tspan x="0" y="615">the North Korean test, the statement said.</tspan>
+	                    <tspan x="0" y="649">Taking a major step in its missile program, North </tspan>
+	                    <tspan x="0" y="671">Korea on Tuesday test launched an intercontinental </tspan>
+	                    <tspan x="0" y="693">ballistic missile that some experts believe has the </tspan>
+	                    <tspan x="0" y="715">range to reach the U.S. states of Alaska and Hawaii </tspan>
+	                    <tspan x="0" y="737">and perhaps the U.S. Pacific Northwest.</tspan>
+	                    <tspan x="0" y="771">North Korea says the missile could carry a large </tspan>
+	                    <tspan x="0" y="793">nuclear warhead.</tspan>
+	                    <tspan x="0" y="827">The missile test is a direct challenge to U.S. </tspan>
+	                    <tspan x="0" y="849">President Donald Trump, who has vowed to </tspan>
+	                    <tspan x="0" y="871">prevent North Korea from being able to hit the </tspan>
+	                    <tspan x="0" y="893">United States with a nuclear missile.</tspan>
+	                    <tspan x="0" y="927">He has frequently urged China to press the isolated </tspan>
+	                    <tspan x="0" y="949">country's leadership to give up its nuclear program.</tspan>
+	                    <tspan x="0" y="983">Haley said the United States would propose new </tspan>
+	                    <tspan x="0" y="1005">U.N. sanctions on North Korea in coming days and </tspan>
+	                    <tspan x="0" y="1027">warned that if Russia and China did not support the </tspan>
+	                    <tspan x="0" y="1049">move, then “we will go our own path.”</tspan>
+	                </text>
+	            </g>
+
+
+
+	            <g id="barBottom" transform="translate(0.000000, 415.000000)" fill="#FFFFFF">
+	                <rect x="0" y="0" width="445" height="30"></rect>
+	            </g>
+	            <g id="dividerBottom" transform="translate(20.000000, 414.000000)" stroke-linecap="square" stroke="#BBBBBB">
+	                <path d="M0,1 L405,1"></path>
+	            </g>
+	            <g id="barTop" fill="#FFFFFF">
+	                <rect x="0" y="0" width="445" height="30"></rect>
+	            </g>
+
+
+
+
+	            <g id="scrollBar" transform="translate(432.000000, 30.000000)">
+	                <rect id="scrollBg" fill="#F1F1F1" x="0" y="0" width="5" height="385" rx="2.5"></rect>
+	                <rect id="scrollIndicator" fill="#ADADAD" x="0" y="0" width="5" height="50" rx="2.5"></rect>
+	            </g>
+
+
+
+	            <g id="actionBiasBtn" class="active" transform="translate(101.000000, 350.000000)">
+	                <g id="actionBiasBG">
+	                    <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
+	                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-3"></use>
+	                </g>
+	                <g id="BiasGuessBtn" transform="translate(24.099174, 22.000000)">
+	                    <rect id="btnBg" fill="#72B800" x="0" y="0" width="193.797521" height="53" rx="5"></rect>
+	                    <text id="btnLabel" font-family="OpenSans-Regular, Open Sans" font-size="18" font-weight="normal" fill="#FFFFFF">
+	                        <tspan x="29.7795477" y="32">What's the bias?</tspan>
+	                    </text>
+	                </g>
+	            </g>
+
+
+
+	            <g id="yourGuess_locked" transform="translate(55.000000, 350.000000)">
+	                <g id="lockedBG">
 	                    <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"></use>
-	                    <use fill="url(#linearGradient-4)" fill-rule="evenodd" xlink:href="#path-5"></use>
+	                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-5"></use>
 	                </g>
-	                <g id="Guess_C_BG">
-	                    <use fill="black" fill-opacity="1" filter="url(#filter-9)" xlink:href="#path-8"></use>
-	                    <use fill="url(#linearGradient-7)" fill-rule="evenodd" xlink:href="#path-8"></use>
+	                <g id="userRating" transform="translate(25.000000, 19.000000)">
+	                    <g id="userGuess" stroke-width="4.32" stroke="#E6E6E6" fill-rule="nonzero">
+	                        <g id="_userGuess">
+	                            <path id="sourceBiasPie_L" d="M25.0761905,25.0809524 L25.0761905,49.9190476 C11.3584893,49.9190476 0.238095238,38.7986536 0.238095238,25.0809524 C0.185981865,20.7135007 1.33937813,16.4162757 3.57142857,12.6619048 L25.0761905,25.0809524 Z" id="Shape" fill="#FFFFFF"></path>
+	                            <path id="sourceBiasPie_R" d="M25.0761905,25.0809524 L46.5857143,12.6619048 C53.4441042,24.5413474 49.3742514,39.7313427 37.4952381,46.5904762 C33.7408671,48.8225266 29.4436422,49.9759229 25.0761905,49.9238095 L25.0761905,25.0809524 Z" id="Shape" fill="#FFFFFF"></path>
+	                            <path id="sourceBiasPie_C" d="M25.0761905,25.0809524 L3.56666667,12.6619048 C10.4258001,0.782891452 25.6157955,-3.28696133 37.4952381,3.57142857 C41.3035582,5.70815926 44.4489836,8.85358468 46.5857143,12.6619048 L25.0761905,25.0809524 Z" id="Shape" fill="#FFFFFF"></path>
+	                        </g>
+	                    </g>
+	                    <text id="_userRating" font-family="OpenSans-Regular, Open Sans" font-size="24" font-weight="normal" fill="#444444">
+	                        <tspan x="60" y="43">RIGHT CENTER</tspan>
+	                    </text>
+	                    <text id="You-rated-this" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#444444">
+	                        <tspan x="60" y="19">You rated this</tspan>
+	                    </text>
 	                </g>
-	                <rect id="Guess_RC_BG" fill="url(#linearGradient-10)" x="0" y="0" width="405" height="405" rx="20"></rect>
-	                <rect id="Guess_R_BG" fill="url(#linearGradient-11)" x="0" y="0" width="405" height="405" rx="20"></rect>
-	                <rect id="Guess_BG" fill="#FFFFFF" x="0" y="0" width="405" height="405" rx="20"></rect>
+	                <g id="btnRedo_pressed" transform="translate(262.000000, 19.000000)">
+	                    <rect id="BG" fill="#4F8000" x="0" y="0" width="50" height="50" rx="5"></rect>
+	                    <path d="M26.068,13.834 C26.033,13.834 25.999,13.831 25.965,13.826 C25.421,13.758 25.001,13.294 25.001,12.727 L25.001,10.555 C25.001,10.251 24.754,10 24.45,10 C24.356,10 24.267,10.026 24.188,10.068 C24.187,10.07 24.185,10.071 24.183,10.071 L24.07,10.157 L17.612,15.03 L17.481,15.13 C17.251,15.333 17.105,15.63 17.105,15.963 C17.105,16.122 17.138,16.272 17.198,16.407 C17.275,16.584 17.396,16.735 17.549,16.848 L20.736,19.255 L24.141,21.826 L24.143,21.825 C24.23,21.886 24.338,21.921 24.45,21.921 C24.754,21.921 25.001,21.672 25.001,21.367 L25.001,19.318 C25.001,18.706 25.493,18.211 26.101,18.211 C26.138,18.211 26.176,18.213 26.214,18.216 C26.232,18.218 26.251,18.221 26.269,18.225 C30.465,18.842 33.687,22.48 33.687,26.876 C33.687,31.706 29.798,35.621 25.001,35.621 C20.202,35.621 16.313,31.706 16.313,26.876 C16.313,25.118 16.828,23.481 17.715,22.111 C17.725,22.094 17.737,22.079 17.747,22.062 C18.378,21.063 18.094,19.736 17.105,19.083 C16.109,18.427 14.773,18.709 14.121,19.712 L14.119,19.712 C12.779,21.769 12,24.233 12,26.876 C12,34.105 17.82,39.963 24.999,39.963 C32.177,39.963 37.999,34.104 37.999,26.876 C38.001,20.011 32.749,14.381 26.068,13.834 L26.068,13.834 Z" id="rotate-icon" fill="#FFFFFF"></path>
+	                </g>
+	                <g id="btnRedo" transform="translate(262.000000, 19.000000)">
+	                    <rect id="BG" fill="#72B800" x="0" y="0" width="50" height="50" rx="5"></rect>
+	                    <path d="M26.068,13.834 C26.033,13.834 25.999,13.831 25.965,13.826 C25.421,13.758 25.001,13.294 25.001,12.727 L25.001,10.555 C25.001,10.251 24.754,10 24.45,10 C24.356,10 24.267,10.026 24.188,10.068 C24.187,10.07 24.185,10.071 24.183,10.071 L24.07,10.157 L17.612,15.03 L17.481,15.13 C17.251,15.333 17.105,15.63 17.105,15.963 C17.105,16.122 17.138,16.272 17.198,16.407 C17.275,16.584 17.396,16.735 17.549,16.848 L20.736,19.255 L24.141,21.826 L24.143,21.825 C24.23,21.886 24.338,21.921 24.45,21.921 C24.754,21.921 25.001,21.672 25.001,21.367 L25.001,19.318 C25.001,18.706 25.493,18.211 26.101,18.211 C26.138,18.211 26.176,18.213 26.214,18.216 C26.232,18.218 26.251,18.221 26.269,18.225 C30.465,18.842 33.687,22.48 33.687,26.876 C33.687,31.706 29.798,35.621 25.001,35.621 C20.202,35.621 16.313,31.706 16.313,26.876 C16.313,25.118 16.828,23.481 17.715,22.111 C17.725,22.094 17.737,22.079 17.747,22.062 C18.378,21.063 18.094,19.736 17.105,19.083 C16.109,18.427 14.773,18.709 14.121,19.712 L14.119,19.712 C12.779,21.769 12,24.233 12,26.876 C12,34.105 17.82,39.963 24.999,39.963 C32.177,39.963 37.999,34.104 37.999,26.876 C38.001,20.011 32.749,14.381 26.068,13.834 L26.068,13.834 Z" id="rotate-icon" fill="#FFFFFF"></path>
+	                </g>
 	            </g>
-	            <text id="Take-a-guess" font-family="OpenSans-Bold, Open Sans" font-size="16" font-weight="bold" fill="#444444">
-	                <tspan x="197.4375" y="227">Take a</tspan>
-	                <tspan x="201.042969" y="249">guess</tspan>
-	            </text>
-	            <g id="L" transform="translate(94.000000, 280.000000)">
-	                <text id="Left-Guess" font-family="OpenSans-Regular, OpenSans, Arial" font-size="12" font-weight="normal" fill="#444444">
-	                    <tspan x="40" y="123">Left</tspan>
-	                </text>
-	                <g id="'Bias/Large/Left" stroke="#E6E6E6">
-	                    <g id="left-bias" transform="translate(3.000000, 3.000000)">
-	                        <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#009BBD" fill-rule="nonzero"></path>
-	                        <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
-	                        <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
+
+
+
+	            <g id="yourGuess_unlocked" transform="translate(54.000000, 305.000000)">
+	                <g id="unlockedBG">
+	                    <use fill="black" fill-opacity="1" filter="url(#filter-8)" xlink:href="#path-70"></use>
+	                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-70"></use>
+	                </g>
+	                <g id="userRating" transform="translate(26.000000, 16.000000)">
+	                    <g id="_userGuess" transform="translate(3.000000, 27.000000)" stroke="#E6E6E6" stroke-width="4.32" fill-rule="nonzero">
+	                        <path d="M25.0761905,25.0809524 L25.0761905,49.9190476 C11.3584893,49.9190476 0.238095238,38.7986536 0.238095238,25.0809524 C0.185981865,20.7135007 1.33937813,16.4162757 3.57142857,12.6619048 L25.0761905,25.0809524 Z" id="Shape" fill="#FFFFFF"></path>
+	                        <path d="M25.0761905,25.0809524 L46.5857143,12.6619048 C53.4441042,24.5413474 49.3742514,39.7313427 37.4952381,46.5904762 C33.7408671,48.8225266 29.4436422,49.9759229 25.0761905,49.9238095 L25.0761905,25.0809524 Z" id="Shape" fill="#ED006F"></path>
+	                        <path d="M25.0761905,25.0809524 L3.56666667,12.6619048 C10.4258001,0.782891452 25.6157955,-3.28696133 37.4952381,3.57142857 C41.3035582,5.70815926 44.4489836,8.85358468 46.5857143,12.6619048 L25.0761905,25.0809524 Z" id="Shape" fill="#9100B8"></path>
+	                    </g>
+	                    <g id="ratingLabel" transform="translate(64.000000, 25.000000)">
+	                        <rect id="userRatingTextArea" fill="#FFFFFF" x="0" y="0" width="79" height="53"></rect>
+	                        <text id="_ratingLabel" font-family="OpenSans-Regular, Open Sans" font-size="18" font-weight="normal" line-spacing="19" fill="#444444">
+	                            <tspan x="0" y="27">RIGHT</tspan>
+	                            <tspan x="0" y="46">CENTER</tspan>
+	                        </text>
+	                    </g>
+	                    <path d="M17,19.5 L117,19.5" id="Line" stroke="#BBBBBB" stroke-linecap="square"></path>
+	                    <text id="Your-Rating" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#444444">
+	                        <tspan x="33.6738281" y="13">Your Rating</tspan>
+	                    </text>
+	                </g>
+	                <g id="qubeRating" transform="translate(178.000000, 16.000000)">
+	                    <rect id="qubeRatingTextArea" fill="#FFFFFF" x="65" y="25" width="79" height="53"></rect>
+	                    <path d="M18,19.5 L118,19.5" id="Line" stroke="#BBBBBB" stroke-linecap="square"></path>
+	                    <text id="Qübe-Bias-Rating" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#444444">
+	                        <tspan x="19.7285156" y="13">Qübe Bias Rating</tspan>
+	                    </text>
+	                    <g id="ratingLabel" transform="translate(65.000000, 43.000000)" font-size="18" font-family="OpenSans-Regular, Open Sans" line-spacing="19" fill="#444444" font-weight="normal">
+	                        <text id="_ratingLabel">
+	                            <tspan x="0" y="19">CENTER</tspan>
+	                        </text>
+	                    </g>
+	                    <g id="bias_c" transform="translate(4.000000, 27.000000)" stroke="#E6E6E6" stroke-width="4.32" fill-rule="nonzero">
+	                        <path d="M25.0761905,25.0809524 L25.0761905,49.9190476 C11.3584893,49.9190476 0.238095238,38.7986536 0.238095238,25.0809524 C0.185981865,20.7135007 1.33937813,16.4162757 3.57142857,12.6619048 L25.0761905,25.0809524 Z" id="Shape" fill="#FFFFFF"></path>
+	                        <path d="M25.0761905,25.0809524 L46.5857143,12.6619048 C53.4441042,24.5413474 49.3742514,39.7313427 37.4952381,46.5904762 C33.7408671,48.8225266 29.4436422,49.9759229 25.0761905,49.9238095 L25.0761905,25.0809524 Z" id="Shape" fill="#FFFFFF"></path>
+	                        <path d="M25.0761905,25.0809524 L3.56666667,12.6619048 C10.4258001,0.782891452 25.6157955,-3.28696133 37.4952381,3.57142857 C41.3035582,5.70815926 44.4489836,8.85358468 46.5857143,12.6619048 L25.0761905,25.0809524 Z" id="Shape" fill="#9100B8"></path>
 	                    </g>
 	                </g>
-	            </g>
-	            <g id="LC" transform="translate(52.000000, 141.000000)">
-	                <text id="Left-Center-Guess" font-family="OpenSans-Regular, OpenSans, Arial" font-size="12" font-weight="normal" fill="#444444">
-	                    <tspan x="16" y="125">Left Center</tspan>
-	                </text>
-	                <g id="'Bias/Large/Left-Center" stroke="#E6E6E6">
-	                    <g id="left-center-bias" transform="translate(3.000000, 3.000000)">
-	                        <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#009BBD" fill-rule="nonzero"></path>
-	                        <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
-	                        <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#9100B8" fill-rule="nonzero"></path>
+	                <g id="indicatorBottom_saveskip" transform="translate(138.000000, 105.000000)">
+	                    <text id="SAVE-/-SKIP" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#4F8000">
+	                        <tspan x="0" y="13">SAVE / SKIP</tspan>
+	                    </text>
+	                    <g id="arrow" transform="translate(17.000000, 18.000000)" fill="#72B800">
+	                        <path d="M20.6458882,7.1037204 L10.1657639,-3.5837587 L10.1657639,-3.5837587 C9.41379183,-4.3506089 8.18254314,-4.36267004 7.41569294,-3.610698 C7.40653919,-3.60172186 7.39747444,-3.59265541 7.3885,-3.5835 L7.37254624,-3.56722453 L7.37254624,-3.56722453 C6.61014851,-2.78945254 6.61023635,-1.54463357 7.37274385,-0.766969197 L16.464,8.505 L7.38608266,17.7627211 L7.38608266,17.7627211 C6.62343305,18.5404763 6.62343341,19.7855234 7.38608346,20.5632781 L7.4015,20.579 L7.4015,20.579 C8.15345472,21.3458476 9.38468726,21.3579206 10.1515348,20.6059659 C10.1606113,20.5970658 10.1696002,20.5880768 10.1785004,20.5790004 L20.6459015,9.90429268 L20.6459015,9.90429268 C21.4085576,9.12653221 21.4085516,7.8814736 20.6458882,7.1037204 Z" id="Arrow" transform="translate(14.009500, 8.497500) rotate(90.000000) translate(-14.009500, -8.497500) "></path>
 	                    </g>
-	                </g>
-	            </g>
-	            <g id="R" transform="translate(247.000000, 280.000000)">
-	                <text id="Center-Guess" font-family="OpenSans-Regular, OpenSans, Arial" font-size="12" font-weight="normal" fill="#444444">
-	                    <tspan x="35" y="123">Right</tspan>
-	                </text>
-	                <g id="'Bias/Large/Right" stroke="#E6E6E6">
-	                    <g id="right-bias" transform="translate(3.000000, 3.000000)">
-	                        <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
-	                        <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#ED006F" fill-rule="nonzero"></path>
-	                        <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
-	                    </g>
-	                </g>
-	            </g>
-	            <g id="RC" transform="translate(289.000000, 141.000000)">
-	                <text id="Right-Center-Guess" font-family="OpenSans-Regular, OpenSans, Arial" font-size="12" font-weight="normal" fill="#444444">
-	                    <tspan x="11" y="125">Right Center</tspan>
-	                </text>
-	                <g id="'Bias/Large/Right-Center" stroke="#E6E6E6">
-	                    <g id="right-center-bias" transform="translate(3.000000, 3.000000)">
-	                        <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
-	                        <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#ED006F" fill-rule="nonzero"></path>
-	                        <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" stroke-width="8.55" fill="#9100B8" fill-rule="nonzero"></path>
-	                    </g>
-	                </g>
-	            </g>
-	            <g id="C" transform="translate(173.000000, 43.000000)">
-	                <text id="Right-Guess" font-family="OpenSans-Regular, OpenSans, Arial" font-size="12" font-weight="normal" fill="#444444">
-	                    <tspan x="28" y="119">Center</tspan>
-	                </text>
-	                <g id="'Bias/Large/Center" stroke="#E6E6E6">
-	                    <g id="center-bias" transform="translate(2.857143, 2.857143)">
-	                        <path d="M47.7641723,47.7732426 L47.7641723,95.0839002 C21.6352176,95.0839002 0.453514739,73.9021973 0.453514739,47.7732426 C0.354251172,39.454287 2.55119644,31.2690966 6.80272109,24.1179138 L47.7641723,47.7732426 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
-	                        <path d="M47.7641723,47.7732426 L88.7346939,24.1179138 C101.798294,46.7454236 94.0461932,75.678748 71.4195011,88.7437642 C64.2683184,92.9952888 56.083128,95.1922341 47.7641723,95.0929705 L47.7641723,47.7732426 Z" id="Shape" stroke-width="8.55" fill="#FFFFFF" fill-rule="nonzero"></path>
-	                        <path d="M47.7641723,47.7732426 L6.79365079,24.1179138 C19.8586669,1.49122181 48.7919914,-6.26087872 71.4195011,6.80272109 C78.6734441,10.8726843 84.6647307,16.8639708 88.7346939,24.1179138 L47.7641723,47.7732426 Z" id="Shape" stroke-width="8.55" fill="#9100B8" fill-rule="nonzero"></path>
-	                    </g>
-	                </g>
-	            </g>
-	            <g id="Close_Btn" transform="translate(390.000000, 31.000000)" fill="#B80056">
-	                <g id="`Icons/delete/red">
-	                    <polygon id="delete" points="21.296 23.023 11.554 13.881 2.139 23.022 2.84217094e-14 20.916 9.687 11.511 2.84217094e-14 2.106 2.139 -2.27373675e-13 11.555 9.142 21.296 0.002 23.51 2.108 13.487 11.512 23.51 20.917"></polygon>
 	                </g>
 	            </g>
 	        </g>
 	    </g>
 	</svg>
+
+
+
+    <svg id="guess_screen_template" width="445px" height="445px" viewBox="0 0 445 445" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: transparent;">
+
+        <title>guess_screen_template</title>
+        <defs>
+            <linearGradient x1="50%" y1="3.061617e-15%" x2="50%" y2="100%" id="linearGradient-L-BG">
+                <stop stop-color="#00748D" offset="0%"></stop>
+                <stop stop-color="#009BBD" offset="100%"></stop>
+            </linearGradient>
+            <rect id="path-L-BG" x="0" y="0" width="405" height="405" rx="20"></rect>
+            <filter x="-1.7%" y="-1.2%" width="103.5%" height="103.5%" filterUnits="objectBoundingBox" id="filter-3">
+                <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+                <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+                <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+            </filter>
+            <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-LC-BG">
+                <stop stop-color="#9100B8" offset="0%"></stop>
+                <stop stop-color="#009BBD" offset="100%"></stop>
+            </linearGradient>
+            <rect id="path-5z" x="0" y="0" width="405" height="405" rx="20"></rect>
+            <filter x="-1.7%" y="-1.2%" width="103.5%" height="103.5%" filterUnits="objectBoundingBox" id="filter-6">
+                <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+                <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+                <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+            </filter>
+            <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-7">
+                <stop stop-color="#9100B8" offset="0%"></stop>
+                <stop stop-color="#63007E" offset="100%"></stop>
+            </linearGradient>
+            <rect id="path-8z" x="0" y="0" width="405" height="405" rx="20"></rect>
+            <filter x="-1.7%" y="-1.2%" width="103.5%" height="103.5%" filterUnits="objectBoundingBox" id="filter-9">
+                <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+                <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+                <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+            </filter>
+            <linearGradient x1="0%" y1="0%" x2="100%" y2="96.5391413%" id="linearGradient-10">
+                <stop stop-color="#9100B8" offset="0%"></stop>
+                <stop stop-color="#ED006F" offset="100%"></stop>
+            </linearGradient>
+            <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-11">
+                <stop stop-color="#AA0050" offset="0%"></stop>
+                <stop stop-color="#ED006F" offset="100%"></stop>
+            </linearGradient>
+            <linearGradient x1="100%" y1="0%" x2="0%" y2="100%" id="linearGradient-12">
+                <stop stop-color="#ED006F" offset="0%"></stop>
+                <stop stop-color="#9100B8" offset="49.2825255%"></stop>
+                <stop stop-color="#009BBD" offset="100%"></stop>
+            </linearGradient>
+        </defs>
+        <g id="Cube-Screens" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="guess_screen_template">
+
+
+                <g id="overlay" fill-opacity="0.5" fill="#444444">
+                    <rect x="0" y="0" width="445" height="445"></rect>
+                </g>
+
+
+    	        <g id="Guess_BGs" transform="translate(20.000000, 20.000000)">
+    	            <g id="Guess_L_BG">
+    	                <g id="left_bg">
+    	                    <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-L-BG"></use>
+    	                    <use fill="url(#linearGradient-L-BG)" fill-rule="evenodd" xlink:href="#path-L-BG"></use>
+    	                </g>
+    	            </g>
+    	            <g id="Guess_LC_BG">
+    	                <g id="leftcenter_bg">
+    	                    <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5z"></use>
+    	                    <use fill="url(#linearGradient-LC-BG)" fill-rule="evenodd" xlink:href="#path-5z"></use>
+    	                </g>
+    	            </g>
+    	            <g id="Guess_C_BG">
+    	                <g id="center_bg">
+    	                    <use fill="black" fill-opacity="1" filter="url(#filter-9)" xlink:href="#path-8z"></use>
+    	                    <use fill="url(#linearGradient-7)" fill-rule="evenodd" xlink:href="#path-8z"></use>
+    	                </g>
+    	            </g>
+    	            <g id="Guess_RC_BG" fill="url(#linearGradient-10)">
+    	                <rect id="rightcenter_bg" x="0" y="0" width="405" height="405" rx="20"></rect>
+    	            </g>
+    	            <g id="Guess_R_BG" fill="url(#linearGradient-11)">
+    	                <rect id="right_bg" x="0" y="0" width="405" height="405" rx="20"></rect>
+    	            </g>
+    	            <g id="Guess_BG" fill="#FFFFFF">
+    	                <rect id="guess_bg" x="0" y="0" width="405" height="405" rx="20"></rect>
+    	            </g>
+    	        </g>
+
+
+                <g id="question_mark" transform="translate(148.000000, 205.000000)" font-size="24" font-family="OpenSans-Bold, Open Sans" fill="#444444" font-weight="bold">
+                    <text id="?">
+                        <tspan x="69.2753906" y="26">?</tspan>
+                    </text>
+                </g>
+
+
+
+                <g id="overlay_pie_L" transform="translate(97.000000, 283.000000)">
+                    <g id="L_bias" stroke="#E6E6E6" stroke-width="8.55" fill-rule="nonzero">
+                        <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#009BBD"></path>
+                        <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" fill="#FFFFFF"></path>
+                        <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#FFFFFF"></path>
+                    </g>
+                    <text id="overlay_Label_Left" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#444444">
+                        <tspan x="37" y="120">Left</tspan>
+                    </text>
+                </g>
+
+                <g id="overlay_pie_LC" transform="translate(55.000000, 144.000000)">
+                    <g id="LC_bias" stroke="#E6E6E6" stroke-width="8.55" fill-rule="nonzero">
+                        <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#009BBD"></path>
+                        <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" fill="#FFFFFF"></path>
+                        <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#9100B8"></path>
+                    </g>
+                    <text id="overlay_Label_Left-Center" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#444444">
+                        <tspan x="13" y="122">Left Center</tspan>
+                    </text>
+                </g>
+
+                <g id="overlay_pie_R" transform="translate(250.000000, 283.000000)">
+                    <g id="R_bias" stroke="#E6E6E6" stroke-width="8.55" fill-rule="nonzero">
+                        <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#FFFFFF"></path>
+                        <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" fill="#ED006F"></path>
+                        <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#FFFFFF"></path>
+                    </g>
+                    <text id="overlay_Label_Right" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#444444">
+                        <tspan x="32" y="120">Right</tspan>
+                    </text>
+                </g>
+
+                <g id="overlay_pie_RC" transform="translate(292.000000, 144.000000)">
+                    <g id="RC_bias" stroke="#E6E6E6" stroke-width="8.55" fill-rule="nonzero">
+                        <path d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#FFFFFF"></path>
+                        <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" fill="#ED006F"></path>
+                        <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#9100B8"></path>
+                    </g>
+                    <text id="overlay_Label_Right-Center" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#444444">
+                        <tspan x="8" y="122">Right Center</tspan>
+                    </text>
+                </g>
+
+                <g id="overlay_pie_C" transform="translate(175.000000, 45.000000)">
+                    <g id="C_bias" transform="translate(0.857143, 0.857143)" stroke="#E6E6E6" stroke-width="8.55" fill-rule="nonzero">
+                        <path d="M47.7641723,47.7732426 L47.7641723,95.0839002 C21.6352176,95.0839002 0.453514739,73.9021973 0.453514739,47.7732426 C0.354251172,39.454287 2.55119644,31.2690966 6.80272109,24.1179138 L47.7641723,47.7732426 Z" id="Shape" fill="#FFFFFF"></path>
+                        <path d="M47.7641723,47.7732426 L88.7346939,24.1179138 C101.798294,46.7454236 94.0461932,75.678748 71.4195011,88.7437642 C64.2683184,92.9952888 56.083128,95.1922341 47.7641723,95.0929705 L47.7641723,47.7732426 Z" id="Shape" fill="#FFFFFF"></path>
+                        <path d="M47.7641723,47.7732426 L6.79365079,24.1179138 C19.8586669,1.49122181 48.7919914,-6.26087872 71.4195011,6.80272109 C78.6734441,10.8726843 84.6647307,16.8639708 88.7346939,24.1179138 L47.7641723,47.7732426 Z" id="Shape" fill="#9100B8"></path>
+                    </g>
+                    <text id="overlay_Label_Center" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#444444">
+                        <tspan x="26" y="117">Center</tspan>
+                    </text>
+                </g>
+
+
+
+
+                <g id="Close_Btn" transform="translate(390.000000, 31.000000)" fill="#B80056">
+                    <path d="M20.1818993,21.9775156 L11.554,13.881 L3.21583569,21.9765029 L3.21583569,21.9765029 C2.61722999,22.5576877 1.66402784,22.5543556 1.0695,21.969 L1.0695,21.969 L1.0695,21.969 C0.491999159,21.4004087 0.484776541,20.4713175 1.05336783,19.8938166 C1.06110418,19.885959 1.06892886,19.8781889 1.07684036,19.8705077 L9.687,11.511 L1.07684036,3.15149227 L1.07684036,3.15149227 C0.495375926,2.58695495 0.481653787,1.65793697 1.04619111,1.07647253 C1.0538723,1.06856102 1.06164242,1.06073635 1.0695,1.053 L1.0695,1.053 L1.0695,1.053 C1.66402757,0.467644666 2.61722952,0.464313329 3.21583403,1.0454988 L11.555,9.142 L20.1818387,1.04741981 L20.1818387,1.04741981 C20.8071501,0.460688871 21.7817078,0.464014759 22.403,1.055 L22.403,1.055 L22.403,1.055 C22.9805759,1.60440148 23.0034158,2.51799717 22.4540143,3.09557308 C22.435163,3.11539112 22.4157522,3.1346693 22.3958053,3.15338427 L13.487,11.512 L22.3958608,19.8715566 L22.3958608,19.8715566 C22.9771925,20.4170444 23.0062497,21.3305121 22.4607619,21.9118438 C22.4420623,21.9317721 22.4228006,21.9511653 22.403,21.97 L22.403,21.97 L22.403,21.97 C21.7817177,22.5609759 20.8071667,22.5642735 20.1818993,21.9775156 Z" id="delete" style="mix-blend-mode: darken;"></path>
+                </g>
+            </g>
+        </g>
+    </svg>
+
+
+
+
 </div>
 <!-- End SVG Templates -->
 

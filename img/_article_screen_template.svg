@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg id="article_screen_template" width="445px" height="445px" viewBox="0 0 445 445" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #FFFFFF;">
+    <title>article_screen_template</title>
+    <defs>
+        <rect id="path-1" x="30" y="80" width="385" height="95"></rect>
+        <rect id="path-2" x="30" y="196" width="385" height="15"></rect>
+        <rect id="path-3" x="30" y="229" width="385" height="226"></rect>
+        <rect id="path-4" x="0" y="0" width="243" height="123" rx="10"></rect>
+        <filter x="-2.9%" y="-4.1%" width="105.8%" height="111.4%" filterUnits="objectBoundingBox" id="filter-5">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-6" x="0" y="0" width="337" height="135" rx="10"></rect>
+        <filter x="-2.1%" y="-3.7%" width="104.2%" height="110.4%" filterUnits="objectBoundingBox" id="filter-7">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-8" x="0" y="0" width="337" height="160" rx="10"></rect>
+        <filter x="-2.1%" y="-3.1%" width="104.2%" height="108.8%" filterUnits="objectBoundingBox" id="filter-9">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Cube-Screens" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="article_screen_template">
+            <g id="TitleTextArea">
+                <use fill="#D8D8D8" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <rect stroke="#979797" stroke-width="1" x="30.5" y="80.5" width="384" height="94"></rect>
+            </g>
+            <g id="DateTextArea">
+                <use fill="#D8D8D8" fill-rule="evenodd" xlink:href="#path-2"></use>
+                <rect stroke="#979797" stroke-width="1" x="30.5" y="196.5" width="384" height="14"></rect>
+            </g>
+            <g id="ArticleTextArea">
+                <use fill="#D8D8D8" fill-rule="evenodd" xlink:href="#path-3"></use>
+                <rect stroke="#979797" stroke-width="1" x="30.5" y="229.5" width="384" height="225"></rect>
+            </g>
+            <g id="articleContent" transform="translate(30.000000, 80.000000)" font-family="OpenSans-Bold, Open Sans" font-size="24" font-weight="bold">
+                <text>
+                    <tspan x="0" y="26" fill="#444444">North Korea says its ICBM can </tspan>
+                    <tspan x="0" y="59" fill="#444444">carry nuclear warhead; U.S. </tspan>
+                    <tspan x="0" y="92" fill="#444444">urges global action</tspan>
+                    <tspan x="226.769531" y="92" fill="#548800"></tspan>
+                    <tspan x="0" y="137" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">July 5, 2017</tspan>
+                    <tspan x="0" y="171" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">The United States cautioned on Wednesday it was </tspan>
+                    <tspan x="0" y="193" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">ready to use force if need be to stop North Korea's </tspan>
+                    <tspan x="0" y="215" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">nuclear missile program but said it preferred global </tspan>
+                    <tspan x="0" y="237" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">diplomatic action against Pyongyang for defying </tspan>
+                    <tspan x="0" y="259" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">world powers by test launching a ballistic missile </tspan>
+                    <tspan x="0" y="281" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">that could hit Alaska.</tspan>
+                    <tspan x="0" y="315" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">U.S. Ambassador to the United Nations Nikki Haley </tspan>
+                    <tspan x="0" y="337" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">told a meeting of the U.N. Security Council that </tspan>
+                    <tspan x="0" y="359" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">North Korea's actions were "quickly closing off the </tspan>
+                    <tspan x="0" y="381" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">possibility of a diplomatic solution" and the United </tspan>
+                    <tspan x="0" y="403" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">States was prepared to defend itself and its allies.</tspan>
+                    <tspan x="0" y="437" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">"One of our capabilities lies with our considerable </tspan>
+                    <tspan x="0" y="459" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">military forces. We will use them if we must, but we </tspan>
+                    <tspan x="0" y="481" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">prefer not to have to go in that direction," Haley </tspan>
+                    <tspan x="0" y="503" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">said. She urged China, North Korea's only major </tspan>
+                    <tspan x="0" y="525" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">ally, to do more to rein in Pyongyang.</tspan>
+                    <tspan x="0" y="559" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">Speaking with his Japanese counterpart on </tspan>
+                    <tspan x="0" y="581" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">Wednesday, U.S. Defense Secretary James Mattis </tspan>
+                    <tspan x="0" y="603" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">underscored the "ironclad commitment" of the </tspan>
+                    <tspan x="0" y="625" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">United States to defending Japan and providing </tspan>
+                    <tspan x="0" y="647" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">"extended deterrence using the full range of U.S. </tspan>
+                    <tspan x="0" y="669" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">capabilities," Pentagon spokeswoman Dana White </tspan>
+                    <tspan x="0" y="691" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">said in a statement.</tspan>
+                    <tspan x="0" y="725" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">Mattis' assurances to Japanese Defense Minister </tspan>
+                    <tspan x="0" y="747" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">Tomomi Inada came during a phone call to discuss </tspan>
+                    <tspan x="0" y="769" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">the North Korean test, the statement said.</tspan>
+                    <tspan x="0" y="803" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">Taking a major step in its missile program, North </tspan>
+                    <tspan x="0" y="825" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">Korea on Tuesday test launched an intercontinental </tspan>
+                    <tspan x="0" y="847" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">ballistic missile that some experts believe has the </tspan>
+                    <tspan x="0" y="869" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">range to reach the U.S. states of Alaska and Hawaii </tspan>
+                    <tspan x="0" y="891" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">and perhaps the U.S. Pacific Northwest.</tspan>
+                    <tspan x="0" y="925" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">North Korea says the missile could carry a large </tspan>
+                    <tspan x="0" y="947" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">nuclear warhead.</tspan>
+                    <tspan x="0" y="981" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">The missile test is a direct challenge to U.S. </tspan>
+                    <tspan x="0" y="1003" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">President Donald Trump, who has vowed to </tspan>
+                    <tspan x="0" y="1025" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">prevent North Korea from being able to hit the </tspan>
+                    <tspan x="0" y="1047" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">United States with a nuclear missile.</tspan>
+                    <tspan x="0" y="1081" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">He has frequently urged China to press the isolated </tspan>
+                    <tspan x="0" y="1103" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">country's leadership to give up its nuclear program.</tspan>
+                    <tspan x="0" y="1137" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">Haley said the United States would propose new </tspan>
+                    <tspan x="0" y="1159" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">U.N. sanctions on North Korea in coming days and </tspan>
+                    <tspan x="0" y="1181" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">warned that if Russia and China did not support the </tspan>
+                    <tspan x="0" y="1203" font-family="OpenSans-Regular, Open Sans" font-size="16" font-weight="normal" fill="#444444">move, then “we will go our own path.”</tspan>
+                </text>
+            </g>
+            <g id="barBottom" transform="translate(0.000000, 415.000000)" fill="#FFFFFF">
+                <rect x="0" y="0" width="445" height="30"></rect>
+            </g>
+            <g id="dividerBottom" transform="translate(20.000000, 414.000000)" stroke-linecap="square" stroke="#BBBBBB">
+                <path d="M0,1 L405,1"></path>
+            </g>
+            <g id="barTop" fill="#FFFFFF">
+                <rect x="0" y="0" width="445" height="30"></rect>
+            </g>
+            <g id="topic" transform="translate(0.000000, 20.000000)">
+                <rect id="bgTopic" fill="#F6F6F6" x="0" y="0" width="445" height="41"></rect>
+                <text id="TopicTextArea" font-family="OpenSans-Regular, Open Sans" font-size="14" font-weight="normal" fill="#FFFFFF">
+                    <tspan x="174" y="26">NORTH KOREA</tspan>
+                </text>
+            </g>
+            <g id="actionBiasBtn" transform="translate(101.000000, 350.000000)">
+                <g id="actionBiasBG">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-4"></use>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-4"></use>
+                </g>
+                <g id="BiasGuessBtn_pressed" transform="translate(24.099174, 22.000000)">
+                    <rect id="btnBg" fill="#4F8000" x="0" y="0" width="193.797521" height="53" rx="5"></rect>
+                    <text id="btnLabel" font-family="OpenSans-Regular, Open Sans" font-size="18" font-weight="normal" fill="#FFFFFF">
+                        <tspan x="29.7795477" y="32">What's the bias?</tspan>
+                    </text>
+                </g>
+                <g id="BiasGuessBtn" transform="translate(24.099174, 22.000000)">
+                    <rect id="btnBg" fill="#72B800" x="0" y="0" width="193.797521" height="53" rx="5"></rect>
+                    <text id="btnLabel" font-family="OpenSans-Regular, Open Sans" font-size="18" font-weight="normal" fill="#FFFFFF">
+                        <tspan x="29.7795477" y="32">What's the bias?</tspan>
+                    </text>
+                </g>
+            </g>
+            <g id="scrollBar" transform="translate(432.000000, 30.000000)">
+                <rect id="scrollBg" fill="#F1F1F1" x="0" y="0" width="5" height="385" rx="2.5"></rect>
+                <rect id="scrollIndicator" fill="#ADADAD" x="0" y="0" width="5" height="50" rx="2.5"></rect>
+            </g>
+            <g id="yourGuess_locked" transform="translate(55.000000, 350.000000)">
+                <g id="lockedBG">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-7)" xlink:href="#path-6"></use>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-6"></use>
+                </g>
+                <g id="userRating" transform="translate(25.000000, 19.000000)">
+                    <g id="userGuess" stroke-width="4.32" stroke="#E6E6E6" fill-rule="nonzero">
+                        <g id="_userGuess">
+                            <path d="M25.0761905,25.0809524 L25.0761905,49.9190476 C11.3584893,49.9190476 0.238095238,38.7986536 0.238095238,25.0809524 C0.185981865,20.7135007 1.33937813,16.4162757 3.57142857,12.6619048 L25.0761905,25.0809524 Z" id="Shape" fill="#FFFFFF"></path>
+                            <path d="M25.0761905,25.0809524 L46.5857143,12.6619048 C53.4441042,24.5413474 49.3742514,39.7313427 37.4952381,46.5904762 C33.7408671,48.8225266 29.4436422,49.9759229 25.0761905,49.9238095 L25.0761905,25.0809524 Z" id="Shape" fill="#ED006F"></path>
+                            <path d="M25.0761905,25.0809524 L3.56666667,12.6619048 C10.4258001,0.782891452 25.6157955,-3.28696133 37.4952381,3.57142857 C41.3035582,5.70815926 44.4489836,8.85358468 46.5857143,12.6619048 L25.0761905,25.0809524 Z" id="Shape" fill="#9100B8"></path>
+                        </g>
+                    </g>
+                    <text id="_userRating" font-family="OpenSans-Regular, Open Sans" font-size="24" font-weight="normal" fill="#444444">
+                        <tspan x="60" y="43">RIGHT CENTER</tspan>
+                    </text>
+                    <text id="You-rated-this" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#444444">
+                        <tspan x="60" y="19">You rated this</tspan>
+                    </text>
+                </g>
+                <g id="btnRedo_pressed" transform="translate(262.000000, 19.000000)">
+                    <rect id="BG" fill="#4F8000" x="0" y="0" width="50" height="50" rx="5"></rect>
+                    <path d="M26.068,13.834 C26.033,13.834 25.999,13.831 25.965,13.826 C25.421,13.758 25.001,13.294 25.001,12.727 L25.001,10.555 C25.001,10.251 24.754,10 24.45,10 C24.356,10 24.267,10.026 24.188,10.068 C24.187,10.07 24.185,10.071 24.183,10.071 L24.07,10.157 L17.612,15.03 L17.481,15.13 C17.251,15.333 17.105,15.63 17.105,15.963 C17.105,16.122 17.138,16.272 17.198,16.407 C17.275,16.584 17.396,16.735 17.549,16.848 L20.736,19.255 L24.141,21.826 L24.143,21.825 C24.23,21.886 24.338,21.921 24.45,21.921 C24.754,21.921 25.001,21.672 25.001,21.367 L25.001,19.318 C25.001,18.706 25.493,18.211 26.101,18.211 C26.138,18.211 26.176,18.213 26.214,18.216 C26.232,18.218 26.251,18.221 26.269,18.225 C30.465,18.842 33.687,22.48 33.687,26.876 C33.687,31.706 29.798,35.621 25.001,35.621 C20.202,35.621 16.313,31.706 16.313,26.876 C16.313,25.118 16.828,23.481 17.715,22.111 C17.725,22.094 17.737,22.079 17.747,22.062 C18.378,21.063 18.094,19.736 17.105,19.083 C16.109,18.427 14.773,18.709 14.121,19.712 L14.119,19.712 C12.779,21.769 12,24.233 12,26.876 C12,34.105 17.82,39.963 24.999,39.963 C32.177,39.963 37.999,34.104 37.999,26.876 C38.001,20.011 32.749,14.381 26.068,13.834 L26.068,13.834 Z" id="rotate-icon" fill="#FFFFFF"></path>
+                </g>
+                <g id="btnRedo" transform="translate(262.000000, 19.000000)">
+                    <rect id="BG" fill="#72B800" x="0" y="0" width="50" height="50" rx="5"></rect>
+                    <path d="M26.068,13.834 C26.033,13.834 25.999,13.831 25.965,13.826 C25.421,13.758 25.001,13.294 25.001,12.727 L25.001,10.555 C25.001,10.251 24.754,10 24.45,10 C24.356,10 24.267,10.026 24.188,10.068 C24.187,10.07 24.185,10.071 24.183,10.071 L24.07,10.157 L17.612,15.03 L17.481,15.13 C17.251,15.333 17.105,15.63 17.105,15.963 C17.105,16.122 17.138,16.272 17.198,16.407 C17.275,16.584 17.396,16.735 17.549,16.848 L20.736,19.255 L24.141,21.826 L24.143,21.825 C24.23,21.886 24.338,21.921 24.45,21.921 C24.754,21.921 25.001,21.672 25.001,21.367 L25.001,19.318 C25.001,18.706 25.493,18.211 26.101,18.211 C26.138,18.211 26.176,18.213 26.214,18.216 C26.232,18.218 26.251,18.221 26.269,18.225 C30.465,18.842 33.687,22.48 33.687,26.876 C33.687,31.706 29.798,35.621 25.001,35.621 C20.202,35.621 16.313,31.706 16.313,26.876 C16.313,25.118 16.828,23.481 17.715,22.111 C17.725,22.094 17.737,22.079 17.747,22.062 C18.378,21.063 18.094,19.736 17.105,19.083 C16.109,18.427 14.773,18.709 14.121,19.712 L14.119,19.712 C12.779,21.769 12,24.233 12,26.876 C12,34.105 17.82,39.963 24.999,39.963 C32.177,39.963 37.999,34.104 37.999,26.876 C38.001,20.011 32.749,14.381 26.068,13.834 L26.068,13.834 Z" id="rotate-icon" fill="#FFFFFF"></path>
+                </g>
+            </g>
+            <g id="yourGuess_unlocked" transform="translate(54.000000, 305.000000)">
+                <g id="unlockedBG">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-9)" xlink:href="#path-8"></use>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-8"></use>
+                </g>
+                <g id="userRating" transform="translate(26.000000, 16.000000)">
+                    <g id="_userGuess" transform="translate(3.000000, 27.000000)" stroke="#E6E6E6" stroke-width="4.32" fill-rule="nonzero">
+                        <path d="M25.0761905,25.0809524 L25.0761905,49.9190476 C11.3584893,49.9190476 0.238095238,38.7986536 0.238095238,25.0809524 C0.185981865,20.7135007 1.33937813,16.4162757 3.57142857,12.6619048 L25.0761905,25.0809524 Z" id="Shape" fill="#FFFFFF"></path>
+                        <path d="M25.0761905,25.0809524 L46.5857143,12.6619048 C53.4441042,24.5413474 49.3742514,39.7313427 37.4952381,46.5904762 C33.7408671,48.8225266 29.4436422,49.9759229 25.0761905,49.9238095 L25.0761905,25.0809524 Z" id="Shape" fill="#ED006F"></path>
+                        <path d="M25.0761905,25.0809524 L3.56666667,12.6619048 C10.4258001,0.782891452 25.6157955,-3.28696133 37.4952381,3.57142857 C41.3035582,5.70815926 44.4489836,8.85358468 46.5857143,12.6619048 L25.0761905,25.0809524 Z" id="Shape" fill="#9100B8"></path>
+                    </g>
+                    <g id="ratingLabel" transform="translate(64.000000, 25.000000)">
+                        <rect id="userRatingTextArea" fill="#FFFFFF" x="0" y="0" width="79" height="53"></rect>
+                        <text id="_ratingLabel" font-family="OpenSans-Regular, Open Sans" font-size="18" font-weight="normal" line-spacing="19" fill="#444444">
+                            <tspan x="0" y="27">RIGHT</tspan>
+                            <tspan x="0" y="46">CENTER</tspan>
+                        </text>
+                    </g>
+                    <path d="M17,19.5 L117,19.5" id="Line" stroke="#BBBBBB" stroke-linecap="square"></path>
+                    <text id="Your-Rating" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#444444">
+                        <tspan x="33.6738281" y="13">Your Rating</tspan>
+                    </text>
+                </g>
+                <g id="qubeRating" transform="translate(178.000000, 16.000000)">
+                    <rect id="qubeRatingTextArea" fill="#FFFFFF" x="65" y="25" width="79" height="53"></rect>
+                    <path d="M18,19.5 L118,19.5" id="Line" stroke="#BBBBBB" stroke-linecap="square"></path>
+                    <text id="Qübe-Bias-Rating" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#444444">
+                        <tspan x="19.7285156" y="13">Qübe Bias Rating</tspan>
+                    </text>
+                    <g id="ratingLabel" transform="translate(65.000000, 43.000000)" font-size="18" font-family="OpenSans-Regular, Open Sans" line-spacing="19" fill="#444444" font-weight="normal">
+                        <text id="_ratingLabel">
+                            <tspan x="0" y="19">CENTER</tspan>
+                        </text>
+                    </g>
+                    <g id="bias_c" transform="translate(4.000000, 27.000000)" stroke="#E6E6E6" stroke-width="4.32" fill-rule="nonzero">
+                        <path d="M25.0761905,25.0809524 L25.0761905,49.9190476 C11.3584893,49.9190476 0.238095238,38.7986536 0.238095238,25.0809524 C0.185981865,20.7135007 1.33937813,16.4162757 3.57142857,12.6619048 L25.0761905,25.0809524 Z" id="Shape" fill="#FFFFFF"></path>
+                        <path d="M25.0761905,25.0809524 L46.5857143,12.6619048 C53.4441042,24.5413474 49.3742514,39.7313427 37.4952381,46.5904762 C33.7408671,48.8225266 29.4436422,49.9759229 25.0761905,49.9238095 L25.0761905,25.0809524 Z" id="Shape" fill="#FFFFFF"></path>
+                        <path d="M25.0761905,25.0809524 L3.56666667,12.6619048 C10.4258001,0.782891452 25.6157955,-3.28696133 37.4952381,3.57142857 C41.3035582,5.70815926 44.4489836,8.85358468 46.5857143,12.6619048 L25.0761905,25.0809524 Z" id="Shape" fill="#9100B8"></path>
+                    </g>
+                </g>
+                <g id="indicatorBottom_saveskip" transform="translate(138.000000, 105.000000)">
+                    <text id="SAVE-/-SKIP" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#4F8000">
+                        <tspan x="0" y="13">SAVE / SKIP</tspan>
+                    </text>
+                    <g id="arrow" transform="translate(17.000000, 18.000000)" fill="#72B800">
+                        <path d="M20.6458882,7.1037204 L10.1657639,-3.5837587 L10.1657639,-3.5837587 C9.41379183,-4.3506089 8.18254314,-4.36267004 7.41569294,-3.610698 C7.40653919,-3.60172186 7.39747444,-3.59265541 7.3885,-3.5835 L7.37254624,-3.56722453 L7.37254624,-3.56722453 C6.61014851,-2.78945254 6.61023635,-1.54463357 7.37274385,-0.766969197 L16.464,8.505 L7.38608266,17.7627211 L7.38608266,17.7627211 C6.62343305,18.5404763 6.62343341,19.7855234 7.38608346,20.5632781 L7.4015,20.579 L7.4015,20.579 C8.15345472,21.3458476 9.38468726,21.3579206 10.1515348,20.6059659 C10.1606113,20.5970658 10.1696002,20.5880768 10.1785004,20.5790004 L20.6459015,9.90429268 L20.6459015,9.90429268 C21.4085576,9.12653221 21.4085516,7.8814736 20.6458882,7.1037204 Z" id="Arrow" transform="translate(14.009500, 8.497500) rotate(90.000000) translate(-14.009500, -8.497500) "></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

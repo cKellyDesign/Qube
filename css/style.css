@@ -1,7 +1,4 @@
-@font-face {
-    font-family: OpenSans;
-    src: url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
-}
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 
 
 /* ********** START CUBE / VIEWPORT STYLING ********** */
@@ -10,11 +7,14 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
+body {
+  font-family: Arial;
+}
 
 
 body {
   background: #EEEEEE;
-  font-family: 'OpenSans', Arial, sans-serif;
+  font-family: Open Sans, Arial, sans-serif;
   font-weight: 300; }
 
 #wrapper {
@@ -59,7 +59,7 @@ body {
   position: absolute;
   height: 500px;
   width: 500px;
-  background-image: url("http://jordizle.com/demo/376/3d-interactive-cube-with-rotating-sides-using-css3-and-javascript/assets/img/cube/blank.png");
+  /*background-image: url("http://jordizle.com/demo/376/3d-interactive-cube-with-rotating-sides-using-css3-and-javascript/assets/img/cube/blank.png");*/
   -webkit-touch-callout: none;
   -moz-touch-callout: none;
   -ms-touch-callout: none;
@@ -169,7 +169,7 @@ body {
 }
 /* Bumbing the Qube down */
 .viewport { 
-  /*margin-top: 120px;*/
+  margin-top: 60px;
 }
 /* Hiding the numbers on from the original Cube demo */
 .cube-image { 
@@ -200,9 +200,12 @@ body {
 }*/
 
 .side {
-  background-image: none !important;
-  background-color: black;
-  outline: 1px solid #444 !important
+  /*background: none !important;*/
+  /*background-color: black;*/
+  outline: 1px solid #444 !important;
+
+  background: #a57933;
+
 }
 
 .side > object,
@@ -226,7 +229,10 @@ body {
   transition: opacity .4s;
   opacity: 0 !important;
 }
-
+.hide {
+  display: none;
+  /*visibility: 0;*/
+}
 
 /* class names based on physical position on qube!! */
 #top > svg.left {
@@ -269,5 +275,64 @@ body {
   color: #333;
   border-width: 0;
 }
+
+
+#SaveSkipScreen_template {
+  transform: rotate(180deg);
+
+}
+
+#btn_skip:active rect,
+#btn_save:active rect {
+  fill: #4F8000;
+}
+
+#btn_skip.disabled rect,
+#btn_save.disabled rect {
+  fill: #BBBBBB;
+}
+
+#_author tspan,
+#_date tspan,
+#_source tspan {
+  text-align: center;
+}
+
+
+#sourceBiasPie_L.active {
+  fill : #009BBD !important;
+}
+
+#sourceBiasPie_C.active {
+  fill : #9100B8 !important;
+}
+
+#sourceBiasPie_R.active {
+  fill : #ED006F !important;
+}
+
+#top #L, #top #LC, #top #C, #top #RC, #top #R, #top #locked { display: none; }
+#top #L.active, #top #LC.active, #top #C.active, #top #RC.active, #top #R.active, #top #locked.active {
+  display: initial;
+}
+
+#actionBiasBtn,
+#yourGuess_unlocked,
+#yourGuess_locked {
+  display: none;
+}
+
+#actionBiasBtn.active,
+#yourGuess_unlocked.active,
+#yourGuess_locked.active {
+  display: initial;
+}
+
+[id*="BiasGuessBtn"]:active rect {
+  fill: #4F8000;
+}
+
+
+
 
 
