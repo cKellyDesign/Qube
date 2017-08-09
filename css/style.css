@@ -335,8 +335,9 @@ body {
     height: 48px;
     position: absolute;
     bottom: 6%;
-    left: 15%;
-    right: 15%;
+    left: 50%;
+    width: 500px;
+    margin-left: -250px;
     background-image: radial-gradient(50% 50%, #ababab 0%, transparent 67%); 
 }
 
