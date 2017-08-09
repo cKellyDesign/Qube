@@ -7,7 +7,8 @@ window.wrapTextRect = function (myRect, myText, str, offset)
     $(myText).html('')
 
     var padding=0
-    var width=+ myRect[0].getBBox().width - padding
+    // var width=+ myRect[0].getBBox().width - padding
+    var width = 384
     var x=+$(myRect).attr('x')
     var y=+$(myRect).attr('y') + offset
     var maxY = Number($(myRect).attr('y')) + Number($(myRect).attr('height'))
