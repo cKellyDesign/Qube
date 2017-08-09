@@ -453,7 +453,7 @@ var QubeApp = function () {
 			case 'RC':
 				return 'RIGHT CENTER'
 			break;
-			case 'C':
+			case 'R':
 				return 'RIGHT'
 			break;
 		}
