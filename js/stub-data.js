@@ -155,7 +155,7 @@ window.sources = {
 		url : "",
 		name : "Fox News",
 		bias : "R",
-		desc : "Fox News is an American basic cable and satellite television news channel owned by the Fox Entertainment Group, a subsidiary of 21st Century Fox. Fox News Channel has been accused of biased reporting, perpetuating conspiracy theories, and promoting the Republican Party.",
+		desc : "Fox News Channel's bias is widely believed to be conservative, despite its slogan being \“fair and balanced.\" Many claim that Fox News promotes conservative ideas and favors the Republican Party.",
 	}
 }
 

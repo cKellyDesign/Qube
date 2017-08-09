@@ -404,6 +404,7 @@ var QubeApp = function () {
 					// just handle 
 					thisVal = window.sources[thisArticle.sourceUID].desc
 					rect = $('#descriptionTextArea rect', sourceEl)
+					rect.addClass('descriptionRect')
 					textEl = $('#_description', sourceEl)
 				break;
 				case 'date':
