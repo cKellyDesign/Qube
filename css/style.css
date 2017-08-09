@@ -17,8 +17,7 @@ body {
   font-family: Open Sans, Arial, sans-serif;
   font-weight: 300; }
 
-#wrapper {
-  padding-top: 5%; }
+#wrapper { padding-top: 100px; }
 
 .viewport {
   -webkit-perspective: 3000px;
@@ -36,7 +35,8 @@ body {
   -ms-transform: scale(0.67, 0.67);
   -o-transform: scale(0.67, 0.67);
   transform: scale(0.67, 0.67);
-  -webkit-box-reflect: below 170px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0%, transparent), to(rgba(250, 250, 250, 0.1))); }
+  /*-webkit-box-reflect: below 170px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0%, transparent), to(rgba(250, 250, 250, 0.1))); */
+}
 
 .cube {
   position: relative;
@@ -169,7 +169,7 @@ body {
 }
 /* Bumbing the Qube down */
 .viewport { 
-  margin-top: 60px;
+  /*margin-top: 60px;*/
 }
 /* Hiding the numbers on from the original Cube demo */
 .cube-image { 
