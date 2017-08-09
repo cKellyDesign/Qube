@@ -9,7 +9,8 @@ window.wrapTextRect = function (myRect, myText, str, offset)
     var padding=0
     // var width=+ myRect[0].getBBox().width - padding
     var width = 384
-    if (myRect.hasClass('descriptionRect')) width = 365;
+    if (myRect.hasClass('descriptionRect')) width = 350;
+    if (myRect[0].getBBox().width < 350) width = myRect[0].getBBox().width 
 
     var x=+$(myRect).attr('x')
     var y=+$(myRect).attr('y') + offset

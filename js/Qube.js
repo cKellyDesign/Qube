@@ -17,29 +17,37 @@ var QubeApp = function () {
 	this.hasSavedCurrentArticles = false;
 	this.activeScreen = "center";
 
-	this.toUnlockLeftFromTop = false
-	this.toUnlockCenterFromTop = false
-	this.toUnlockRightFromTop = false
+	this.toUnlockleftFromTop = false
+	this.toUnlockcenterFromTop = false
+	this.toUnlockrightFromTop = false
+	this.rotatingFromTopScreen = false
 
 	window.viewport.on('side-change-complete', function () {
 
 
+		if (self.activeScreen === "top") {
+			self.rotatingFromTopScreen = true
 
-		// console.log('side-change-complete listener for sourceScreen update', self.activeScreen);
+			if (self.toUnlockleftFromTop) self.handleBiasGuessReveal('left')
+			if (self.toUnlockcenterFromTop) self.handleBiasGuessReveal('center')
+			if (self.toUnlockrightFromTop) self.handleBiasGuessReveal('right')
+		}
+
 		// I couldn't come up with a quicker easier way to set the active Screen
 		if ($('#left').hasClass('active')) {
 			self.activeScreen = "left";
-			if (self.toUnlockLeftFromTop) self.handleBiasGuessReveal('left')
 		}
 		if ($('#center').hasClass('active')) {
 			self.activeScreen = "center";
-			if (self.toUnlockCenterFromTop) self.handleBiasGuessReveal('center')
 		}
 		if ($('#right').hasClass('active')) {
 			self.activeScreen = "right";
-			if (self.toUnlockRightFromTop) self.handleBiasGuessReveal('right')
 		}
+		if ($('#top').hasClass('active')) {
+			self.activeScreen = "top";
 
+		}
+		self.rotatingFromTopScreen = false
 		$('#top').append($('#SourceScreen_template_' + self.activeScreen))
 	})
 
@@ -272,9 +280,14 @@ var QubeApp = function () {
 			var biasGuess = this.id.replace('overlay_pie_', '')
 			self.onBiasGuess(e, el, biasGuess)
 
-			var BGs = $('#Guess_BGs', ov);
-			BGs.append($('#Guess_' + biasGuess + '_BG', BGs))
-			$('text', ov).attr('fill', 'white')
+			$('#Guess_BG rect', ov).attr('fill', 'url(#GuessGradient_' + biasGuess + ')')
+
+
+
+
+
+			// BGs.append($('#Guess_' + biasGuess + '_BG', BGs))
+			// $('text', ov).attr('fill', 'white')
 		})
 
 		$('#Close_Btn', el).on('click', function (e) {
@@ -297,12 +310,12 @@ var QubeApp = function () {
 		// Define actual Bias and if user got it correct
 		correctBias = self.screens[el.id].article.bias;
 		isCorrect = correctBias == selection
-
+		console.log('should do the thing, ', selection)
 		// If it's the first guess, count it towards their stats
 		if ( !thisArticle.userGuess.length ) {
 			thisArticle.userGuess = selection;
 			thisArticle.isCorrect = isCorrect;
-
+			console.log('do the fucking thing', thisArticle.userGuess)
 			// handler to update firebase
 			self.handleBiasGuess(el, correctBias, selection)
 
@@ -331,13 +344,14 @@ var QubeApp = function () {
 				$(sliceEl).removeClass('active')
 			}
 		})
+		// debugger;
 		self['toUnlock' + el.id +'FromTop'] = true
 
 		// update bias guess label
 		var biasLabel = this.getBiasLabel(selection)
 		var biasLabelEl = $('#_userRating tspan', lockedGuess).html(biasLabel)
 
-		$('#btnRedo', lockedGuess).on('click', function (e) {
+		$('#btnRedo_biasGuess', lockedGuess).on('click', function (e) {
 			self.onBiasButtonClick(e, el)
 		})
 
@@ -406,6 +420,7 @@ var QubeApp = function () {
 					rect = $('#descriptionTextArea rect', sourceEl)
 					rect.addClass('descriptionRect')
 					textEl = $('#_description', sourceEl)
+					textEl.attr('x', 0).attr('text-anchor', 'left')
 				break;
 				case 'date':
 					thisVal = _.findWhere(window.articles, { id : thisArticle.id}).date
@@ -484,8 +499,66 @@ var QubeApp = function () {
 	}
 
 	this.handleBiasGuessReveal = function (side) {
-		// var el = $('#' + side),
-			
+		var el = $('#' + side),
+			thisArticle = self.screens[side].article,
+			lockedGuess = $('#yourGuess_locked', el),
+			unlockedGuess = $('#yourGuess_unlocked', el),
+			userRating = $('#userRating', unlockedGuess),
+			qubeRating = $('#qubeRating', unlockedGuess),
+			userRatingRect = $('#userRatingTextArea', userRating),
+			qubeRatingRect = $('#qubeRatingTextArea', qubeRating),
+			userRatingText = $('#ratingLabel text', userRating).html(''),
+			qubeRatingText = $('#ratingLabel text', qubeRating).html(''),
+			userRatingPie = $('#_userGuess', userRating),
+			qubeRatingPie = $('#_qubeBias', qubeRating),
+			userRatingLabel = self.getBiasLabel(thisArticle.userGuess),
+			qubeRatingLabel = self.getBiasLabel(thisArticle.bias)
+		
+		self['toUnlock' + side +'FromTop'] = false
+
+		lockedGuess.removeClass('active')
+		unlockedGuess.addClass('active')
+
+		self.renderPie(userRatingPie, thisArticle.userGuess)
+		self.renderPie(qubeRatingPie, thisArticle.bias)
+
+		wrapTextRect(userRatingRect, userRatingText, userRatingLabel, 5)
+		wrapTextRect(qubeRatingRect, qubeRatingText, qubeRatingLabel, 5)
+
+		var userLabelTspan = $('tspan', userRatingText)
+		var qubeLabelTspan = $('tspan', qubeRatingText)
+		if (userLabelTspan.length === 1) userLabelTspan.attr('y', 35)
+		if (qubeLabelTspan.length === 1) qubeLabelTspan.attr('y', 35)
+
+		// var userRatingLabelArr = userRatingLabel.split(' ')
+		// var qubeRatingLabelArr = qubeRatingLabel.split(' ')
+		
+		// $(userRatingLabelArr).each(function (i, text) {
+		// 	var y = 19 + (i * 17)
+
+		// 	userRatingText.append('<tspan x="0" y="' + y +'">' + text + '</tspan>')
+		// })
+
+		// todo NEXT 
+		// find label text, getBiasLabel
+		// if one word, render and center vertically
+		// if two words, render one per line
+	}
+
+	this.renderPie = function (pie, bias) {
+		// update pie
+		$('path', pie).each(function (i, sliceEl) {
+			// define if the slice should be active and thus not white
+			var thisSliceBias = sliceEl.id.replace('biasPie_',''),
+				doActivate = (bias.indexOf(thisSliceBias) !== -1)
+
+			// handle slice state via class
+			if (doActivate) {
+				$(sliceEl).addClass('active')
+			} else {
+				$(sliceEl).removeClass('active')
+			}
+		})
 	}
 
 
@@ -545,7 +618,6 @@ var QubeApp = function () {
 		}	
 	}
 
-	
 
 
 	// // Generic Callback

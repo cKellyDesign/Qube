@@ -292,15 +292,17 @@ body {
   text-align: center;
 }
 
-
+#biasPie_L.active,
 #sourceBiasPie_L.active {
   fill : #009BBD !important;
 }
 
+#biasPie_C.active,
 #sourceBiasPie_C.active {
   fill : #9100B8 !important;
 }
 
+#biasPie_R.active,
 #sourceBiasPie_R.active {
   fill : #ED006F !important;
 }
