@@ -167,9 +167,9 @@ object:hover {
 body {
   cursor: all-scroll;
 }
-/* Bumbing the Qube down */
+
 .viewport { 
-  /*margin-top: 60px;*/
+
 }
 /* Hiding the numbers on from the original Cube demo */
 .cube-image { 
@@ -177,31 +177,8 @@ body {
 }
 
 
-/* Simply setting the different Qube faces via background images */
-/* todo - remove this when bringing in SVGs */
-/*#top {
-  background: url('/img/sourceScreen_center.png') center center no-repeat;
-  background-size: cover;
-}
-#center {
-  background: url('/img/articleScreen_biasCenter.png') center center no-repeat;
-  background-size: cover;
-}
-#left {
-  background: url('/img/articleScreen_biasLeft.png') center center no-repeat;
-  background-size: cover;
-}
-#right {
-  background: url('/img/articleScreen_biasRight.png') center center no-repeat;
-  background-size: cover;
-}
- #saveSkip {
-  background-size: cover;
-}*/
-
 .side {
-  /*background: none !important;*/
-  /*background-color: black;*/
+
   outline: 1px solid transparent !important;
 
   background: #a57933;
@@ -286,6 +263,11 @@ body {
 
 }
 
+#btn_skip rect,
+#btn_save rect {
+   filter: drop-shadow(0px 3px 0px #4F8000)
+}
+
 #btn_skip:active rect,
 #btn_save:active rect {
   fill: #4F8000;
@@ -295,6 +277,14 @@ body {
 #btn_save.disabled rect {
   fill: #BBBBBB;
 }
+
+#btn_skip:active #btn_shadow,
+#btn_save:active #btn_shadow,
+#btn_skip.disabled #btn_shadow,
+#btn_save.disabled #btn_shadow {
+  display: none;
+}
+
 
 #_author tspan,
 #_date tspan,
@@ -332,10 +322,14 @@ body {
   display: initial;
 }
 
+#btnRedo_biasGuess:active rect,
 [id*="BiasGuessBtn"]:active rect {
   fill: #4F8000;
 }
-
+#btnRedo_biasGuess:active #BG_shadow,
+[id*="BiasGuessBtn"]:active #btnBg_shadow {
+  display: none;
+}
 
 .cubeShadow {
     height: 48px;
