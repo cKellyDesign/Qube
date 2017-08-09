@@ -13,7 +13,7 @@ body {
 
 
 body {
-  background: #EEEEEE;
+  background: #FFFFFF;
   font-family: Open Sans, Arial, sans-serif;
   font-weight: 300; }
 
@@ -202,11 +202,15 @@ body {
 .side {
   /*background: none !important;*/
   /*background-color: black;*/
-  outline: 1px solid #444 !important;
+  outline: 1px solid transparent !important;
 
   background: #a57933;
 
 }
+
+#top, #saveSkip { background-color: #B28237 }
+#left, #right { background-color: #8B662B }
+
 
 .side > object,
 .side > iframe,
