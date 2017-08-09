@@ -31,11 +31,11 @@ body {
   -ms-perspective-origin: 50% 200px;
   -o-perspective-origin: 50% 200px;
   perspective-origin: 50% 200px;
-  -webkit-transform: scale(0.8, 0.8);
-  -moz-transform: scale(0.8, 0.8);
-  -ms-transform: scale(0.8, 0.8);
-  -o-transform: scale(0.8, 0.8);
-  transform: scale(0.8, 0.8);
+  -webkit-transform: scale(0.67, 0.67);
+  -moz-transform: scale(0.67, 0.67);
+  -ms-transform: scale(0.67, 0.67);
+  -o-transform: scale(0.67, 0.67);
+  transform: scale(0.67, 0.67);
   -webkit-box-reflect: below 170px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0%, transparent), to(rgba(250, 250, 250, 0.1))); }
 
 .cube {
@@ -337,6 +337,13 @@ body {
 }
 
 
-
+.cubeShadow {
+    height: 48px;
+    position: absolute;
+    bottom: 6%;
+    left: 15%;
+    right: 15%;
+    background-image: radial-gradient(50% 50%, #ababab 0%, transparent 50%); 
+}
 
 
