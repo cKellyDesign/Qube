@@ -21,11 +21,11 @@ body {
   padding-top: 5%; }
 
 .viewport {
-  -webkit-perspective: 800px;
-  -moz-perspective: 800px;
-  -ms-perspective: 800px;
-  -o-perspective: 800px;
-  perspective: 800px;
+  -webkit-perspective: 3000px;
+  -moz-perspective: 3000px;
+  -ms-perspective: 3000px;
+  -o-perspective: 3000px;
+  perspective: 3000px;
   -webkit-perspective-origin: 50% 200px;
   -moz-perspective-origin: 50% 200px;
   -ms-perspective-origin: 50% 200px;
