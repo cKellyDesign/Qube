@@ -464,11 +464,9 @@ var QubeApp = function () {
 	this.centerSVGText = function (parentEl, thisText, pretext) {
 		if (!pretext) pretext = '';
 
-		var thisEl = $('#_' + parentEl.id + ' tspan', parentEl).html((pretext + thisText) )
-		var elWidth = thisEl[0].getBBox().width
-		var newOffset = ( $(thisEl).parents('#' + parentEl.id)[0].getBBox().width 	/ 2 ) - (elWidth / 2) 
+		var thisEl = $('#_' + parentEl.id + ' tspan', parentEl)
 
-		$(thisEl).attr('x', newOffset)
+		thisEl.html((pretext + thisText))
 	}
 
 
