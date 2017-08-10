@@ -340,36 +340,17 @@ Cube.prototype.sideChange = function() {
 
 window.viewport = new Viewport({
   element: document.getElementsByClassName('cube')[0],
-  fps: 20,
+  fps: 50,
   sensivity: .1,
-  sensivityFade: .93,
+  sensivityFade: .5,
   speed: 1,
-  touchSensivity: 1.5,
-  positionX: -45,
-  positionY: -45
+  touchSensivity: .1,
+  positionX: 0,
+  positionY: 0
 });
 
 window.cube = new Cube({
   viewport: viewport,
   element: document.getElementsByClassName('cube')[0]
 });
-
-// Vanilla JavaScript Event Listeners
-document.getElementById('top').addEventListener('click', function (e) {
-  console.log('top click');
-});
-document.getElementById('center').addEventListener('click', function (e) {
-  console.log('center click')
-});
-document.getElementById('left').addEventListener('click', function (e) {
-  console.log('left click')
-});
-document.getElementById('right').addEventListener('click', function (e) {
-  console.log('right click')
-});
-document.getElementById('saveSkip').addEventListener('click', function (e) {
-  console.log('saveSkip click')
-});
-
-// todo - convert to .on()
 

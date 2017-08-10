@@ -686,6 +686,53 @@ var QubeApp = function () {
 
 	}
 
+	$(window).on('keyup', function (e) {
+
+		// listen for arrow keys
+		switch(e.keyCode) {
+			case 38 : // up arrow
+				viewport.torqueY = 90
+				setTimeout(cleanUpCubePosition, 300)
+			break;
+			case 40 : // down arrow
+				viewport.torqueY = -90
+				setTimeout(cleanUpCubePosition, 300)
+			break;
+			case 37 : // left arrow
+				viewport.torqueX = 90
+				setTimeout(cleanUpCubePosition, 300)
+			break;
+			case 39 : //right arrow
+				viewport.torqueX = -90
+				setTimeout(cleanUpCubePosition, 300)
+			break;
+		}
+	})
+	
+	function cleanUpCubePosition () {
+		viewport.torqueY = 0
+		viewport.torqueX = 0
+
+		if (viewport.positionY > 45 && viewport.positionY < 135) {
+			viewport.positionY = 90
+		} else if (viewport.positionY > 135 && viewport.positionY < 225) {
+			viewport.positionY = 180
+		} else if (viewport.positionY > 225 && viewport.positionY < 315) {
+			viewport.positionY = 270
+		} else {
+			viewport.positionY = 0
+		}
+
+		if (viewport.positionX > 45 && viewport.positionX < 135) {
+			viewport.positionX = 90
+		} else if (viewport.positionX > 135 && viewport.positionX < 225) {
+			viewport.positionX = 180
+		} else if (viewport.positionX > 225 && viewport.positionX < 315) {
+			viewport.positionX = 270
+		} else {
+			viewport.positionX = 0
+		}
+	}
 
 	// Prevents images from swallowing click and dragging of the cube! :D
 	$('#top, #center, #left, #right, #base, #saveSkip').on('dragstart', function (e) { return false; })
