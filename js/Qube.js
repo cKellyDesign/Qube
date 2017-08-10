@@ -17,29 +17,37 @@ var QubeApp = function () {
 	this.hasSavedCurrentArticles = false;
 	this.activeScreen = "center";
 
-	this.toUnlockLeftFromTop = false
-	this.toUnlockCenterFromTop = false
-	this.toUnlockRightFromTop = false
+	this.toUnlockleftFromTop = false
+	this.toUnlockcenterFromTop = false
+	this.toUnlockrightFromTop = false
+	this.rotatingFromTopScreen = false
 
 	window.viewport.on('side-change-complete', function () {
 
 
+		if (self.activeScreen === "top") {
+			self.rotatingFromTopScreen = true
 
-		// console.log('side-change-complete listener for sourceScreen update', self.activeScreen);
+			if (self.toUnlockleftFromTop) self.handleBiasGuessReveal('left')
+			if (self.toUnlockcenterFromTop) self.handleBiasGuessReveal('center')
+			if (self.toUnlockrightFromTop) self.handleBiasGuessReveal('right')
+		}
+
 		// I couldn't come up with a quicker easier way to set the active Screen
 		if ($('#left').hasClass('active')) {
 			self.activeScreen = "left";
-			if (self.toUnlockLeftFromTop) self.handleBiasGuessReveal('left')
 		}
 		if ($('#center').hasClass('active')) {
 			self.activeScreen = "center";
-			if (self.toUnlockCenterFromTop) self.handleBiasGuessReveal('center')
 		}
 		if ($('#right').hasClass('active')) {
 			self.activeScreen = "right";
-			if (self.toUnlockRightFromTop) self.handleBiasGuessReveal('right')
 		}
+		if ($('#top').hasClass('active')) {
+			self.activeScreen = "top";
 
+		}
+		self.rotatingFromTopScreen = false
 		$('#top').append($('#SourceScreen_template_' + self.activeScreen))
 	})
 
@@ -249,42 +257,71 @@ var QubeApp = function () {
 
 
 
-	// When a user clicks on the bias button 
+	// When a user clicks on the bias buess button 
 	this.onBiasButtonClick = function (e, el) {
 		e.preventDefault();
 		e.stopPropagation();
 
-		this.showBiasGuessOverlay(el)
+		self.showBiasGuessOverlay(el)
+
+		// todo - animate button shifting down then up; protip: svgs are BUTTS
+		// $('rect', e.currentTarget).last().animate({y: 3}, 300)
+		// $('rect', e.currentTarget).last().delay(300).animate({y: 0}, 300)
 	}
 
 	// Shows bias overlay when user clicks the button to see it
 	// todo - rework this for new SVGs
 	this.showBiasGuessOverlay = function (el) {
 		if (!$('#guess_screen_template', el).length) {
-			 $(el).append($('#svgTemplateWrap svg#guess_screen_template').clone())
+			$(el).append($('#svgTemplateWrap svg#guess_screen_template').clone())
+			// debugger;
+			// $('svg#guess_screen_template', el).removeClass('ghost')
+
 		} else {
 			$(el).append($('svg#guess_screen_template', el))
-			$('svg#guess_screen_template', el).removeClass('ghost')
+			// $('svg#guess_screen_template', el).removeClass('ghost')
 		}
 		
 		var ov = $('#guess_screen_template', el);
-		$('#overlay_pie_L, #overlay_pie_LC, #overlay_pie_C, #overlay_pie_RC, #overlay_pie_R', el).on('click', function (e) {
-			var biasGuess = this.id.replace('overlay_pie_', '')
+		var guessPies = $('#overlay_pie_L, #overlay_pie_LC, #overlay_pie_C, #overlay_pie_RC, #overlay_pie_R', el)
+		
+		guessPies.on('click', function (e) {
+			var biasGuess = this.id.replace('overlay_pie_', ''),
+				thisPie = this,
+				otherPies = _.reject(guessPies, function(pie) { return pie === thisPie; })
+			
+			// handle shrinking other pies
+			$(otherPies).each(function(i, pie) {
+				// get current transform so we don't destroy the SVG element positioning when scaling
+				var thisTransform = $(pie).attr('transform')
+				$(pie).attr('transform', thisTransform + ' scale(.5)')
+
+				// wait until fully faded out and reset to original transform
+				setTimeout(function(){
+					$(pie).attr('transform', thisTransform)
+				}, 1500)
+			});
+
+			// handle the rest of the things involved with updating the state of the cube after guessing
 			self.onBiasGuess(e, el, biasGuess)
 
-			var BGs = $('#Guess_BGs', ov);
-			BGs.append($('#Guess_' + biasGuess + '_BG', BGs))
-			$('text', ov).attr('fill', 'white')
+			// change color of BG to match the bias guess
+			$('#Guess_BG rect', ov).attr('fill', 'url(#GuessGradient_' + biasGuess + ')')
 		})
+
 
 		$('#Close_Btn', el).on('click', function (e) {
 			$('#overlay_pie_L, #overlay_pie_LC, #overlay_pie_C, #overlay_pie_RC, #overlay_pie_R', el).off('click')
-			$('svg#guess_screen_template', el).addClass('ghost')
+			$('g#guess_screen_template > g', el).animate({ opacity: 0 }, 300)
+			
 			setTimeout(function(){
 				$(el).prepend($(ov))
-			}, 400)
-				
+			}, 300)
 		})
+
+		// Instead of using css transitions... see note in style.css above "g#guess_screen_template > g {...}"
+		$('g#guess_screen_template > #overlay', el).delay(100).animate({ opacity: 1 }, 1000)
+		$('g#guess_screen_template > g', el).delay(1000).animate({ opacity: 1 }, 300)
 		
 	}
 
@@ -308,11 +345,11 @@ var QubeApp = function () {
 
 			// modify SVG element to be 'unlocked'
 			self.updateSourceScreenEl(el, correctBias)
+
+			// count up to next round
+			self.biasGuessCount++;
 		}
 		
-
-		// count up to next round
-		self.biasGuessCount++;
 
 		$('.active', el).removeClass('active')
 		var lockedGuess = $('#yourGuess_locked', el).addClass('active')
@@ -331,13 +368,14 @@ var QubeApp = function () {
 				$(sliceEl).removeClass('active')
 			}
 		})
+		// debugger;
 		self['toUnlock' + el.id +'FromTop'] = true
 
 		// update bias guess label
 		var biasLabel = this.getBiasLabel(selection)
 		var biasLabelEl = $('#_userRating tspan', lockedGuess).html(biasLabel)
 
-		$('#btnRedo', lockedGuess).on('click', function (e) {
+		$('#btnRedo_biasGuess', lockedGuess).on('click', function (e) {
 			self.onBiasButtonClick(e, el)
 		})
 
@@ -346,12 +384,12 @@ var QubeApp = function () {
 			$('#overlay_pie_L, #overlay_pie_LC, #overlay_pie_C, #overlay_pie_RC, #overlay_pie_R', el).off('click')
 			$('#Close_Btn').off('click')
 
+			$('g#guess_screen_template > g', el).animate({ opacity: 0 }, 300)
 
-			$('svg#guess_screen_template', el).addClass('ghost');
 			setTimeout(function(){
 				$(el).prepend($('svg#guess_screen_template', el))
-			}, 500)
-		},1000)
+			}, 300)
+		}, 1000)
 	}
 
 
@@ -404,7 +442,9 @@ var QubeApp = function () {
 					// just handle 
 					thisVal = window.sources[thisArticle.sourceUID].desc
 					rect = $('#descriptionTextArea rect', sourceEl)
+					rect.addClass('descriptionRect')
 					textEl = $('#_description', sourceEl)
+					textEl.attr('x', 0).attr('text-anchor', 'left')
 				break;
 				case 'date':
 					thisVal = _.findWhere(window.articles, { id : thisArticle.id}).date
@@ -453,7 +493,7 @@ var QubeApp = function () {
 			case 'RC':
 				return 'RIGHT CENTER'
 			break;
-			case 'C':
+			case 'R':
 				return 'RIGHT'
 			break;
 		}
@@ -483,8 +523,52 @@ var QubeApp = function () {
 	}
 
 	this.handleBiasGuessReveal = function (side) {
-		// var el = $('#' + side),
-			
+		var el = $('#' + side),
+			thisArticle = self.screens[side].article,
+			lockedGuess = $('#yourGuess_locked', el),
+			unlockedGuess = $('#yourGuess_unlocked', el),
+			userRating = $('#userRating', unlockedGuess),
+			qubeRating = $('#qubeRating', unlockedGuess),
+			userRatingRect = $('#userRatingTextArea', userRating),
+			qubeRatingRect = $('#qubeRatingTextArea', qubeRating),
+			userRatingText = $('#ratingLabel text', userRating).html(''),
+			qubeRatingText = $('#ratingLabel text', qubeRating).html(''),
+			userRatingPie = $('#_userGuess', userRating),
+			qubeRatingPie = $('#_qubeBias', qubeRating),
+			userRatingLabel = self.getBiasLabel(thisArticle.userGuess),
+			qubeRatingLabel = self.getBiasLabel(thisArticle.bias)
+		
+		self['toUnlock' + side +'FromTop'] = false
+
+		lockedGuess.removeClass('active')
+		unlockedGuess.addClass('active')
+
+		self.renderPie(userRatingPie, thisArticle.userGuess)
+		self.renderPie(qubeRatingPie, thisArticle.bias)
+
+		wrapTextRect(userRatingRect, userRatingText, userRatingLabel, 5)
+		wrapTextRect(qubeRatingRect, qubeRatingText, qubeRatingLabel, 5)
+
+		var userLabelTspan = $('tspan', userRatingText)
+		var qubeLabelTspan = $('tspan', qubeRatingText)
+		if (userLabelTspan.length === 1) userLabelTspan.attr('y', 35)
+		if (qubeLabelTspan.length === 1) qubeLabelTspan.attr('y', 35)
+	}
+
+	this.renderPie = function (pie, bias) {
+		// update pie
+		$('path', pie).each(function (i, sliceEl) {
+			// define if the slice should be active and thus not white
+			var thisSliceBias = sliceEl.id.replace('biasPie_',''),
+				doActivate = (bias.indexOf(thisSliceBias) !== -1)
+
+			// handle slice state via class
+			if (doActivate) {
+				$(sliceEl).addClass('active')
+			} else {
+				$(sliceEl).removeClass('active')
+			}
+		})
 	}
 
 
@@ -544,7 +628,6 @@ var QubeApp = function () {
 		}	
 	}
 
-	
 
 
 	// // Generic Callback

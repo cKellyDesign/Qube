@@ -155,7 +155,7 @@ window.sources = {
 		url : "",
 		name : "Fox News",
 		bias : "R",
-		desc : "",
+		desc : "Fox News Channel's bias is widely believed to be conservative, despite its slogan being \“fair and balanced.\" Many claim that Fox News promotes conservative ideas and favors the Republican Party.",
 	}
 }
 

@@ -167,9 +167,9 @@ object:hover {
 body {
   cursor: all-scroll;
 }
-/* Bumbing the Qube down */
+
 .viewport { 
-  /*margin-top: 60px;*/
+
 }
 /* Hiding the numbers on from the original Cube demo */
 .cube-image { 
@@ -177,31 +177,8 @@ body {
 }
 
 
-/* Simply setting the different Qube faces via background images */
-/* todo - remove this when bringing in SVGs */
-/*#top {
-  background: url('/img/sourceScreen_center.png') center center no-repeat;
-  background-size: cover;
-}
-#center {
-  background: url('/img/articleScreen_biasCenter.png') center center no-repeat;
-  background-size: cover;
-}
-#left {
-  background: url('/img/articleScreen_biasLeft.png') center center no-repeat;
-  background-size: cover;
-}
-#right {
-  background: url('/img/articleScreen_biasRight.png') center center no-repeat;
-  background-size: cover;
-}
- #saveSkip {
-  background-size: cover;
-}*/
-
 .side {
-  /*background: none !important;*/
-  /*background-color: black;*/
+
   outline: 1px solid transparent !important;
 
   background: #a57933;
@@ -230,8 +207,7 @@ body {
 }
 
 .ghost {
-  transition: opacity .4s;
-  opacity: 0 !important;
+  /*opacity: 0 !important;*/
 }
 .hide {
   display: none;
@@ -250,6 +226,34 @@ body {
 #top > svg.right {
   transform: rotate(-90deg); 
 }
+
+/* this is the weirdest thing, the svgs won't do css transitions 
+when Qube.js manimpulates SVG classes BUT it WILL work if running
+THE SAME javascript in the console OR when stepping through the JS
+via breakpoints or debuggers...this is truely bizzare */
+g#guess_screen_template > g {
+ /* transition: opacity .3s;
+  transition-delay: .3s;*/
+  opacity: 0;
+}
+
+g#guess_screen_template > g#overlay {
+  /*transition-delay: 0s;*/
+}
+
+svg.active g#guess_screen_template > g {
+  opacity: 1;
+}
+
+g#guess_screen_template [id*="overlay_pie_"] {
+  transition: transform .3s;
+  transform-origin: center center;
+}
+
+/*g#guess_screen_template [id*="overlay_pie_"].smallPie {
+  transform: scale(.5);
+}
+*/
 
 #saveSkip { 
   
@@ -286,6 +290,13 @@ body {
 
 }
 
+#btnRedo_biasGuess rect,
+[id*="BiasGuessBtn"] rect,
+#btn_skip rect,
+#btn_save rect {
+  transition: fill .3s;
+}
+
 #btn_skip:active rect,
 #btn_save:active rect {
   fill: #4F8000;
@@ -296,21 +307,31 @@ body {
   fill: #BBBBBB;
 }
 
+#btn_skip:active #btn_shadow,
+#btn_save:active #btn_shadow,
+#btn_skip.disabled #btn_shadow,
+#btn_save.disabled #btn_shadow {
+  /*display: none;*/
+}
+
+
 #_author tspan,
 #_date tspan,
 #_source tspan {
   text-align: center;
 }
 
-
+#biasPie_L.active,
 #sourceBiasPie_L.active {
   fill : #009BBD !important;
 }
 
+#biasPie_C.active,
 #sourceBiasPie_C.active {
   fill : #9100B8 !important;
 }
 
+#biasPie_R.active,
 #sourceBiasPie_R.active {
   fill : #ED006F !important;
 }
@@ -332,17 +353,23 @@ body {
   display: initial;
 }
 
+
+#btnRedo_biasGuess:active rect,
 [id*="BiasGuessBtn"]:active rect {
   fill: #4F8000;
 }
-
+#btnRedo_biasGuess:active #BG_shadow,
+[id*="BiasGuessBtn"]:active #btnBg_shadow {
+  display: none;
+}
 
 .cubeShadow {
     height: 48px;
     position: absolute;
     bottom: 6%;
-    left: 15%;
-    right: 15%;
+    left: 50%;
+    width: 500px;
+    margin-left: -250px;
     background-image: radial-gradient(50% 50%, #ababab 0%, transparent 67%); 
 }
 

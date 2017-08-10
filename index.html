@@ -7,9 +7,7 @@
 
 <!-- Dependencies / Libraries -->
 <script
-  src="http://code.jquery.com/jquery-3.2.1.slim.min.js"
-  integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
-  crossorigin="anonymous"></script>
+  src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
 <script type="text/javascript" src="js/stub-data.js"></script>
@@ -68,7 +66,8 @@
             <g id="saveskipScreen">
                 
                 <g id="btn_skip" transform="translate(40.000000, 135.000000)">
-                    <rect id="btn_gray" fill="#72B800" x="0" y="0" width="175" height="175" rx="10"></rect>
+                    <rect id="btn_shadow" fill="#4F8000" x="0" y="3" width="175" height="175" rx="10"></rect>
+                    <rect id="btn_gray" fill="#72B800" x="0" y="0" width="175" height="175" rx="10" ></rect>
                     <g id="btn_content" transform="translate(43.000000, 27.000000)" fill="#FFFFFF">
                         <text id="SKIP-ALL" font-size="16" font-weight="normal" line-spacing="18">
                             <tspan x="13" y="120">SKIP ALL</tspan>
@@ -81,6 +80,7 @@
                 </g>
 
                 <g id="btn_save" transform="translate(230.000000, 135.000000)">
+                    <rect id="btn_shadow" fill="#4F8000" x="0" y="3" width="175" height="175" rx="10"></rect>
                     <rect id="btn_green" fill="#72B800" x="0" y="0" width="175" height="175" rx="10"></rect>
                     <g id="btn_content" transform="translate(43.000000, 27.000000)" fill="#FFFFFF">
                         <text id="SAVE-ALL" font-size="16" font-weight="normal" line-spacing="18">
@@ -163,7 +163,7 @@
                             <rect stroke="#FFFFFF" stroke-width="1" x="0.5" y="0.5" width="364" height="21"></rect>
                         </g>
                         <text id="_date" font-size="16" font-weight="normal" letter-spacing="0.235294119" fill="#333333">
-                            <tspan x="183" y="17" text-anchor="middle">Published on ?</tspan>
+                            <tspan x="183" y="17" text-anchor="middle"></tspan>
                         </text>
                     </g>
                     <g id="author" transform="translate(0.000000, 145.000000)">
@@ -172,7 +172,7 @@
                             <rect stroke="#FFFFFF" stroke-width="1" x="0.5" y="0.5" width="364" height="21"></rect>
                         </g>
                         <text id="_author" font-size="16" font-weight="normal" letter-spacing="0.235294119" fill="#333333">
-                            <tspan x="183" y="17" text-anchor="middle">Written by ?</tspan>
+                            <tspan x="183" y="17" text-anchor="middle"></tspan>
                         </text>
                     </g>
                     <g id="description" transform="translate(0.000000, 45.000000)">
@@ -180,9 +180,9 @@
                             <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-8"></use>
                             <rect stroke="##FFFFFF" stroke-width="1" x="0.5" y="0.5" width="365" height="87"></rect>
                         </g>
-                        <text id="_description" font-size="16" font-weight="normal" letter-spacing="0.3529412" fill="#333333">
-                            <tspan x="0" y="17">Guess the source bias of the article to unlock </tspan>
-                            <tspan x="0" y="39">information on the article and source!</tspan>
+                        <text id="_description" font-size="16" font-weight="normal" letter-spacing="0.3529412" fill="#333333" text-anchor="middle">
+                            <tspan x="179" y="17">Guess the bias to</tspan>
+                            <tspan x="179" y="39">unlock the information!</tspan>
                         </text>
                     </g>
                     <g id="source">
@@ -190,21 +190,21 @@
                             <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-9"></use>
                             <rect stroke="#FFFFFF" stroke-width="1" x="0.5" y="0.5" width="364" height="32"></rect>
                         </g>
-                        <text id="_source" font-size="24" font-weight="bold" letter-spacing="0.3529412" fill="#333333">
-                            <tspan x="179" y="26" text-anchor="middle">?</tspan>
+                        <text id="_source" font-size="20" font-weight="bold" letter-spacing="0.3529412" fill="#333333">
+                            <tspan x="179" y="26" text-anchor="middle">Want to see this article’s source?</tspan>
                         </text>
                     </g>
                 </g>
                 <g id="sourceBias" transform="translate(170.000000, 40.000000)">
                     <g id="sourceBiasPie" stroke="#E6E6E6" stroke-width="8.55" fill-rule="nonzero">
                         <g id="_sourceBiasPie" transform="translate(3.000000, 3.000000)">
-                            <path id="sourceBiasPie_L" d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#FFFFFF"></path>
-                            <path id="sourceBiasPie_R" d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" fill="#FFFFFF"></path>
-                            <path id="sourceBiasPie_C" d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#FFFFFF"></path>
+                            <path id="sourceBiasPie_L" d="M50.152381,50.1619048 L50.152381,99.8380952 C22.7169785,99.8380952 0.476190476,77.5973072 0.476190476,50.1619048 C0.37196373,41.4270013 2.67875626,32.8325514 7.14285714,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#F6F6F6"></path>
+                            <path id="sourceBiasPie_R" d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" fill="#F6F6F6"></path>
+                            <path id="sourceBiasPie_C" d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#F6F6F6"></path>
                         </g>
                     </g>
                     <text id="_sourceBias" font-size="18" font-weight="normal" fill="#444444">
-                        <tspan x="50" y="126" text-anchor="middle">?</tspan>
+                        <tspan x="50" y="126" text-anchor="middle"></tspan>
                     </text>
                 </g>
                 <g id="indicatorBottom_article" transform="translate(185.000000, 410.000000)">
@@ -362,9 +362,11 @@
 	                <g id="actionBiasBG">
 	                    <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
 	                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-3"></use>
+                        <rect id="path-5" x="0" y="0" width="337" height="135" rx="10">
 	                </g>
 	                <g id="BiasGuessBtn" transform="translate(24.099174, 22.000000)">
-	                    <rect id="btnBg" fill="#72B800" x="0" y="0" width="193.797521" height="53" rx="5"></rect>
+                        <rect id="btnBg_shadow" fill="#4F8000" x="0" y="3" width="193.797521" height="53" rx="5"></rect>
+                        <rect id="btnBg" fill="#72B800" x="0" y="0" width="193.797521" height="53" rx="5"></rect>
 	                    <text id="btnLabel" font-family="OpenSans-Regular, Open Sans" font-size="18" font-weight="normal" fill="#FFFFFF">
 	                        <tspan x="29.7795477" y="32">What's the bias?</tspan>
 	                    </text>
@@ -393,11 +395,8 @@
 	                        <tspan x="60" y="19">You rated this</tspan>
 	                    </text>
 	                </g>
-	                <g id="btnRedo_pressed" transform="translate(262.000000, 19.000000)">
-	                    <rect id="BG" fill="#4F8000" x="0" y="0" width="50" height="50" rx="5"></rect>
-	                    <path d="M26.068,13.834 C26.033,13.834 25.999,13.831 25.965,13.826 C25.421,13.758 25.001,13.294 25.001,12.727 L25.001,10.555 C25.001,10.251 24.754,10 24.45,10 C24.356,10 24.267,10.026 24.188,10.068 C24.187,10.07 24.185,10.071 24.183,10.071 L24.07,10.157 L17.612,15.03 L17.481,15.13 C17.251,15.333 17.105,15.63 17.105,15.963 C17.105,16.122 17.138,16.272 17.198,16.407 C17.275,16.584 17.396,16.735 17.549,16.848 L20.736,19.255 L24.141,21.826 L24.143,21.825 C24.23,21.886 24.338,21.921 24.45,21.921 C24.754,21.921 25.001,21.672 25.001,21.367 L25.001,19.318 C25.001,18.706 25.493,18.211 26.101,18.211 C26.138,18.211 26.176,18.213 26.214,18.216 C26.232,18.218 26.251,18.221 26.269,18.225 C30.465,18.842 33.687,22.48 33.687,26.876 C33.687,31.706 29.798,35.621 25.001,35.621 C20.202,35.621 16.313,31.706 16.313,26.876 C16.313,25.118 16.828,23.481 17.715,22.111 C17.725,22.094 17.737,22.079 17.747,22.062 C18.378,21.063 18.094,19.736 17.105,19.083 C16.109,18.427 14.773,18.709 14.121,19.712 L14.119,19.712 C12.779,21.769 12,24.233 12,26.876 C12,34.105 17.82,39.963 24.999,39.963 C32.177,39.963 37.999,34.104 37.999,26.876 C38.001,20.011 32.749,14.381 26.068,13.834 L26.068,13.834 Z" id="rotate-icon" fill="#FFFFFF"></path>
-	                </g>
-	                <g id="btnRedo" transform="translate(262.000000, 19.000000)">
+	                <g id="btnRedo_biasGuess" transform="translate(262.000000, 19.000000)">
+                        <rect id="BG_shadow" fill="#4F8000" x="0" y="3" width="50" height="50" rx="5"></rect>
 	                    <rect id="BG" fill="#72B800" x="0" y="0" width="50" height="50" rx="5"></rect>
 	                    <path d="M26.068,13.834 C26.033,13.834 25.999,13.831 25.965,13.826 C25.421,13.758 25.001,13.294 25.001,12.727 L25.001,10.555 C25.001,10.251 24.754,10 24.45,10 C24.356,10 24.267,10.026 24.188,10.068 C24.187,10.07 24.185,10.071 24.183,10.071 L24.07,10.157 L17.612,15.03 L17.481,15.13 C17.251,15.333 17.105,15.63 17.105,15.963 C17.105,16.122 17.138,16.272 17.198,16.407 C17.275,16.584 17.396,16.735 17.549,16.848 L20.736,19.255 L24.141,21.826 L24.143,21.825 C24.23,21.886 24.338,21.921 24.45,21.921 C24.754,21.921 25.001,21.672 25.001,21.367 L25.001,19.318 C25.001,18.706 25.493,18.211 26.101,18.211 C26.138,18.211 26.176,18.213 26.214,18.216 C26.232,18.218 26.251,18.221 26.269,18.225 C30.465,18.842 33.687,22.48 33.687,26.876 C33.687,31.706 29.798,35.621 25.001,35.621 C20.202,35.621 16.313,31.706 16.313,26.876 C16.313,25.118 16.828,23.481 17.715,22.111 C17.725,22.094 17.737,22.079 17.747,22.062 C18.378,21.063 18.094,19.736 17.105,19.083 C16.109,18.427 14.773,18.709 14.121,19.712 L14.119,19.712 C12.779,21.769 12,24.233 12,26.876 C12,34.105 17.82,39.963 24.999,39.963 C32.177,39.963 37.999,34.104 37.999,26.876 C38.001,20.011 32.749,14.381 26.068,13.834 L26.068,13.834 Z" id="rotate-icon" fill="#FFFFFF"></path>
 	                </g>
@@ -412,13 +411,13 @@
 	                </g>
 	                <g id="userRating" transform="translate(26.000000, 16.000000)">
 	                    <g id="_userGuess" transform="translate(3.000000, 27.000000)" stroke="#E6E6E6" stroke-width="4.32" fill-rule="nonzero">
-	                        <path d="M25.0761905,25.0809524 L25.0761905,49.9190476 C11.3584893,49.9190476 0.238095238,38.7986536 0.238095238,25.0809524 C0.185981865,20.7135007 1.33937813,16.4162757 3.57142857,12.6619048 L25.0761905,25.0809524 Z" id="Shape" fill="#FFFFFF"></path>
-	                        <path d="M25.0761905,25.0809524 L46.5857143,12.6619048 C53.4441042,24.5413474 49.3742514,39.7313427 37.4952381,46.5904762 C33.7408671,48.8225266 29.4436422,49.9759229 25.0761905,49.9238095 L25.0761905,25.0809524 Z" id="Shape" fill="#ED006F"></path>
-	                        <path d="M25.0761905,25.0809524 L3.56666667,12.6619048 C10.4258001,0.782891452 25.6157955,-3.28696133 37.4952381,3.57142857 C41.3035582,5.70815926 44.4489836,8.85358468 46.5857143,12.6619048 L25.0761905,25.0809524 Z" id="Shape" fill="#9100B8"></path>
+	                        <path d="M25.0761905,25.0809524 L25.0761905,49.9190476 C11.3584893,49.9190476 0.238095238,38.7986536 0.238095238,25.0809524 C0.185981865,20.7135007 1.33937813,16.4162757 3.57142857,12.6619048 L25.0761905,25.0809524 Z" id="biasPie_L" fill="#FFFFFF"></path>
+	                        <path d="M25.0761905,25.0809524 L46.5857143,12.6619048 C53.4441042,24.5413474 49.3742514,39.7313427 37.4952381,46.5904762 C33.7408671,48.8225266 29.4436422,49.9759229 25.0761905,49.9238095 L25.0761905,25.0809524 Z" id="biasPie_R" fill="#FFFFFF"></path>
+	                        <path d="M25.0761905,25.0809524 L3.56666667,12.6619048 C10.4258001,0.782891452 25.6157955,-3.28696133 37.4952381,3.57142857 C41.3035582,5.70815926 44.4489836,8.85358468 46.5857143,12.6619048 L25.0761905,25.0809524 Z" id="biasPie_C" fill="#FFFFFF"></path>
 	                    </g>
 	                    <g id="ratingLabel" transform="translate(64.000000, 25.000000)">
 	                        <rect id="userRatingTextArea" fill="#FFFFFF" x="0" y="0" width="79" height="53"></rect>
-	                        <text id="_ratingLabel" font-family="OpenSans-Regular, Open Sans" font-size="18" font-weight="normal" line-spacing="19" fill="#444444">
+	                        <text id="_ratingLabel" font-family="OpenSans-Regular, Open Sans" font-size="18"  line-height="1.6" font-weight="normal" line-spacing="19" fill="#444444">
 	                            <tspan x="0" y="27">RIGHT</tspan>
 	                            <tspan x="0" y="46">CENTER</tspan>
 	                        </text>
@@ -428,21 +427,23 @@
 	                        <tspan x="33.6738281" y="13">Your Rating</tspan>
 	                    </text>
 	                </g>
+
 	                <g id="qubeRating" transform="translate(178.000000, 16.000000)">
-	                    <rect id="qubeRatingTextArea" fill="#FFFFFF" x="65" y="25" width="79" height="53"></rect>
+	                    
 	                    <path d="M18,19.5 L118,19.5" id="Line" stroke="#BBBBBB" stroke-linecap="square"></path>
-	                    <text id="Qübe-Bias-Rating" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#444444">
+	                    <text id="Qube-Bias-Rating" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#444444">
 	                        <tspan x="19.7285156" y="13">Qübe Bias Rating</tspan>
 	                    </text>
-	                    <g id="ratingLabel" transform="translate(65.000000, 43.000000)" font-size="18" font-family="OpenSans-Regular, Open Sans" line-spacing="19" fill="#444444" font-weight="normal">
-	                        <text id="_ratingLabel">
+	                    <g id="ratingLabel" transform="translate(64.000000, 25.000000)"  font-family="OpenSans-Regular, Open Sans" line-spacing="19" fill="#444444" font-weight="normal">
+                            <rect id="qubeRatingTextArea" fill="#FFFFFF" x="0" y="0" width="79" height="53"></rect>
+	                        <text id="_ratingLabel" font-size="18" line-height="1.6">
 	                            <tspan x="0" y="19">CENTER</tspan>
 	                        </text>
 	                    </g>
-	                    <g id="bias_c" transform="translate(4.000000, 27.000000)" stroke="#E6E6E6" stroke-width="4.32" fill-rule="nonzero">
-	                        <path d="M25.0761905,25.0809524 L25.0761905,49.9190476 C11.3584893,49.9190476 0.238095238,38.7986536 0.238095238,25.0809524 C0.185981865,20.7135007 1.33937813,16.4162757 3.57142857,12.6619048 L25.0761905,25.0809524 Z" id="Shape" fill="#FFFFFF"></path>
-	                        <path d="M25.0761905,25.0809524 L46.5857143,12.6619048 C53.4441042,24.5413474 49.3742514,39.7313427 37.4952381,46.5904762 C33.7408671,48.8225266 29.4436422,49.9759229 25.0761905,49.9238095 L25.0761905,25.0809524 Z" id="Shape" fill="#FFFFFF"></path>
-	                        <path d="M25.0761905,25.0809524 L3.56666667,12.6619048 C10.4258001,0.782891452 25.6157955,-3.28696133 37.4952381,3.57142857 C41.3035582,5.70815926 44.4489836,8.85358468 46.5857143,12.6619048 L25.0761905,25.0809524 Z" id="Shape" fill="#9100B8"></path>
+	                    <g id="_qubeBias" transform="translate(4.000000, 27.000000)" stroke="#E6E6E6" stroke-width="4.32" fill-rule="nonzero">
+	                        <path d="M25.0761905,25.0809524 L25.0761905,49.9190476 C11.3584893,49.9190476 0.238095238,38.7986536 0.238095238,25.0809524 C0.185981865,20.7135007 1.33937813,16.4162757 3.57142857,12.6619048 L25.0761905,25.0809524 Z" id="biasPie_L" fill="#FFFFFF"></path>
+	                        <path d="M25.0761905,25.0809524 L46.5857143,12.6619048 C53.4441042,24.5413474 49.3742514,39.7313427 37.4952381,46.5904762 C33.7408671,48.8225266 29.4436422,49.9759229 25.0761905,49.9238095 L25.0761905,25.0809524 Z" id="biasPie_R" fill="#FFFFFF"></path>
+	                        <path d="M25.0761905,25.0809524 L3.56666667,12.6619048 C10.4258001,0.782891452 25.6157955,-3.28696133 37.4952381,3.57142857 C41.3035582,5.70815926 44.4489836,8.85358468 46.5857143,12.6619048 L25.0761905,25.0809524 Z" id="biasPie_C" fill="#FFFFFF"></path>
 	                    </g>
 	                </g>
 	                <g id="indicatorBottom_saveskip" transform="translate(138.000000, 105.000000)">
@@ -464,49 +465,53 @@
 
         <title>guess_screen_template</title>
         <defs>
-            <linearGradient x1="50%" y1="3.061617e-15%" x2="50%" y2="100%" id="linearGradient-L-BG">
-                <stop stop-color="#00748D" offset="0%"></stop>
-                <stop stop-color="#009BBD" offset="100%"></stop>
-            </linearGradient>
             <rect id="path-L-BG" x="0" y="0" width="405" height="405" rx="20"></rect>
             <filter x="-1.7%" y="-1.2%" width="103.5%" height="103.5%" filterUnits="objectBoundingBox" id="filter-3">
                 <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
                 <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
                 <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
             </filter>
-            <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-LC-BG">
-                <stop stop-color="#9100B8" offset="0%"></stop>
-                <stop stop-color="#009BBD" offset="100%"></stop>
-            </linearGradient>
+            
             <rect id="path-5z" x="0" y="0" width="405" height="405" rx="20"></rect>
             <filter x="-1.7%" y="-1.2%" width="103.5%" height="103.5%" filterUnits="objectBoundingBox" id="filter-6">
                 <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
                 <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
                 <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
             </filter>
-            <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-7">
-                <stop stop-color="#9100B8" offset="0%"></stop>
-                <stop stop-color="#63007E" offset="100%"></stop>
-            </linearGradient>
+            
             <rect id="path-8z" x="0" y="0" width="405" height="405" rx="20"></rect>
             <filter x="-1.7%" y="-1.2%" width="103.5%" height="103.5%" filterUnits="objectBoundingBox" id="filter-9">
                 <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
                 <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
                 <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
             </filter>
-            <linearGradient x1="0%" y1="0%" x2="100%" y2="96.5391413%" id="linearGradient-10">
+
+            <linearGradient x1="50%" y1="3.061617e-15%" x2="50%" y2="100%" id="GuessGradient_L">
+                <stop stop-color="#00748D" offset="0%"></stop>
+                <stop stop-color="#009BBD" offset="100%"></stop>
+            </linearGradient>
+            <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="GuessGradient_LC">
+                <stop stop-color="#9100B8" offset="0%"></stop>
+                <stop stop-color="#009BBD" offset="100%"></stop>
+            </linearGradient>
+            <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="GuessGradient_C">
+                <stop stop-color="#9100B8" offset="0%"></stop>
+                <stop stop-color="#63007E" offset="100%"></stop>
+            </linearGradient>
+            <linearGradient x1="0%" y1="0%" x2="100%" y2="96.5391413%" id="GuessGradient_RC">
                 <stop stop-color="#9100B8" offset="0%"></stop>
                 <stop stop-color="#ED006F" offset="100%"></stop>
             </linearGradient>
-            <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-11">
+            <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="GuessGradient_R">
                 <stop stop-color="#AA0050" offset="0%"></stop>
                 <stop stop-color="#ED006F" offset="100%"></stop>
             </linearGradient>
-            <linearGradient x1="100%" y1="0%" x2="0%" y2="100%" id="linearGradient-12">
+            <linearGradient x1="100%" y1="0%" x2="0%" y2="100%" id="GuessGradient">
                 <stop stop-color="#ED006F" offset="0%"></stop>
                 <stop stop-color="#9100B8" offset="49.2825255%"></stop>
                 <stop stop-color="#009BBD" offset="100%"></stop>
             </linearGradient>
+
         </defs>
         <g id="Cube-Screens" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
             <g id="guess_screen_template">
@@ -518,41 +523,11 @@
 
 
     	        <g id="Guess_BGs" transform="translate(20.000000, 20.000000)">
-    	            <g id="Guess_L_BG">
-    	                <g id="left_bg">
-    	                    <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-L-BG"></use>
-    	                    <use fill="url(#linearGradient-L-BG)" fill-rule="evenodd" xlink:href="#path-L-BG"></use>
-    	                </g>
-    	            </g>
-    	            <g id="Guess_LC_BG">
-    	                <g id="leftcenter_bg">
-    	                    <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5z"></use>
-    	                    <use fill="url(#linearGradient-LC-BG)" fill-rule="evenodd" xlink:href="#path-5z"></use>
-    	                </g>
-    	            </g>
-    	            <g id="Guess_C_BG">
-    	                <g id="center_bg">
-    	                    <use fill="black" fill-opacity="1" filter="url(#filter-9)" xlink:href="#path-8z"></use>
-    	                    <use fill="url(#linearGradient-7)" fill-rule="evenodd" xlink:href="#path-8z"></use>
-    	                </g>
-    	            </g>
-    	            <g id="Guess_RC_BG" fill="url(#linearGradient-10)">
-    	                <rect id="rightcenter_bg" x="0" y="0" width="405" height="405" rx="20"></rect>
-    	            </g>
-    	            <g id="Guess_R_BG" fill="url(#linearGradient-11)">
-    	                <rect id="right_bg" x="0" y="0" width="405" height="405" rx="20"></rect>
-    	            </g>
     	            <g id="Guess_BG" fill="#FFFFFF">
-    	                <rect id="guess_bg" x="0" y="0" width="405" height="405" rx="20"></rect>
+    	                <rect id="guess_bg" x="0" y="0" width="405" height="405" rx="20" fill="url(#GuessGradient)"></rect>
     	            </g>
     	        </g>
 
-
-                <g id="question_mark" transform="translate(148.000000, 205.000000)" font-size="24" font-family="OpenSans-Bold, Open Sans" fill="#444444" font-weight="bold">
-                    <text id="?">
-                        <tspan x="69.2753906" y="26">?</tspan>
-                    </text>
-                </g>
 
 
 
@@ -562,7 +537,7 @@
                         <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" fill="#FFFFFF"></path>
                         <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#FFFFFF"></path>
                     </g>
-                    <text id="overlay_Label_Left" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#444444">
+                    <text id="overlay_Label_Left" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#FFFFFF">
                         <tspan x="37" y="120">Left</tspan>
                     </text>
                 </g>
@@ -573,7 +548,7 @@
                         <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" fill="#FFFFFF"></path>
                         <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#9100B8"></path>
                     </g>
-                    <text id="overlay_Label_Left-Center" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#444444">
+                    <text id="overlay_Label_Left-Center" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#FFFFFF">
                         <tspan x="13" y="122">Left Center</tspan>
                     </text>
                 </g>
@@ -584,7 +559,7 @@
                         <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" fill="#ED006F"></path>
                         <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#FFFFFF"></path>
                     </g>
-                    <text id="overlay_Label_Right" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#444444">
+                    <text id="overlay_Label_Right" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#FFFFFF">
                         <tspan x="32" y="120">Right</tspan>
                     </text>
                 </g>
@@ -595,7 +570,7 @@
                         <path d="M50.152381,50.1619048 L93.1714286,25.3238095 C106.888208,49.0826948 98.7485028,79.4626854 74.9904762,93.1809524 C67.4817343,97.6450533 58.8872844,99.9518458 50.152381,99.847619 L50.152381,50.1619048 Z" id="Shape" fill="#ED006F"></path>
                         <path d="M50.152381,50.1619048 L7.13333333,25.3238095 C20.8516003,1.5657829 51.2315909,-6.57392266 74.9904762,7.14285714 C82.6071163,11.4163185 88.8979672,17.7071694 93.1714286,25.3238095 L50.152381,50.1619048 Z" id="Shape" fill="#9100B8"></path>
                     </g>
-                    <text id="overlay_Label_Right-Center" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#444444">
+                    <text id="overlay_Label_Right-Center" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#FFFFFF">
                         <tspan x="8" y="122">Right Center</tspan>
                     </text>
                 </g>
@@ -606,7 +581,7 @@
                         <path d="M47.7641723,47.7732426 L88.7346939,24.1179138 C101.798294,46.7454236 94.0461932,75.678748 71.4195011,88.7437642 C64.2683184,92.9952888 56.083128,95.1922341 47.7641723,95.0929705 L47.7641723,47.7732426 Z" id="Shape" fill="#FFFFFF"></path>
                         <path d="M47.7641723,47.7732426 L6.79365079,24.1179138 C19.8586669,1.49122181 48.7919914,-6.26087872 71.4195011,6.80272109 C78.6734441,10.8726843 84.6647307,16.8639708 88.7346939,24.1179138 L47.7641723,47.7732426 Z" id="Shape" fill="#9100B8"></path>
                     </g>
-                    <text id="overlay_Label_Center" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#444444">
+                    <text id="overlay_Label_Center" font-family="OpenSans-Regular, Open Sans" font-size="12" font-weight="normal" fill="#FFFFFF">
                         <tspan x="26" y="117">Center</tspan>
                     </text>
                 </g>
@@ -614,8 +589,9 @@
 
 
 
-                <g id="Close_Btn" transform="translate(390.000000, 31.000000)" fill="#B80056">
-                    <path d="M20.1818993,21.9775156 L11.554,13.881 L3.21583569,21.9765029 L3.21583569,21.9765029 C2.61722999,22.5576877 1.66402784,22.5543556 1.0695,21.969 L1.0695,21.969 L1.0695,21.969 C0.491999159,21.4004087 0.484776541,20.4713175 1.05336783,19.8938166 C1.06110418,19.885959 1.06892886,19.8781889 1.07684036,19.8705077 L9.687,11.511 L1.07684036,3.15149227 L1.07684036,3.15149227 C0.495375926,2.58695495 0.481653787,1.65793697 1.04619111,1.07647253 C1.0538723,1.06856102 1.06164242,1.06073635 1.0695,1.053 L1.0695,1.053 L1.0695,1.053 C1.66402757,0.467644666 2.61722952,0.464313329 3.21583403,1.0454988 L11.555,9.142 L20.1818387,1.04741981 L20.1818387,1.04741981 C20.8071501,0.460688871 21.7817078,0.464014759 22.403,1.055 L22.403,1.055 L22.403,1.055 C22.9805759,1.60440148 23.0034158,2.51799717 22.4540143,3.09557308 C22.435163,3.11539112 22.4157522,3.1346693 22.3958053,3.15338427 L13.487,11.512 L22.3958608,19.8715566 L22.3958608,19.8715566 C22.9771925,20.4170444 23.0062497,21.3305121 22.4607619,21.9118438 C22.4420623,21.9317721 22.4228006,21.9511653 22.403,21.97 L22.403,21.97 L22.403,21.97 C21.7817177,22.5609759 20.8071667,22.5642735 20.1818993,21.9775156 Z" id="delete" style="mix-blend-mode: darken;"></path>
+                <g id="Close_Btn" transform="translate(390.000000, 31.000000)" fill="#FFFFFF">
+                    <rect x="0" y="0" width="15" height="15" fill="transparent"></rect>
+                    <path d="M20.1818993,21.9775156 L11.554,13.881 L3.21583569,21.9765029 L3.21583569,21.9765029 C2.61722999,22.5576877 1.66402784,22.5543556 1.0695,21.969 L1.0695,21.969 L1.0695,21.969 C0.491999159,21.4004087 0.484776541,20.4713175 1.05336783,19.8938166 C1.06110418,19.885959 1.06892886,19.8781889 1.07684036,19.8705077 L9.687,11.511 L1.07684036,3.15149227 L1.07684036,3.15149227 C0.495375926,2.58695495 0.481653787,1.65793697 1.04619111,1.07647253 C1.0538723,1.06856102 1.06164242,1.06073635 1.0695,1.053 L1.0695,1.053 L1.0695,1.053 C1.66402757,0.467644666 2.61722952,0.464313329 3.21583403,1.0454988 L11.555,9.142 L20.1818387,1.04741981 L20.1818387,1.04741981 C20.8071501,0.460688871 21.7817078,0.464014759 22.403,1.055 L22.403,1.055 L22.403,1.055 C22.9805759,1.60440148 23.0034158,2.51799717 22.4540143,3.09557308 C22.435163,3.11539112 22.4157522,3.1346693 22.3958053,3.15338427 L13.487,11.512 L22.3958608,19.8715566 L22.3958608,19.8715566 C22.9771925,20.4170444 23.0062497,21.3305121 22.4607619,21.9118438 C22.4420623,21.9317721 22.4228006,21.9511653 22.403,21.97 L22.403,21.97 L22.403,21.97 C21.7817177,22.5609759 20.8071667,22.5642735 20.1818993,21.9775156 Z"></path>
                 </g>
             </g>
         </g>
