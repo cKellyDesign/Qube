@@ -257,12 +257,16 @@ var QubeApp = function () {
 
 
 
-	// When a user clicks on the bias button 
+	// When a user clicks on the bias buess button 
 	this.onBiasButtonClick = function (e, el) {
 		e.preventDefault();
 		e.stopPropagation();
 
-		this.showBiasGuessOverlay(el)
+		self.showBiasGuessOverlay(el)
+
+		// todo - animate button shifting down then up; protip: svgs are BUTTS
+		// $('rect', e.currentTarget).last().animate({y: 3}, 300)
+		// $('rect', e.currentTarget).last().delay(300).animate({y: 0}, 300)
 	}
 
 	// Shows bias overlay when user clicks the button to see it
@@ -305,7 +309,7 @@ var QubeApp = function () {
 			$('#Guess_BG rect', ov).attr('fill', 'url(#GuessGradient_' + biasGuess + ')')
 		})
 
-		
+
 		$('#Close_Btn', el).on('click', function (e) {
 			$('#overlay_pie_L, #overlay_pie_LC, #overlay_pie_C, #overlay_pie_RC, #overlay_pie_R', el).off('click')
 			$('g#guess_screen_template > g', el).animate({ opacity: 0 }, 300)
@@ -316,8 +320,8 @@ var QubeApp = function () {
 		})
 
 		// Instead of using css transitions... see note in style.css above "g#guess_screen_template > g {...}"
-		$('g#guess_screen_template > #overlay', el).animate({ opacity: 1 }, 300)
-		$('g#guess_screen_template > g', el).delay(300).animate({ opacity: 1 }, 300)
+		$('g#guess_screen_template > #overlay', el).delay(100).animate({ opacity: 1 }, 1000)
+		$('g#guess_screen_template > g', el).delay(1000).animate({ opacity: 1 }, 300)
 		
 	}
 

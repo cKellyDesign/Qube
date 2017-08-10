@@ -290,9 +290,11 @@ g#guess_screen_template [id*="overlay_pie_"] {
 
 }
 
+#btnRedo_biasGuess rect,
+[id*="BiasGuessBtn"] rect,
 #btn_skip rect,
 #btn_save rect {
-   filter: drop-shadow(0px 3px 0px #4F8000)
+  transition: fill .3s;
 }
 
 #btn_skip:active rect,
@@ -309,7 +311,7 @@ g#guess_screen_template [id*="overlay_pie_"] {
 #btn_save:active #btn_shadow,
 #btn_skip.disabled #btn_shadow,
 #btn_save.disabled #btn_shadow {
-  display: none;
+  /*display: none;*/
 }
 
 
@@ -350,6 +352,7 @@ g#guess_screen_template [id*="overlay_pie_"] {
 #yourGuess_locked.active {
   display: initial;
 }
+
 
 #btnRedo_biasGuess:active rect,
 [id*="BiasGuessBtn"]:active rect {
