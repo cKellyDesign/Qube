@@ -279,14 +279,33 @@ var QubeApp = function () {
 		}
 		
 		var ov = $('#guess_screen_template', el);
-		$('#overlay_pie_L, #overlay_pie_LC, #overlay_pie_C, #overlay_pie_RC, #overlay_pie_R', el).on('click', function (e) {
-			var biasGuess = this.id.replace('overlay_pie_', '')
+		var guessPies = $('#overlay_pie_L, #overlay_pie_LC, #overlay_pie_C, #overlay_pie_RC, #overlay_pie_R', el)
+		
+		guessPies.on('click', function (e) {
+			var biasGuess = this.id.replace('overlay_pie_', ''),
+				thisPie = this,
+				otherPies = _.reject(guessPies, function(pie) { return pie === thisPie; })
+			
+			// handle shrinking other pies
+			$(otherPies).each(function(i, pie) {
+				// get current transform so we don't destroy the SVG element positioning when scaling
+				var thisTransform = $(pie).attr('transform')
+				$(pie).attr('transform', thisTransform + ' scale(.5)')
+
+				// wait until fully faded out and reset to original transform
+				setTimeout(function(){
+					$(pie).attr('transform', thisTransform)
+				}, 1500)
+			});
+
+			// handle the rest of the things involved with updating the state of the cube after guessing
 			self.onBiasGuess(e, el, biasGuess)
 
+			// change color of BG to match the bias guess
 			$('#Guess_BG rect', ov).attr('fill', 'url(#GuessGradient_' + biasGuess + ')')
-
 		})
 
+		
 		$('#Close_Btn', el).on('click', function (e) {
 			$('#overlay_pie_L, #overlay_pie_LC, #overlay_pie_C, #overlay_pie_RC, #overlay_pie_R', el).off('click')
 			$('g#guess_screen_template > g', el).animate({ opacity: 0 }, 300)
@@ -311,22 +330,22 @@ var QubeApp = function () {
 		// Define actual Bias and if user got it correct
 		correctBias = self.screens[el.id].article.bias;
 		isCorrect = correctBias == selection
-		console.log('should do the thing, ', selection)
+
 		// If it's the first guess, count it towards their stats
 		if ( !thisArticle.userGuess.length ) {
 			thisArticle.userGuess = selection;
 			thisArticle.isCorrect = isCorrect;
-			console.log('do the fucking thing', thisArticle.userGuess)
+
 			// handler to update firebase
 			self.handleBiasGuess(el, correctBias, selection)
 
 			// modify SVG element to be 'unlocked'
 			self.updateSourceScreenEl(el, correctBias)
+
+			// count up to next round
+			self.biasGuessCount++;
 		}
 		
-
-		// count up to next round
-		self.biasGuessCount++;
 
 		$('.active', el).removeClass('active')
 		var lockedGuess = $('#yourGuess_locked', el).addClass('active')
@@ -365,8 +384,8 @@ var QubeApp = function () {
 
 			setTimeout(function(){
 				$(el).prepend($('svg#guess_screen_template', el))
-			}, 500)
-		},1000)
+			}, 300)
+		}, 1000)
 	}
 
 

@@ -206,26 +206,6 @@ body {
   display: none;
 }
 
-
-
-/* this is the weirdest thing, the svgs won't do css transitions 
-when Qube.js manimpulates SVG classes BUT it WILL work if running
-THE SAME javascript in the console OR when stepping through the JS
-via breakpoints or debuggers...this is truely bizzare */
-g#guess_screen_template > g {
- /* transition: opacity .3s;
-  transition-delay: .3s;*/
-  opacity: 0;
-}
-
-g#guess_screen_template > g#overlay {
-  /*transition-delay: 0s;*/
-}
-
-svg.active g#guess_screen_template > g {
-  opacity: 1;
-}
-
 .ghost {
   /*opacity: 0 !important;*/
 }
@@ -246,6 +226,34 @@ svg.active g#guess_screen_template > g {
 #top > svg.right {
   transform: rotate(-90deg); 
 }
+
+/* this is the weirdest thing, the svgs won't do css transitions 
+when Qube.js manimpulates SVG classes BUT it WILL work if running
+THE SAME javascript in the console OR when stepping through the JS
+via breakpoints or debuggers...this is truely bizzare */
+g#guess_screen_template > g {
+ /* transition: opacity .3s;
+  transition-delay: .3s;*/
+  opacity: 0;
+}
+
+g#guess_screen_template > g#overlay {
+  /*transition-delay: 0s;*/
+}
+
+svg.active g#guess_screen_template > g {
+  opacity: 1;
+}
+
+g#guess_screen_template [id*="overlay_pie_"] {
+  transition: transform .3s;
+  transform-origin: center center;
+}
+
+/*g#guess_screen_template [id*="overlay_pie_"].smallPie {
+  transform: scale(.5);
+}
+*/
 
 #saveSkip { 
   
