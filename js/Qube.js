@@ -269,10 +269,13 @@ var QubeApp = function () {
 	// todo - rework this for new SVGs
 	this.showBiasGuessOverlay = function (el) {
 		if (!$('#guess_screen_template', el).length) {
-			 $(el).append($('#svgTemplateWrap svg#guess_screen_template').clone())
+			$(el).append($('#svgTemplateWrap svg#guess_screen_template').clone())
+			// debugger;
+			// $('svg#guess_screen_template', el).removeClass('ghost')
+
 		} else {
 			$(el).append($('svg#guess_screen_template', el))
-			$('svg#guess_screen_template', el).removeClass('ghost')
+			// $('svg#guess_screen_template', el).removeClass('ghost')
 		}
 		
 		var ov = $('#guess_screen_template', el);
@@ -282,22 +285,20 @@ var QubeApp = function () {
 
 			$('#Guess_BG rect', ov).attr('fill', 'url(#GuessGradient_' + biasGuess + ')')
 
-
-
-
-
-			// BGs.append($('#Guess_' + biasGuess + '_BG', BGs))
-			// $('text', ov).attr('fill', 'white')
 		})
 
 		$('#Close_Btn', el).on('click', function (e) {
 			$('#overlay_pie_L, #overlay_pie_LC, #overlay_pie_C, #overlay_pie_RC, #overlay_pie_R', el).off('click')
-			$('svg#guess_screen_template', el).addClass('ghost')
+			$('g#guess_screen_template > g', el).animate({ opacity: 0 }, 300)
+			
 			setTimeout(function(){
 				$(el).prepend($(ov))
-			}, 400)
-				
+			}, 300)
 		})
+
+		// Instead of using css transitions... see note in style.css above "g#guess_screen_template > g {...}"
+		$('g#guess_screen_template > #overlay', el).animate({ opacity: 1 }, 300)
+		$('g#guess_screen_template > g', el).delay(300).animate({ opacity: 1 }, 300)
 		
 	}
 
@@ -360,8 +361,8 @@ var QubeApp = function () {
 			$('#overlay_pie_L, #overlay_pie_LC, #overlay_pie_C, #overlay_pie_RC, #overlay_pie_R', el).off('click')
 			$('#Close_Btn').off('click')
 
+			$('g#guess_screen_template > g', el).animate({ opacity: 0 }, 300)
 
-			$('svg#guess_screen_template', el).addClass('ghost');
 			setTimeout(function(){
 				$(el).prepend($('svg#guess_screen_template', el))
 			}, 500)
@@ -529,20 +530,6 @@ var QubeApp = function () {
 		var qubeLabelTspan = $('tspan', qubeRatingText)
 		if (userLabelTspan.length === 1) userLabelTspan.attr('y', 35)
 		if (qubeLabelTspan.length === 1) qubeLabelTspan.attr('y', 35)
-
-		// var userRatingLabelArr = userRatingLabel.split(' ')
-		// var qubeRatingLabelArr = qubeRatingLabel.split(' ')
-		
-		// $(userRatingLabelArr).each(function (i, text) {
-		// 	var y = 19 + (i * 17)
-
-		// 	userRatingText.append('<tspan x="0" y="' + y +'">' + text + '</tspan>')
-		// })
-
-		// todo NEXT 
-		// find label text, getBiasLabel
-		// if one word, render and center vertically
-		// if two words, render one per line
 	}
 
 	this.renderPie = function (pie, bias) {

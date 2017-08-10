@@ -206,9 +206,28 @@ body {
   display: none;
 }
 
+
+
+/* this is the weirdest thing, the svgs won't do css transitions 
+when Qube.js manimpulates SVG classes BUT it WILL work if running
+THE SAME javascript in the console OR when stepping through the JS
+via breakpoints or debuggers...this is truely bizzare */
+g#guess_screen_template > g {
+ /* transition: opacity .3s;
+  transition-delay: .3s;*/
+  opacity: 0;
+}
+
+g#guess_screen_template > g#overlay {
+  /*transition-delay: 0s;*/
+}
+
+svg.active g#guess_screen_template > g {
+  opacity: 1;
+}
+
 .ghost {
-  transition: opacity .4s;
-  opacity: 0 !important;
+  /*opacity: 0 !important;*/
 }
 .hide {
   display: none;
