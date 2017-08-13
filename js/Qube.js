@@ -477,6 +477,9 @@ var QubeApp = function () {
 		var biasLabelEl = $('#sourceBias', templateSvg)[0]
 		self.centerSVGText(biasLabelEl, biasLabel)
 
+		// Reposition updated elemetns
+		$('#sourceContent', thisSource.el).attr('transform', 'translate(40.000000, 184.000000)')
+		$('#sourceBias', thisSource.el).attr('transform', 'translate(170.000000, 40.000000)')
 	}
 
 	this.getBiasLabel = function (bias) {
