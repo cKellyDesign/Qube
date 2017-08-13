@@ -17,7 +17,7 @@ body {
   font-family: Open Sans, Arial, sans-serif;
   font-weight: 300; }
 
-#wrapper { padding-top: 12.5vh; }
+#wrapper { padding-top: 5.5vh; }
 
 .viewport {
   -webkit-perspective: 3000px;
@@ -198,6 +198,12 @@ body {
   top: 27.5px; left: 27.5px;
   position: absolute;
 }
+
+#base > img {
+  top: 0;
+  left: 0;
+  opacity: .8;
+}
 .side.active > svg {
   opacity: 1;
 }
@@ -226,6 +232,9 @@ body {
 #top > svg.right {
   transform: rotate(-90deg); 
 }
+
+
+
 
 /* this is the weirdest thing, the svgs won't do css transitions 
 when Qube.js manimpulates SVG classes BUT it WILL work if running
