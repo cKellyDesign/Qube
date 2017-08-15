@@ -109,26 +109,26 @@ var QubeApp = function () {
 			article : this.articles[2].article,
 			articleI : 2,
 			velocityPaths: {
-				left_source : [],
-				center_source : [],
-				right_source : [],
-				left : [],
-				center : [ [0,0] ],
+				left_source : [ [90, 0], [90,0], [0,90] ],
+				center_source : [ [90, 0], [0,90] ],
+				right_source : [ [0, 90] ],
+				left : [ [90, 0], [90,0] ],
+				center : [ [90, 0] ],
 				right : [],
-				saveSkip : []
+				saveSkip : [ [90, 0], [0,-90] ]
 			}
 		},
 		center_source : { 
 			el : null,
 			sideNumber : 1,
 			velocityPaths: {
-				left_source : [],
+				left_source : [ [0, -90], [90,0], [0,90] ],
 				center_source : [],
-				right_source : [],
-				left : [],
-				center : [ [0,0] ],
-				right : [],
-				saveSkip : []
+				right_source : [ [0, -90], [-90,0], [0,90] ],
+				left : [ [0, -90], [90,0] ],
+				center : [ [0, -90] ],
+				right : [ [0, -90], [-90,0] ],
+				saveSkip : [ [0, -90] , [0, -90] ]
 			}
 		},
 		left_source : { 
@@ -136,36 +136,36 @@ var QubeApp = function () {
 			sideNumber : 1,
 			velocityPaths: {
 				left_source : [],
-				center_source : [],
-				right_source : [],
-				left : [],
-				center : [ [0,0] ],
-				right : [],
-				saveSkip : []
+				center_source : [ [0, -90], [-90,0], [0,90] ],
+				right_source : [ [0, -90], [-90,0], [-90,0], [0,90] ],
+				left : [ [0, -90] ],
+				center : [ [0, -90], [-90,0] ],
+				right : [ [0, -90], [-90,0], [-90,0] ],
+				saveSkip : [ [0, -90], [-90, 0], [0,-90] ]
 			}
 		},
 		right_source : { 
 			el : null,
 			sideNumber : 1,
 			velocityPaths: {
-				left_source : [],
-				center_source : [],
+				left_source : [ [0, -90], [90,0], [90,0], [0,90] ],
+				center_source : [ [0, -90], [90,0], [0,90] ],
 				right_source : [],
-				left : [],
-				center : [ [0,0] ],
-				right : [],
-				saveSkip : []
+				left : [ [0, -90], [90,0], [90,0] ],
+				center : [ [0, -90], [90,0] ],
+				right : [ [0, -90] ],
+				saveSkip : [ [0, -90], [90,0], [0, -90] ],
 			}
 		},
 		saveSkip : {
 			sideNumber : 1,
 			velocityPaths: {
-				left_source : [],
-				center_source : [],
-				right_source : [],
-				left : [],
-				center : [ [0,0] ],
-				right : [],
+				left_source : [ [0, 90], [90,0], [0,90] ],
+				center_source : [ [0, 90], [0,90] ],
+				right_source : [ [0, 90], [-90,0], [0,90] ],
+				left : [ [0, 90], [90,0] ],
+				center : [ [0, 90] ],
+				right : [ [0, 90],[-90,0] ],
 				saveSkip : []
 			}
 		}
@@ -753,16 +753,21 @@ var QubeApp = function () {
 		e.preventDefault();
 		e.stopPropagation();
 
-		var targetScreen = (e.target.id).replace('_btn', '')
+		var targetScreen = (e.target.id).replace('_btn', ''), 
+			thisScreen = self.activeScreen
 		// self.updateCubeNav(targetScreen)
 
 		if (targetScreen.indexOf('top') !== -1) {
 			targetScreen = targetScreen.replace('top_','')
 			targetScreen = targetScreen + '_source'
+
+			// 
 		}
+		if (thisScreen.indexOf('top') !== -1)
+			thisScreen = ($('#top svg').last().attr('id').replace('SourceScreen_template_','')) + '_source';
 
 		// init velocities
-		var thisVelocityPath = self.screens[self.activeScreen].velocityPaths[targetScreen]
+		var thisVelocityPath = self.screens[thisScreen].velocityPaths[targetScreen]
 
 		// loop through velocityPath steps
 		for (var i = 0; i < thisVelocityPath.length; i++) {
