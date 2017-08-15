@@ -410,6 +410,8 @@ g#guess_screen_template [id*="overlay_pie_"] {
   border: 2px solid #E6E6E6;
   cursor: pointer;
   outline: none !important;
+
+  transition: border-color .5s, background-color .5s;
 }
 
 #qube_positioning button:hover {
@@ -417,6 +419,14 @@ g#guess_screen_template [id*="overlay_pie_"] {
 }
 #qube_positioning button:active {
   background-color: #c6c6c6;
+}
+
+#qube_positioning.inMotion button {
+  cursor: default;
+}
+
+#qube_positioning.inMotion button:hover {
+  border-color: #e6e6e6;
 }
 
 #qube_positioning button.active {

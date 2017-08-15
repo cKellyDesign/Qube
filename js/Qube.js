@@ -753,6 +753,9 @@ var QubeApp = function () {
 		e.preventDefault();
 		e.stopPropagation();
 
+		if ( $('#qube_positioning').hasClass('inMotion') ) return;
+		$('#qube_positioning').addClass('inMotion')
+
 		var targetScreen = (e.target.id).replace('_btn', ''), 
 			thisScreen = self.activeScreen
 		// self.updateCubeNav(targetScreen)
@@ -776,6 +779,13 @@ var QubeApp = function () {
 			(function(l) {
 				setTimeout(function(){
 					self.applyTorque(thisVelocityPath[l])
+					if (l === thisVelocityPath.length - 1) {
+						setTimeout(function(){
+							cleanUpCubePosition()
+							$('#qube_positioning').removeClass('inMotion')
+						}, 300)
+						
+					}
 				}, (l * 500) )
 			})(i)
 		}
