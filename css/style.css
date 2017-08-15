@@ -206,7 +206,7 @@ body {
 .side > img,
 .side > svg {
   /*opacity: .8;*/
-  transition: opacity .5s;
+  transition: opacity .2s;
   top: 27.5px; left: 27.5px;
   position: absolute;
 }
@@ -225,7 +225,7 @@ body {
 }
 
 .ghost {
-  /*opacity: 0 !important;*/
+  opacity: 0 !important;
 }
 .hide {
   display: none;
@@ -423,6 +423,7 @@ g#guess_screen_template [id*="overlay_pie_"] {
 
 #qube_positioning.inMotion button {
   cursor: default;
+
 }
 
 #qube_positioning.inMotion button:hover {
