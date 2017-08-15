@@ -781,7 +781,6 @@ var QubeApp = function () {
 					self.applyTorque(thisVelocityPath[l])
 					if (l === thisVelocityPath.length - 1) {
 						setTimeout(function(){
-							cleanUpCubePosition()
 							$('#qube_positioning').removeClass('inMotion')
 						}, 300)
 						
