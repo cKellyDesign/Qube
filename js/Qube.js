@@ -37,7 +37,7 @@ var QubeApp = function () {
 		if ($('#right').hasClass('active')) self.activeScreen = "right"
 		if ($('#top').hasClass('active')) self.activeScreen = "top"
 		if ($('#saveSkip').hasClass('active')) self.activeScreen = "saveSkip"
-			
+
 		self.rotatingFromTopScreen = false
 		$('#top').append($('#SourceScreen_template_' + self.activeScreen))
 
@@ -70,39 +70,104 @@ var QubeApp = function () {
 			timeInArticle : 0
 		},
 	];
+
+	// todo - move velocity paths to CubeViewport and reference via sideNumber
 	this.screens = {
 		center : {
 			sideNumber : 2,
 			hasGuessed : false,
 			article : this.articles[0].article,
-			articleI : 0
+			articleI : 0,
+			velocityPaths: {
+				left_source : [],
+				center_source : [ [0, 90] ],
+				right_source : [],
+				left : [ [90, 0] ],
+				center : [ [0,0] ],
+				right : [ [-90,0] ],
+				saveSkip : [ [0, -90] ]
+			}
 		},
 		left : {
 			sideNumber : 5,
 			hasGuessed : false,
 			article : this.articles[1].article,
-			articleI : 1
+			articleI : 1,
+			velocityPaths: {
+				left_source : [],
+				center_source : [],
+				right_source : [],
+				left : [],
+				center : [ [0,0] ],
+				right : [],
+				saveSkip : []
+			}
 		},
 		right : {
 			sideNumber : 3,
 			hasGuessed : false,
 			article : this.articles[2].article,
-			articleI : 2
+			articleI : 2,
+			velocityPaths: {
+				left_source : [],
+				center_source : [],
+				right_source : [],
+				left : [],
+				center : [ [0,0] ],
+				right : [],
+				saveSkip : []
+			}
 		},
 		center_source : { 
 			el : null,
-			sideNumber : 1
+			sideNumber : 1,
+			velocityPaths: {
+				left_source : [],
+				center_source : [],
+				right_source : [],
+				left : [],
+				center : [ [0,0] ],
+				right : [],
+				saveSkip : []
+			}
 		},
 		left_source : { 
 			el : null,
-			sideNumber : 1
+			sideNumber : 1,
+			velocityPaths: {
+				left_source : [],
+				center_source : [],
+				right_source : [],
+				left : [],
+				center : [ [0,0] ],
+				right : [],
+				saveSkip : []
+			}
 		},
 		right_source : { 
 			el : null,
-			sideNumber : 1
+			sideNumber : 1,
+			velocityPaths: {
+				left_source : [],
+				center_source : [],
+				right_source : [],
+				left : [],
+				center : [ [0,0] ],
+				right : [],
+				saveSkip : []
+			}
 		},
-		save_skip : {
-			sideNumber : 1
+		saveSkip : {
+			sideNumber : 1,
+			velocityPaths: {
+				left_source : [],
+				center_source : [],
+				right_source : [],
+				left : [],
+				center : [ [0,0] ],
+				right : [],
+				saveSkip : []
+			}
 		}
 	}
 
@@ -684,17 +749,60 @@ var QubeApp = function () {
 
 
 	// CUBE NAVIGATION
+	this.onPositioningBtnClick = function (e) {
+		e.preventDefault();
+		e.stopPropagation();
 
-	this.updateCubeNav = function (activeScreen) {
-		if (activeScreen == "top") {
-			activeScreen = activeScreen + '_' + ($('#top svg').last().attr('id').replace('SourceScreen_template_',''))
+		var targetScreen = (e.target.id).replace('_btn', '')
+		self.updateCubeNav(targetScreen)
+
+		if (targetScreen.indexOf('top') !== -1) {
+			targetScreen = targetScreen.replace('top_','')
+			targetScreen = targetScreen + '_source'
 		}
 
-		$('#qube_positioning .active').removeClass('active')
+		// init velocities
+		var thisVelocityPath = self.screens[self.activeScreen].velocityPaths[targetScreen]
 
-		$('#' + activeScreen + '_btn').addClass('active')
+		for (var i = 0; i < thisVelocityPath.length; i++) {
+			var thisStep = thisVelocityPath[i],
+				thisDelay = 300 * i
+
+			setTimeout(function(){
+				self.applyTorque(thisStep)
+			}, thisDelay)
+
+		}
+
+	}
+	$('#qube_positioning button').on('click', this.onPositioningBtnClick)
+	
+
+	this.updateCubeNav = function (activeScreen) {
+		var activeBtn = activeScreen // string identifying cooresponding 'top' button
+
+		if (activeScreen == "top") {
+			var secondaryScreen = $('#top svg').last().attr('id').replace('SourceScreen_template_','')
+			
+			// string identifying which screen the top belongs to
+			activeBtn = activeScreen + '_' + secondaryScreen
+
+		}
+
+		// update UI
+		$('#qube_positioning .active').removeClass('active')
+		$('#' + activeBtn + '_btn').addClass('active')
+
+		
 	}
 
+	// step = [torqueX, torqueY] 
+	self.applyTorque = function (step) {
+		if ( !step ) return;
+
+		if ( !!step[0] ) viewport.torqueX = step[0]
+		if ( !!step[1] ) viewport.torqueY = step[1]
+	}
 
 	$(window).on('keyup', function (e) {
 
