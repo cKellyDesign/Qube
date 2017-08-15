@@ -428,7 +428,7 @@ g#guess_screen_template [id*="overlay_pie_"] {
   clear: both;
 }
 
-button#save_skip_btn {
+button#saveSkip_btn {
   margin-left: 40px;
 }
 

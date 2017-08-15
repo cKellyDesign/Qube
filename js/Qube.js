@@ -23,8 +23,6 @@ var QubeApp = function () {
 	this.rotatingFromTopScreen = false
 
 	window.viewport.on('side-change-complete', function () {
-
-
 		if (self.activeScreen === "top") {
 			self.rotatingFromTopScreen = true
 
@@ -34,21 +32,16 @@ var QubeApp = function () {
 		}
 
 		// I couldn't come up with a quicker easier way to set the active Screen
-		if ($('#left').hasClass('active')) {
-			self.activeScreen = "left";
-		}
-		if ($('#center').hasClass('active')) {
-			self.activeScreen = "center";
-		}
-		if ($('#right').hasClass('active')) {
-			self.activeScreen = "right";
-		}
-		if ($('#top').hasClass('active')) {
-			self.activeScreen = "top";
-
-		}
+		if ($('#left').hasClass('active')) self.activeScreen = "left"
+		if ($('#center').hasClass('active')) self.activeScreen = "center"
+		if ($('#right').hasClass('active')) self.activeScreen = "right"
+		if ($('#top').hasClass('active')) self.activeScreen = "top"
+		if ($('#saveSkip').hasClass('active')) self.activeScreen = "saveSkip"
+			
 		self.rotatingFromTopScreen = false
 		$('#top').append($('#SourceScreen_template_' + self.activeScreen))
+
+		self.updateCubeNav(self.activeScreen);
 	})
 
 	this.articles = [ 
@@ -688,6 +681,20 @@ var QubeApp = function () {
 		})
 
 	}
+
+
+	// CUBE NAVIGATION
+
+	this.updateCubeNav = function (activeScreen) {
+		if (activeScreen == "top") {
+			activeScreen = activeScreen + '_' + ($('#top svg').last().attr('id').replace('SourceScreen_template_',''))
+		}
+
+		$('#qube_positioning .active').removeClass('active')
+
+		$('#' + activeScreen + '_btn').addClass('active')
+	}
+
 
 	$(window).on('keyup', function (e) {
 
