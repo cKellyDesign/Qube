@@ -81,7 +81,7 @@ var QubeApp = function () {
 			velocityPaths: {
 				left_source : [],
 				center_source : [ [0, 90] ],
-				right_source : [],
+				right_source : [ [-90,0], [0, 90] ],
 				left : [ [90, 0] ],
 				center : [ [0,0] ],
 				right : [ [-90,0] ],
@@ -754,7 +754,7 @@ var QubeApp = function () {
 		e.stopPropagation();
 
 		var targetScreen = (e.target.id).replace('_btn', '')
-		self.updateCubeNav(targetScreen)
+		// self.updateCubeNav(targetScreen)
 
 		if (targetScreen.indexOf('top') !== -1) {
 			targetScreen = targetScreen.replace('top_','')
@@ -768,10 +768,13 @@ var QubeApp = function () {
 			var thisStep = thisVelocityPath[i],
 				thisDelay = 300 * i
 
-			setTimeout(function(){
+			if (!thisDelay) {
 				self.applyTorque(thisStep)
-			}, thisDelay)
-
+			} else {
+				setTimeout(function(){
+					self.applyTorque(thisStep)
+				}, thisDelay)
+			}
 		}
 
 	}
