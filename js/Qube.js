@@ -298,6 +298,10 @@ var QubeApp = function () {
 		var articleBody = thisArticle.body;
 		wrapTextRect(bodyRect, bodyTextEl, articleBody)
 
+
+		if ($('svg', el).hasClass('ghost')) {
+			$('.side > svg').removeClass('ghost')
+		}
 	}
 
 	// Render Source Screen for every Article Screen (from within article rendering loop)
