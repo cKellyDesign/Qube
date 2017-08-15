@@ -165,7 +165,7 @@ object:hover {
 /* ********** START CUSTOM QUBE UX STYLING ********** */
 /* Changes the cursor to encourage clicking and dragging outside of the Qube to rotate*/
 body {
-  cursor: all-scroll;
+  cursor: ;
 }
 
 .viewport { 
@@ -181,12 +181,24 @@ body {
 
   outline: 1px solid transparent !important;
 
-  background: #a57933;
+  /*background-image: url('/img/Qube_Face.jpg');*/
 
 }
-
-#top, #saveSkip { background-color: #B28237 }
-#left, #right { background-color: #8B662B }
+.side:before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('/img/Qube_Face.jpg');
+}
+#base:before {
+  background-image: url('/img/Qube_Base.jpg');
+}
+#top:before, #saveSkip:before { 
+ 
+}
+#left:before, #right:before { 
+   transform: rotate(90deg);
+}
 
 
 .side > object,

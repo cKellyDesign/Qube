@@ -341,7 +341,7 @@ Cube.prototype.sideChange = function() {
 window.viewport = new Viewport({
   element: document.getElementsByClassName('cube')[0],
   fps: 50,
-  sensivity: .1,
+  sensivity: .25,
   sensivityFade: .5,
   speed: 1,
   touchSensivity: .1,
