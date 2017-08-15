@@ -395,3 +395,52 @@ g#guess_screen_template [id*="overlay_pie_"] {
 }
 
 
+
+#qube_positioning {
+  position: fixed;
+  bottom: 0; right: 0;
+  padding: 0 20px 20px 0;
+}
+
+#qube_positioning button {
+  float: left;
+  margin: 10px 10px 0 0;
+  height: 30px; width: 30px;
+  background-color: #F6F6F6;
+  border: 2px solid #E6E6E6;
+  cursor: pointer;
+  outline: none !important;
+
+  transition: border-color .5s, background-color .5s;
+}
+
+#qube_positioning button:hover {
+  border-color: #c6c6c6;
+}
+#qube_positioning button:active {
+  background-color: #c6c6c6;
+}
+
+#qube_positioning.inMotion button {
+  cursor: default;
+}
+
+#qube_positioning.inMotion button:hover {
+  border-color: #e6e6e6;
+}
+
+#qube_positioning button.active {
+  background: #d6d6d6;
+  border-color: #c6c6c6;
+}
+
+#qube_positioning button:nth-child(3n+1) {
+  clear: both;
+}
+
+button#saveSkip_btn {
+  margin-left: 40px;
+}
+
+
+

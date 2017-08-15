@@ -23,8 +23,6 @@ var QubeApp = function () {
 	this.rotatingFromTopScreen = false
 
 	window.viewport.on('side-change-complete', function () {
-
-
 		if (self.activeScreen === "top") {
 			self.rotatingFromTopScreen = true
 
@@ -34,21 +32,16 @@ var QubeApp = function () {
 		}
 
 		// I couldn't come up with a quicker easier way to set the active Screen
-		if ($('#left').hasClass('active')) {
-			self.activeScreen = "left";
-		}
-		if ($('#center').hasClass('active')) {
-			self.activeScreen = "center";
-		}
-		if ($('#right').hasClass('active')) {
-			self.activeScreen = "right";
-		}
-		if ($('#top').hasClass('active')) {
-			self.activeScreen = "top";
+		if ($('#left').hasClass('active')) self.activeScreen = "left"
+		if ($('#center').hasClass('active')) self.activeScreen = "center"
+		if ($('#right').hasClass('active')) self.activeScreen = "right"
+		if ($('#top').hasClass('active')) self.activeScreen = "top"
+		if ($('#saveSkip').hasClass('active')) self.activeScreen = "saveSkip"
 
-		}
 		self.rotatingFromTopScreen = false
 		$('#top').append($('#SourceScreen_template_' + self.activeScreen))
+
+		self.updateCubeNav(self.activeScreen);
 	})
 
 	this.articles = [ 
@@ -77,39 +70,104 @@ var QubeApp = function () {
 			timeInArticle : 0
 		},
 	];
+
+	// todo - move velocity paths to CubeViewport and reference via sideNumber
 	this.screens = {
 		center : {
 			sideNumber : 2,
 			hasGuessed : false,
 			article : this.articles[0].article,
-			articleI : 0
+			articleI : 0,
+			velocityPaths: {
+				left_source : [ [90,0], [0, 90] ],
+				center_source : [ [0, 90] ],
+				right_source : [ [-90,0], [0, 90] ],
+				left : [ [90, 0] ],
+				center : [],
+				right : [ [-90,0] ],
+				saveSkip : [ [0, -90] ]
+			}
 		},
 		left : {
 			sideNumber : 5,
 			hasGuessed : false,
 			article : this.articles[1].article,
-			articleI : 1
+			articleI : 1,
+			velocityPaths: {
+				left_source : [ [0, 90] ],
+				center_source : [ [-90,0], [0, 90] ],
+				right_source : [ [-90,0], [-90,0], [0, 90] ],
+				left : [],
+				center : [ [-90,0] ],
+				right : [ [-90,0], [-90,0] ],
+				saveSkip : [ [-90,0], [0,-90] ]
+			}
 		},
 		right : {
 			sideNumber : 3,
 			hasGuessed : false,
 			article : this.articles[2].article,
-			articleI : 2
+			articleI : 2,
+			velocityPaths: {
+				left_source : [ [90, 0], [90,0], [0,90] ],
+				center_source : [ [90, 0], [0,90] ],
+				right_source : [ [0, 90] ],
+				left : [ [90, 0], [90,0] ],
+				center : [ [90, 0] ],
+				right : [],
+				saveSkip : [ [90, 0], [0,-90] ]
+			}
 		},
 		center_source : { 
 			el : null,
-			sideNumber : 1
+			sideNumber : 1,
+			velocityPaths: {
+				left_source : [ [0, -90], [90,0], [0,90] ],
+				center_source : [],
+				right_source : [ [0, -90], [-90,0], [0,90] ],
+				left : [ [0, -90], [90,0] ],
+				center : [ [0, -90] ],
+				right : [ [0, -90], [-90,0] ],
+				saveSkip : [ [0, -90] , [0, -90] ]
+			}
 		},
 		left_source : { 
 			el : null,
-			sideNumber : 1
+			sideNumber : 1,
+			velocityPaths: {
+				left_source : [],
+				center_source : [ [0, -90], [-90,0], [0,90] ],
+				right_source : [ [0, -90], [-90,0], [-90,0], [0,90] ],
+				left : [ [0, -90] ],
+				center : [ [0, -90], [-90,0] ],
+				right : [ [0, -90], [-90,0], [-90,0] ],
+				saveSkip : [ [0, -90], [-90, 0], [0,-90] ]
+			}
 		},
 		right_source : { 
 			el : null,
-			sideNumber : 1
+			sideNumber : 1,
+			velocityPaths: {
+				left_source : [ [0, -90], [90,0], [90,0], [0,90] ],
+				center_source : [ [0, -90], [90,0], [0,90] ],
+				right_source : [],
+				left : [ [0, -90], [90,0], [90,0] ],
+				center : [ [0, -90], [90,0] ],
+				right : [ [0, -90] ],
+				saveSkip : [ [0, -90], [90,0], [0, -90] ],
+			}
 		},
-		save_skip : {
-			sideNumber : 1
+		saveSkip : {
+			sideNumber : 1,
+			velocityPaths: {
+				left_source : [ [0, 90], [90,0], [0,90] ],
+				center_source : [ [0, 90], [0,90] ],
+				right_source : [ [0, 90], [-90,0], [0,90] ],
+				left : [ [0, 90], [90,0] ],
+				center : [ [0, 90] ],
+				right : [ [0, 90],[-90,0] ],
+				saveSkip : []
+			}
 		}
 	}
 
@@ -687,6 +745,78 @@ var QubeApp = function () {
 			userBiasGuessingRef.set(stats)
 		})
 
+	}
+
+
+	// CUBE NAVIGATION
+	this.onPositioningBtnClick = function (e) {
+		e.preventDefault();
+		e.stopPropagation();
+
+		if ( $('#qube_positioning').hasClass('inMotion') ) return;
+		$('#qube_positioning').addClass('inMotion')
+
+		var targetScreen = (e.target.id).replace('_btn', ''), 
+			thisScreen = self.activeScreen
+		// self.updateCubeNav(targetScreen)
+
+		if (targetScreen.indexOf('top') !== -1) {
+			targetScreen = targetScreen.replace('top_','')
+			targetScreen = targetScreen + '_source'
+
+			// 
+		}
+		if (thisScreen.indexOf('top') !== -1)
+			thisScreen = ($('#top svg').last().attr('id').replace('SourceScreen_template_','')) + '_source';
+
+		// init velocities
+		var thisVelocityPath = self.screens[thisScreen].velocityPaths[targetScreen]
+
+		// loop through velocityPath steps
+		for (var i = 0; i < thisVelocityPath.length; i++) {
+			
+			// use enclosure to get distinct values for i
+			(function(l) {
+				setTimeout(function(){
+					self.applyTorque(thisVelocityPath[l])
+					if (l === thisVelocityPath.length - 1) {
+						setTimeout(function(){
+							$('#qube_positioning').removeClass('inMotion')
+						}, 300)
+						
+					}
+				}, (l * 500) )
+			})(i)
+		}
+
+	}
+	$('#qube_positioning button').on('click', this.onPositioningBtnClick)
+	
+
+	this.updateCubeNav = function (activeScreen) {
+		var activeBtn = activeScreen // string identifying cooresponding 'top' button
+
+		if (activeScreen == "top") {
+			var secondaryScreen = $('#top svg').last().attr('id').replace('SourceScreen_template_','')
+			
+			// string identifying which screen the top belongs to
+			activeBtn = activeScreen + '_' + secondaryScreen
+
+		}
+
+		// update UI
+		$('#qube_positioning .active').removeClass('active')
+		$('#' + activeBtn + '_btn').addClass('active')
+
+		
+	}
+
+	// step = [torqueX, torqueY] 
+	self.applyTorque = function (step) {
+		if ( !step ) return;
+
+		if ( !!step[0] ) viewport.torqueX = step[0]
+		if ( !!step[1] ) viewport.torqueY = step[1]
 	}
 
 	$(window).on('keyup', function (e) {
