@@ -79,11 +79,11 @@ var QubeApp = function () {
 			article : this.articles[0].article,
 			articleI : 0,
 			velocityPaths: {
-				left_source : [],
+				left_source : [ [90,0], [0, 90] ],
 				center_source : [ [0, 90] ],
 				right_source : [ [-90,0], [0, 90] ],
 				left : [ [90, 0] ],
-				center : [ [0,0] ],
+				center : [],
 				right : [ [-90,0] ],
 				saveSkip : [ [0, -90] ]
 			}
@@ -94,13 +94,13 @@ var QubeApp = function () {
 			article : this.articles[1].article,
 			articleI : 1,
 			velocityPaths: {
-				left_source : [],
-				center_source : [],
-				right_source : [],
+				left_source : [ [0, 90] ],
+				center_source : [ [-90,0], [0, 90] ],
+				right_source : [ [-90,0], [-90,0], [0, 90] ],
 				left : [],
-				center : [ [0,0] ],
-				right : [],
-				saveSkip : []
+				center : [ [-90,0] ],
+				right : [ [-90,0], [-90,0] ],
+				saveSkip : [ [-90,0], [0,-90] ]
 			}
 		},
 		right : {
@@ -764,17 +764,15 @@ var QubeApp = function () {
 		// init velocities
 		var thisVelocityPath = self.screens[self.activeScreen].velocityPaths[targetScreen]
 
+		// loop through velocityPath steps
 		for (var i = 0; i < thisVelocityPath.length; i++) {
-			var thisStep = thisVelocityPath[i],
-				thisDelay = 300 * i
-
-			if (!thisDelay) {
-				self.applyTorque(thisStep)
-			} else {
+			
+			// use enclosure to get distinct values for i
+			(function(l) {
 				setTimeout(function(){
-					self.applyTorque(thisStep)
-				}, thisDelay)
-			}
+					self.applyTorque(thisVelocityPath[l])
+				}, (l * 500) )
+			})(i)
 		}
 
 	}
