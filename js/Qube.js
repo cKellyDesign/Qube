@@ -775,6 +775,7 @@ var QubeApp = function () {
 
 		// init velocities
 		var thisVelocityPath = self.screens[thisScreen].velocityPaths[targetScreen]
+		if (!thisVelocityPath.length) $('#qube_positioning').removeClass('inMotion')
 
 		// loop through velocityPath steps
 		for (var i = 0; i < thisVelocityPath.length; i++) {
